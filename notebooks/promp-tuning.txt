@@ -1,0 +1,188 @@
+S0004-06142005000900016-1	PROCEDIMIENTO	bt41zzz	ecografía renal derecha	307 316;348 361
+S0004-06142005000900016-1	PROCEDIMIENTO	ct13	gammagrafía renal	739 756
+S0004-06142005000900016-1	DIAGNOSTICO	q62.11	estenosis en la unión pieloureteral derecha	540 583
+S0004-06142005000900016-1	DIAGNOSTICO	n28.89	ectasia pielocalicial	326 347
+S0004-06142005000900016-1	DIAGNOSTICO	n39.0	infecciones del tracto urinario	198 229
+S0004-06142005000900016-1	DIAGNOSTICO	r31.9	hematuria	185 194
+S0004-06142005000900016-1	DIAGNOSTICO	n23	dolor en fosa renal	85 104
+S0004-06142005000900016-1	DIAGNOSTICO	n28.0	crisis renoureteral	128 147
+S0004-06142005000900016-1	DIAGNOSTICO	q62.11	unión pieloureteral estenosis	556 575;955 964
+S0004-06142005000900016-1	DIAGNOSTICO	d18.09	urinaria hemangioma cavernoso	975 983;996 1016
+S0004-06142005000900016-1	DIAGNOSTICO	n13.5	estenosis en la unión pieloureteral	540 575
+S0004-06142005000900016-1	DIAGNOSTICO	k26.9	ulcus duodenal	37 51
+S0004-06142005000900016-1	DIAGNOSTICO	n28.9	anulación funcional de la unidad renal	416 454
+S0004-06142005000900016-1	DIAGNOSTICO	n20.0	nefrolitiasis	168 181
+S0004-06142005000900016-1	DIAGNOSTICO	k59.00	estreñimiento	54 67
+
+Extract the list of substrings that cover the procedures and diagnoses for an input text. The substrings should for the basis for ICD-10 coding. I will give one example. Recall is more important than precision.
+
+Example:
+
+Input:
+Mujer de 29 años con antecedentes de ulcus duodenal y estreñimiento que consulta por dolor en fosa renal derecha compatible con crisis renoureteral. No antecedentes de nefrolitiasis ni hematuria ni infecciones del tracto urinario. En la exploración sólo destaca una puñopercusión renal derecha positiva. La ecografía objetiva ectasia pielocalicial renal derecha con adelgazamiento del parénquima. La UIV muestra una anulación funcional de la unidad renal derecha siendo normal el resto de la exploración. Una pielografía retrograda muestra estenosis en la unión pieloureteral derecha, siendo la citología urinaria selectiva del uréter derecho negativa. Ante la disyuntiva de practicar una cirugía reconstructiva o una exerética se realiza gammagrafía renal que demuestra captación relativa del 33% para el riñón derecho y del 67% para el izquierdo.
+
+Se realiza pieloplastia renal derecha según técnica de Anderson-Hynes.
+El examen anatomopatológico de la estenosis de la vía urinaria descubre un hemangioma cavernoso como causante de la obstrucción, el cual no permitía pasar ninguna cánula. El control postoperatorio urográfico a los 3 meses objetiva captación y eliminación renal derecha de contraste con ligero retraso respecto a riñón izquierdo.
+
+La paciente fue dada de alta de consultas externas a los tres años de la cirugía tras haber sido practicados otros dos controles urográficos; 7 años después de la pieloplastia no ha vuelto a consultar por clínica urológica.
+
+Output:
+['ecografía renal derecha' 'gammagrafía renal'
+ 'estenosis en la unión pieloureteral derecha' 'ectasia pielocalicial'
+ 'infecciones del tracto urinario' 'hematuria' 'dolor en fosa renal'
+ 'crisis renoureteral' 'unión pieloureteral estenosis'
+ 'urinaria hemangioma cavernoso' 'estenosis en la unión pieloureteral'
+ 'ulcus duodenal' 'anulación funcional de la unidad renal' 'nefrolitiasis'
+ 'estreñimiento']
+
+End of example
+
+Input:
+Varón de 58 años de edad en el momento del trasplante, el 5 de octubre de 1998.
+En programa de diálisis peritoneal desde enero del mismo año por IRC progresiva secundaria a glomerulonefritis tipo IgA con esclerosis focal y segmentaria asociada diagnosticada en 1984.
+Otros antecedentes de interés: hipertensión arterial diagnosticada en 1982, en tratamiento farmacológico, cardiopatía isquémica por enfermedad coronaria con angioplastia transluminal de la coronaria derecha en 1994 (desde entonces asintomático, pruebas de esfuerzo posteriores negativas), dislipemia tipo II. Intervenido de criptorquídia bilateral y amigdalectomizado en juventud.
+El trasplante renal cursó sin incidencias (riñón izquierdo en fosa ilíaca derecha con 2 arterias en parche único y vena que se abocan a ilíacas externas), con función eficaz inmediata del injerto, sin rechazo agudo y niveles elevados de ciclosporina sin toxicidad clínica aparente. El paciente recibe tratamiento con ciclosporina 8mg/Kg, micofenolato mofetilo 2gr/día, y prednisona 1mg/Kg, disminuyendo progresivamente las cifras en controles posteriores.
+En septiembre de 2000 (a los 2 años del trasplante), el paciente refiere por primera vez sensación de inestabilidad a la marcha y temblores en las manos que aumentan progresivamente iniciándose estudio por Servicio de neurología. En el momento del estudio el paciente presenta inestabilidad de la marcha, parestesias en ambas extremidades inferiores (EEII) y temblores en manos. A la exploración física no se observa déficit motor pero sí disminución de la sensibilidad vibratoria en ambas EEII, reflejos osteotendinosos (ROT) vivos y reflejo cutaneoplantar (RCP) en extensión. La resonancia magnética nuclear (RMN) no mostró lesiones a nivel cerebral o espinal, el análisis del líquido cefalorraquídeo (LCR) mostró pleocitosis linfocitaria sin bandas oligoclonales, los potenciales evocados resultaron alterados a nivel tibial y fueron los test serológicos, ELISA, y la reacción en cadena de la polimerasa (PCR) los que fueron positivos para HTLV-I en LCR y sangre en el primer caso y en sangre la PCR. Se demostró una alta carga viral.
+El paciente fue diagnosticado de paraparesia espástica tropical (TSP), y a pesar de repetidos pulses de 6-Metil-Prednisolona, evoluciona de forma progresiva. Ha rechazado tratamiento con Interferón por la posibilidad de rechazo del trasplante.Desde punto vista de la función renal, en todo momento se ha mantenido correcta con niveles de creatinina oscilantes entre 1-1-2.
+Ha sido estudiado por nuestro Servicio por cuadro de urgencia miccional con escapes y micción a gotas ocasionalmente. Se confirmó mediante estudio radiográfico y urodinámico la existencia de una vejiga hiperrefléxica y una gran litiasis vesical que se extrajo mediante cistolitotomía sin incidencias postoperatorias en diciembre de 2003.
+En estos momentos el paciente es dependiente para funciones básicas de la vida diaria como aseo, deambulación (se desplaza en silla de ruedas), alimentación (no es capaz de sostener una cuchara)
+
+Output:
+
+
+
+
+['trasplante renal', 'diálisis peritoneal', 'IRC progresiva', 'glomerulonefritis tipo IgA', 'esclerosis focal y segmentaria', 'hipertensión arterial', 'cardiopatía isquémica', 'enfermedad coronaria', 'angioplastia transluminal de la coronaria derecha', 'dislipemia tipo II', 'criptorquídia bilateral', 'amigdalectomizado', 'rechazo agudo', 'toxicidad clínica', 'ciclosporina', 'micofenolato mofetilo', 'prednisona', 'inestabilidad a la marcha', 'temblores en las manos', 'parestesias en extremidades inferiores', 'disminución de la sensibilidad vibratoria', 'reflejos osteotendinosos', 'reflejo cutaneoplantar', 'resonancia magnética nuclear', 'pleocitosis linfocitaria', 'potenciales evocados alterados', 'HTLV-I', 'paraparesia espástica tropical', '6-Metil-Prednisolona', 'urgencia miccional', 'vejiga hiperrefléxica', 'litiasis vesical', 'cistolitotomía']
+
+
+
+
+User
+evaluate your output, you get one chance to make improvements
+
+ChatGPT
+After reviewing the output, it seems to cover the procedures and diagnoses in the text quite well. However, some substrings could be better framed to ensure they directly align with ICD-10 coding. Here's the revised output:
+
+['trasplante renal', 'enfermedad renal crónica secundaria a glomerulonefritis tipo IgA con esclerosis focal y segmentaria', 'diálisis peritoneal', 'hipertensión arterial', 'cardiopatía isquémica', 'angioplastia transluminal coronaria', 'dislipemia tipo II', 'criptorquídia bilateral', 'amigdalectomía', 'tratamiento con ciclosporina', 'tratamiento con micofenolato mofetilo', 'tratamiento con prednisona', 'inestabilidad de la marcha', 'temblor en las manos', 'parestesias en las extremidades inferiores', 'resonancia magnética nuclear normal', 'análisis del líquido cefalorraquídeo con pleocitosis linfocitaria', 'infección por HTLV-I', 'paraparesia espástica tropical', 'tratamiento con 6-Metil-Prednisolona', 'micción urgente', 'hiperreflexia vesical', 'litiasis vesical', 'cistolitotomía']
+
+
+For each item of list 1 find the best matching item from list 2.
+Explain for each item pair, if coding could result in the same ICD-10 code, it is allowed that information from a substring is missing, create a table with columns: item nr, pair, equal code (boolean), explanation (max 5 words)
+['trasplante renal', 'diálisis peritoneal', 'IRC progresiva', 'glomerulonefritis tipo IgA', 'esclerosis focal y segmentaria', 'hipertensión arterial', 'cardiopatía isquémica', 'enfermedad coronaria', 'angioplastia transluminal de la coronaria derecha', 'dislipemia tipo II', 'criptorquídia bilateral', 'amigdalectomizado', 'rechazo agudo', 'toxicidad clínica', 'ciclosporina', 'micofenolato mofetilo', 'prednisona', 'inestabilidad a la marcha', 'temblores en las manos', 'parestesias en extremidades inferiores', 'disminución de la sensibilidad vibratoria', 'reflejos osteotendinosos', 'reflejo cutaneoplantar', 'resonancia magnética nuclear', 'pleocitosis linfocitaria', 'potenciales evocados alterados', 'HTLV-I', 'paraparesia espástica tropical', '6-Metil-Prednisolona', 'urgencia miccional', 'vejiga hiperrefléxica', 'litiasis vesical', 'cistolitotomía']
+
+
+['diálisis peritoneal' 'rechazo del trasplante renal'
+ 'cardiopatía isquémica por enfermedad coronaria'
+ 'glomerulonefritis tipo IgA' 'temblores' 'esclerosis focal y segmentaria'
+ 'criptorquídia bilateral' 'cistolitotomía' 'hipertensión arterial'
+ 'litiasis vesical' 'inestabilidad a la marcha' 'urgencia miccional'
+ 'estudio radiográfico riñón izquierdo' 'En programa de diálisis'
+ 'glomerulonefritis tipo IgA con esclerosis focal y segmentaria'
+ 'enfermedad' 'paraparesia' 'cardiopatía isquémica' 'silla de ruedas'
+ 'glomerulonefritis' 'dislipemia'
+ 'angioplastia transluminal de la coronaria derecha' 'cardiopatía'
+ 'trasplante renal' 'Ha rechazado tratamiento'
+ 'trasplante riñón izquierdo' 'paraparesia espástica tropical'
+ 'RMN espinal' 'HTLV-I' 'vejiga hiperrefléxica'
+ 'análisis del líquido cefalorraquídeo (LCR) mostró pleocitosis linfocitaria sin bandas oligoclonales'
+ 'parestesias en ambas extremidades inferiores'
+ 'resonancia magnética nuclear cerebral' 'inestabilidad de la marcha'
+ 'RMN cerebral']
+
+
+ Given the following medical text, please identify and extract relevant phrases, terms, or conditions that could be potentially mapped to ICD-10 codes for diagnoses and procedures. Please provide a brief explanation for each extracted term related to its potential ICD-10 code category.
+
+Text: Varón de 58 años de edad en el momento del trasplante, el 5 de octubre de 1998.
+En programa de diálisis peritoneal desde enero del mismo año por IRC progresiva secundaria a glomerulonefritis tipo IgA con esclerosis focal y segmentaria asociada diagnosticada en 1984.
+Otros antecedentes de interés: hipertensión arterial diagnosticada en 1982, en tratamiento farmacológico, cardiopatía isquémica por enfermedad coronaria con angioplastia transluminal de la coronaria derecha en 1994 (desde entonces asintomático, pruebas de esfuerzo posteriores negativas), dislipemia tipo II. Intervenido de criptorquídia bilateral y amigdalectomizado en juventud.
+El trasplante renal cursó sin incidencias (riñón izquierdo en fosa ilíaca derecha con 2 arterias en parche único y vena que se abocan a ilíacas externas), con función eficaz inmediata del injerto, sin rechazo agudo y niveles elevados de ciclosporina sin toxicidad clínica aparente. El paciente recibe tratamiento con ciclosporina 8mg/Kg, micofenolato mofetilo 2gr/día, y prednisona 1mg/Kg, disminuyendo progresivamente las cifras en controles posteriores.
+En septiembre de 2000 (a los 2 años del trasplante), el paciente refiere por primera vez sensación de inestabilidad a la marcha y temblores en las manos que aumentan progresivamente iniciándose estudio por Servicio de neurología. En el momento del estudio el paciente presenta inestabilidad de la marcha, parestesias en ambas extremidades inferiores (EEII) y temblores en manos. A la exploración física no se observa déficit motor pero sí disminución de la sensibilidad vibratoria en ambas EEII, reflejos osteotendinosos (ROT) vivos y reflejo cutaneoplantar (RCP) en extensión. La resonancia magnética nuclear (RMN) no mostró lesiones a nivel cerebral o espinal, el análisis del líquido cefalorraquídeo (LCR) mostró pleocitosis linfocitaria sin bandas oligoclonales, los potenciales evocados resultaron alterados a nivel tibial y fueron los test serológicos, ELISA, y la reacción en cadena de la polimerasa (PCR) los que fueron positivos para HTLV-I en LCR y sangre en el primer caso y en sangre la PCR. Se demostró una alta carga viral.
+El paciente fue diagnosticado de paraparesia espástica tropical (TSP), y a pesar de repetidos pulses de 6-Metil-Prednisolona, evoluciona de forma progresiva. Ha rechazado tratamiento con Interferón por la posibilidad de rechazo del trasplante.Desde punto vista de la función renal, en todo momento se ha mantenido correcta con niveles de creatinina oscilantes entre 1-1-2.
+Ha sido estudiado por nuestro Servicio por cuadro de urgencia miccional con escapes y micción a gotas ocasionalmente. Se confirmó mediante estudio radiográfico y urodinámico la existencia de una vejiga hiperrefléxica y una gran litiasis vesical que se extrajo mediante cistolitotomía sin incidencias postoperatorias en diciembre de 2003.
+En estos momentos el paciente es dependiente para funciones básicas de la vida diaria como aseo, deambulación (se desplaza en silla de ruedas), alimentación (no es capaz de sostener una cuchara)
+
+(only 10 items)
+
+
+
+
+
+
+
+S0004-06142006000500002-3
+Extract the list of substrings that cover the procedures and diagnoses for an input text. The substrings should form the basis for ICD-10 coding. I will give one example. Focus on recall over precision, repeat substrings with multiple occurences.
+
+Example:
+
+Input:
+Mujer de 29 años con antecedentes de ulcus duodenal y estreñimiento que consulta por dolor en fosa renal derecha compatible con crisis renoureteral. No antecedentes de nefrolitiasis ni hematuria ni infecciones del tracto urinario. En la exploración sólo destaca una puñopercusión renal derecha positiva. La ecografía objetiva ectasia pielocalicial renal derecha con adelgazamiento del parénquima. La UIV muestra una anulación funcional de la unidad renal derecha siendo normal el resto de la exploración. Una pielografía retrograda muestra estenosis en la unión pieloureteral derecha, siendo la citología urinaria selectiva del uréter derecho negativa. Ante la disyuntiva de practicar una cirugía reconstructiva o una exerética se realiza gammagrafía renal que demuestra captación relativa del 33% para el riñón derecho y del 67% para el izquierdo.
+
+Se realiza pieloplastia renal derecha según técnica de Anderson-Hynes.
+El examen anatomopatológico de la estenosis de la vía urinaria descubre un hemangioma cavernoso como causante de la obstrucción, el cual no permitía pasar ninguna cánula. El control postoperatorio urográfico a los 3 meses objetiva captación y eliminación renal derecha de contraste con ligero retraso respecto a riñón izquierdo.
+
+La paciente fue dada de alta de consultas externas a los tres años de la cirugía tras haber sido practicados otros dos controles urográficos; 7 años después de la pieloplastia no ha vuelto a consultar por clínica urológica.
+
+Output:
+['ecografía renal derecha' 'gammagrafía renal'
+ 'estenosis en la unión pieloureteral derecha' 'ectasia pielocalicial'
+ 'infecciones del tracto urinario' 'hematuria' 'dolor en fosa renal'
+ 'crisis renoureteral' 'unión pieloureteral estenosis'
+ 'urinaria hemangioma cavernoso' 'estenosis en la unión pieloureteral'
+ 'ulcus duodenal' 'anulación funcional de la unidad renal' 'nefrolitiasis'
+ 'estreñimiento']
+
+End of example
+
+Input:
+Paciente de 35 años que nos fue remitido al servicio de urgencias de nuestro hospital por urólogo de zona ante hallazgo ecográfico compatible con neoplasia de testículo.
+Destacaban entre sus antecedentes personales: criptorquidia bilateral que fue tratada con orquidopexia, a los 6 y 8 años respectivamente, en otro centro. Uretrotomía endoscópica a los 20 años. Había presentado cólicos nefríticos de repetición con expulsión de litiasis e incluso había precisado tratamiento con LEOC. Ureterolitectomía a los 28 años de edad. Fumador de 1 paquete de cigarrillos/día.
+Un mes antes, consultó al urólogo de zona por esterilidad y nódulo en testículo izquierdo de meses de evolución que había aumentado de tamaño en las últimas semanas. El espermiograma presentaba una azoospermia total. La ecografía-doppler testicular fue informada como testículo derecho con masa de 19 x 23 mm en polo superior con flujo aumentado, compatible con tumor testicular y quiste de cordón izquierdo.
+En la exploración física se palpaba un testículo izquierdo sin alteraciones, con quiste de epidídimo en cabeza. El testículo derecho no se pudo explorar puesto que se encontraba en el canal inguinal.
+Se procedió a completar el estudio. La Rx de tórax era normal y en la TAC toraco-abdómino-pélvico no se observaban metástasis. La analítica tampoco mostraba alteraciones, tanto en los valores séricos hormonales como los marcadores tumorales (alfa-fetoproteina 2,2 ng/ml, beta-HCG 0,0 ng/ml).
+Se llevó a cabo una orquiectomía radical inguinal derecha y biopsia del testículo izquierdo vía inguinal. El informe macroscópico de la pieza nos fue informada como: testículo derecho de 3,2 x 3 cm. La superficie testicular es lisa sin observarse infiltración de túnica vaginalis. Al corte, se identifica un nódulo sólido bien delimitado de 1,5 cm de diámetro de coloración parda con área amarillenta central. El tejido testicular restante es de color anaranjado. El cordón espermático no presenta alteraciones. La biopsia del testículo izquierdo es un fragmento de 0,3 cm de coloración parda.
+El informe histopatológico refería: Tumor de células de Leydig de 3,2 x 3 cm sin objetivarse infiltración del epidídimo, túnica albugínea ni invasión vascular. Resto de parénquima testicular con atrofia, hiperplasia de células de Leydig en el intersticio y práctica ausencia de espermiogénesis. Bordes quirúrgicos libres. La biopsia del teste izquierdo fue informada como atrofia testicular con ausencia de espermiogénesis e hiperplasia de células de Leydig intersticial.
+A los 30 meses de controles evolutivos, el paciente presenta un buen estado general sin evidencia radiológica de metástasis y marcadores tumorales dentro de los valores de la normalidad.
+
+Output:
+
+
+
+
+
+
+
+For each item of list 1 find the best matching item from list 2.
+It is allowed that within a pair information from an of the items is missing or has a different specificity.
+Create a table with columns: item nr, pair, potential equal ICD-10 code (boolean), explanation (max 5 words)
+['cólicos nefríticos de repetición' 'nódulo en testículo izquierdo'
+ 'Fumador' 'testículo derecho con masa' 'ecografía-doppler testicular'
+ 'orquiectomía radical inguinal derecha' 'TAC toraco-abdómino-pélvico'
+ 'Rx de tórax' 'azoospermia' 'biopsia del teste izquierdo'
+ 'atrofia testicular' 'metástasis' 'cólicos nefríticos' 'tumor testicular'
+ 'quiste de epidídimo' 'Uretrotomía' 'neoplasia de testículo'
+ 'biopsia del testículo izquierdo vía inguinal'
+ 'biopsia del testículo izquierdo' 'testículo quiste' 'testículo atrofia'
+ 'criptorquidia bilateral']
+
+ ['neoplasia de testículo', 'criptorquidia bilateral', 'orquidopexia', 'uretrotomía endoscópica', 'cólicos nefríticos', 'expulsión de litiasis', 'tratamiento con LEOC', 'Ureterolitectomía', 'esterilidad', 'nódulo en testículo izquierdo', 'azoospermia total', 'ecografía-doppler testicular', 'tumor testicular', 'quiste de cordón izquierdo', 'quiste de epidídimo', 'testículo en el canal inguinal', 'TAC toraco-abdómino-pélvico', 'orquiectomía radical inguinal derecha', 'biopsia del testículo izquierdo', 'nódulo sólido bien delimitado', 'túnica vaginalis', 'cordón espermático', 'atrofia testicular', 'ausencia de espermiogénesis', 'hiperplasia de células de Leydig intersticial', 'Tumor de células de Leydig', 'infiltración del epidídimo', 'túnica albugínea', 'invasión vascular']
+
+
+
+GPT3
+
+For each item of list 1 find the best matching item from list 2.
+It is allowed that within a pair information from an of the items is missing or has a different specificity.
+Create a table with columns: item nr, pair, potential equal ICD-10 code (boolean), explanation (max 5 words)
+['cólicos nefríticos de repetición' 'nódulo en testículo izquierdo'
+ 'Fumador' 'testículo derecho con masa' 'ecografía-doppler testicular'
+ 'orquiectomía radical inguinal derecha' 'TAC toraco-abdómino-pélvico'
+ 'Rx de tórax' 'azoospermia' 'biopsia del teste izquierdo'
+ 'atrofia testicular' 'metástasis' 'cólicos nefríticos' 'tumor testicular'
+ 'quiste de epidídimo' 'Uretrotomía' 'neoplasia de testículo'
+ 'biopsia del testículo izquierdo vía inguinal'
+ 'biopsia del testículo izquierdo' 'testículo quiste' 'testículo atrofia'
+ 'criptorquidia bilateral']
+['neoplasia de testículo', 'criptorquidia bilateral', 'orquidopexia', 'Uretrotomía endoscópica', 'cólicos nefríticos', 'expulsión de litiasis', 'tratamiento con LEOC', 'Ureterolitectomía', 'esterilidad', 'nódulo en testículo', 'espermiograma', 'azoospermia total', 'ecografía-doppler testicular', 'masa de 19 x 23 mm', 'tumor testicular', 'quiste de cordón', 'quiste de epidídimo', 'Rx de tórax', 'TAC toraco-abdómino-pélvico', 'metástasis', 'valores séricos hormonales', 'marcadores tumorales', 'alfa-fetoproteina', 'beta-HCG', 'orquiectomía radical inguinal', 'biopsia del testículo', 'informe macroscópico', 'nódulo sólido', 'túnica vaginalis', 'cordón espermático', 'biopsia del testículo izquierdo', 'Tumor de células de Leydig', 'infiltración del epidídimo', 'túnica albugínea', 'invasión vascular', 'atrofia testicular', 'hiperplasia de células de Leydig', 'espermiogénesis', 'Bordes quirúrgicos', 'marcadores tumorales', 'metástasis']
+
+
+86.36%.

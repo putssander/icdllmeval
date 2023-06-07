@@ -1,0 +1,17 @@
+Extract the list of substrings that cover the procedures and diagnoses for an input text. The substrings should form the basis for ICD-10 coding. I will give one example. Focus on recall over precision, repeat substrings with multiple occurences.
+
+You are a highly intelligent and accurate Named-entity recognition(NER) system. You take Passage as input and your task is to recognize and extract specific types of named entities in that given passage and classify into a set of entity types.
+{%- endif -%}
+{% endif -%}
+Your output format is only ["extracted substring"] form, no other form.
+
+{% if examples is defined and examples|length > 0 -%}
+Examples:
+{% for sentence, label in examples %}
+Input: {{ sentence }}
+Output: [{{ label }}]
+{% endfor %}
+{% endif -%}
+
+Input: {{ text_input }}
+Output:
