@@ -1,0 +1,1 @@
+def get_snippet(txt, offset)
