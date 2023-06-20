@@ -8,19 +8,33 @@ from pydantic import BaseModel, Field, validator
 from typing import List
 
 
+    # main_term: str = Field(description="translate the 'original phrase' to the standardized 'main term' to locate the medical code in the alphabetic icd-index")
 
 
 class IcdItem(BaseModel):
     original_phrase: str = Field(description="original phrase")
-    context_snippets: str = Field(description="extract (multiple) text snippets from source text containing all information and context for the ICD coding of 'original phrase' (maxLength=64; maxLength=128)")
-    # main_term: str = Field(description="translate the 'original phrase' to the standardized 'main term' to locate the medical code in the alphabetic icd-index")
-    code_description: str = Field(description="translate the 'original phrase' and 'context_snippets' to a standarized formal ICD like code description, clearly indicating the nature, location, and other relevant details")
+    text_snippets: str = Field(description="extract (multiple) text snippets from source text containing all information and context for the ICD coding of 'original phrase' (maxLength=64; maxLength=128)")
+    icd_code_description: str = Field(description="ICD code description")
+    icd_code_description_es: str = Field(description="ICD code description in Spanish")
+    icd_code: str = Field(description="ICD code")
+
 
 # Define your desired data structure.
 class IcdList(BaseModel):
     procedures: List[IcdItem] = Field(description="list of icd diagonse items")
     diagnoses: List[IcdItem] = Field(description="list of icd procedure items")
 
+examples_context = [
+  {
+    "question": """[Document(page_content='Reimplantación de ovario, izquierdo, abordaje abierto', metadata={'code': '0UM10ZZ'}), Document(page_content='Destrucción de pelvis renal, izquierda, abordaje orificio natural o artificial', metadata={'code': '0T547ZZ'}), Document(page_content='Destrucción de ovario, izquierdo, abordaje abierto', metadata={'code': '0U510ZZ'}), Document(page_content='Extirpación en ovario, izquierdo, abordaje percutáneo', metadata={'code': '0UC13ZZ'}), Document(page_content='Resección de tendón tronco, lado izquierdo, abordaje abierto', metadata={'code': '0LTB0ZZ'}), Document(page_content='Amputación de interpelviabdominal, izquierda, abordaje abierto', metadata={'code': '0Y630ZZ'}), Document(page_content='Resección de riñón, izquierdo, abordaje abierto', metadata={'code': '0TT10ZZ'}), Document(page_content='Resección de intestino grueso, izquierdo, abordaje orificio natural o artificial', metadata={'code': '0DTG7ZZ'}), Document(page_content='Resección de pelvis renal, izquierda, abordaje abierto', metadata={'code': '0TT40ZZ'}), Document(page_content='Extirpación en ovario, izquierdo, abordaje endoscópico percutáneo', metadata={'code': '0UC14ZZ'}), Document(page_content='Resección de trompa de eustaquio, izquierda, abordaje orificio natural o artificial', metadata={'code': '09TG7ZZ'}), Document(page_content='Resección de uréter, izquierdo, abordaje abierto', metadata={'code': '0TT70ZZ'}), Document(page_content='Extirpación en riñón, izquierdo, abordaje orificio natural o artificial', metadata={'code': '0TC17ZZ'}), Document(page_content='Extirpación en vena renal, izquierda, abordaje abierto', metadata={'code': '06CB0ZZ'}), Document(page_content='Resección de testículo, izquierdo, abordaje abierto', metadata={'code': '0VTB0ZZ'}), Document(page_content='Extirpación en rótula, izquierda, abordaje abierto', metadata={'code': '0QCF0ZZ'}), Document(page_content='Extirpación en pelvis renal, izquierda, abordaje endoscópico percutáneo', metadata={'code': '0TC44ZZ'}), Document(page_content='Extirpación en rótula, izquierda, abordaje endoscópico percutáneo', metadata={'code': '0QCF4ZZ'})]
+    """,   
+    "answer": """
+    ```json
+{"code": "0VTB0ZZ", "listed": true, "reasoning": "This response code was not suggested but listed"})
+```
+"""
+  }
+  ]
 
 class IcdPrompts():
 
@@ -35,7 +49,7 @@ class IcdPrompts():
     def get_output_parser_substrings(self):
         response_schemas = [
             ResponseSchema(name="procedures", description="list of substrings for coding ICD procedures"),
-            ResponseSchema(name="diagnoses", description="list of substrings for coding ICD diagnoses")
+            ResponseSchema(name="diagnoses", description="list of substrings for coding ICD diagnoses"),
         ]
         output_parser = StructuredOutputParser.from_response_schemas(response_schemas)
         return output_parser
@@ -121,7 +135,7 @@ class IcdPrompts():
         # coding_instructions = "What is the correct ICD-10 code for the substring. If you think the correct code is not listed, provide your best code suggestion in the json field 'code', always follow the format instructions."
         behaviour_instructions = "You are a senior professional medical ICD coder, teaching peers the highest level of coding possible."
         system_message_prompt = SystemMessagePromptTemplate.from_template("{behaviour_instructions} {format_instructions}\n")
-        human_message_prompt = HumanMessagePromptTemplate.from_template("For each of the extracted substrings add additional information in Spanish to preform an medical code lookup for '{substring}' use {format_instructions} in markdown! Extract from the following text {txt}")
+        human_message_prompt = HumanMessagePromptTemplate.from_template("For each of the extracted substrings, do not merge identical occurences, add additional information in Spanish to preform an medical code lookup for '{substring}', use {format_instructions} in markdown! Extract from the following text {txt}")
 
         chat_prompt = ChatPromptTemplate(
             messages=[system_message_prompt,human_message_prompt], 
