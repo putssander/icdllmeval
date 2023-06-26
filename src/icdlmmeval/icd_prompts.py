@@ -13,10 +13,10 @@ from typing import List
 
 class IcdItem(BaseModel):
     original_phrase: str = Field(description="original phrase")
-    text_snippets: str = Field(description="extract (multiple) text snippets from source text containing all information and context for the ICD coding of 'original phrase' (maxLength=64; maxLength=128)")
-    icd_code_description: str = Field(description="ICD code description")
-    icd_code_description_es: str = Field(description="ICD code description in Spanish")
+    text_snippets: str = Field(description="extract (multiple) text snippets from source text containing all information and context for the ICD coding of 'original phrase' (mimLength=64; maxLength=128)")
     icd_code: str = Field(description="ICD code")
+    icd_code_description: str = Field(description="ICD code description")
+    icd_code_description_es: str = Field(description="Translated ICD code description in Spanish")
 
 
 # Define your desired data structure.
@@ -78,7 +78,7 @@ class IcdPrompts():
     def extract_substrings(self, txt, examples):
         format_instructions = self.format_instructions_substrings
 
-        behaviour_instructions = "You are a senior professional medical ICD coder, teaching peers the highest level of coding possible."
+        behaviour_instructions = "You are an expert in medical ICD coding, teaching peers the highest level of coding possible."
         coding_instructions = "Extract procedures and diagnoses substrings for an input text as best you can. The substrings should form the basis for ICD-10 coding. Focus on recall over precision, repeat substrings with multiple occurences."
         system_message_prompt = SystemMessagePromptTemplate.from_template("{behaviour_instructions} {coding_instructions} {format_instructions}\n")
         example_human = HumanMessagePromptTemplate.from_template("{question}", additional_kwargs={"name": "example_user"})
@@ -98,22 +98,24 @@ class IcdPrompts():
         return json_substrings
 
 
-    def select_code(self, substring, docs, examples):
+    def select_code(self, item):
 
         format_instructions = self.output_parser_select.get_format_instructions()
         coding_instructions = "What is the correct ICD-10 code for the substring. If you think the correct code is not listed, provide your best code suggestion in the json field 'code', always follow the format instructions."
-        behaviour_instructions = "You are a senior professional medical ICD coder, teaching peers the highest level of coding possible."
+        behaviour_instructions = "You are an expert in medical ICD coding, teaching peers the highest level of coding possible."
         system_message_prompt = SystemMessagePromptTemplate.from_template("{behaviour_instructions} {coding_instructions} {format_instructions}\n")
-        example_human = HumanMessagePromptTemplate.from_template("{question}", additional_kwargs={"name": "example_user"})
-        example_ai = AIMessagePromptTemplate.from_template("{answer}", additional_kwargs={"name": "example_assistant"})
-        human_message_prompt = HumanMessagePromptTemplate.from_template("substring: '{substring}', suggestions: {docs}. If you think the correct code is not in the list, provide your best code suggestion, always follow the format instructions.")
+        # example_human = HumanMessagePromptTemplate.from_template("{question}", additional_kwargs={"name": "example_user"})
+        # example_ai = AIMessagePromptTemplate.from_template("{answer}", additional_kwargs={"name": "example_assistant"})
+        human_message_prompt = HumanMessagePromptTemplate.from_template("item: {item}. If you think the correct code is not in the list, provide your best code suggestion, always follow the format instructions.")
 
         chat_prompt = ChatPromptTemplate(
-            messages=[system_message_prompt, example_human, example_ai, human_message_prompt], 
+            # messages=[system_message_prompt, example_human, example_ai, human_message_prompt], 
+            messages=[system_message_prompt, human_message_prompt], 
             input_variables=["question", "answer","substring", "docs"],
             partial_variables={"behaviour_instructions": behaviour_instructions, "coding_instructions": coding_instructions, "format_instructions": format_instructions,}
         )
-        _input = chat_prompt.format_prompt(question=examples[0]['question'], answer=examples[0]['answer'], substring=substring, docs=docs)
+        # _input = chat_prompt.format_prompt(question=examples[0]['question'], answer=examples[0]['answer'], item=item)
+        _input = chat_prompt.format_prompt(item=item)
         logging.info(_input.to_messages())
         output = self.chat(_input.to_messages())
         logging.info(output.content)
@@ -133,13 +135,13 @@ class IcdPrompts():
 
         format_instructions = parser.get_format_instructions()
         # coding_instructions = "What is the correct ICD-10 code for the substring. If you think the correct code is not listed, provide your best code suggestion in the json field 'code', always follow the format instructions."
-        behaviour_instructions = "You are a senior professional medical ICD coder, teaching peers the highest level of coding possible."
+        behaviour_instructions = "You are an expert in medical ICD coding, teaching peers the highest level of coding possible."
         system_message_prompt = SystemMessagePromptTemplate.from_template("{behaviour_instructions} {format_instructions}\n")
-        human_message_prompt = HumanMessagePromptTemplate.from_template("For each of the extracted substrings, do not merge identical occurences, add additional information in Spanish to preform an medical code lookup for '{substring}', use {format_instructions} in markdown! Extract from the following text {txt}")
+        human_message_prompt = HumanMessagePromptTemplate.from_template("For each of items in the lists, add additional information in Spanish to preform an medical code lookup for '{substring}', use {format_instructions} in markdown! Extract from the following text {txt}. The number of list items of the output should match the input, ")
 
         chat_prompt = ChatPromptTemplate(
             messages=[system_message_prompt,human_message_prompt], 
-            input_variables=["substring"],
+            input_variables=["substring", "txt"],
             partial_variables={"behaviour_instructions": behaviour_instructions, "format_instructions": format_instructions,}
         )
         _input = chat_prompt.format_prompt( substring=substrings, txt=txt)

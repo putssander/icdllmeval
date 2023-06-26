@@ -27,7 +27,10 @@ class CodiFormat:
 
 
     def get_json_x_substrings(self, df, id):        
-        select = df[df["FILE"] == id]        
+        select = df[df["FILE"] == id]
+        # select = select.filter(["TYPE", "SUBSTRING"], axis=1)
+        # json_object = select.to_json(force_ascii=False, orient='records')   
+
         json_object = {}
         json_object["diagnoses"] = select[select["TYPE"] == DIAGNOSTICO]["SUBSTRING"].tolist()
         json_object["procedures"] = select[select["TYPE"] == PROCEDIMIENTO]["SUBSTRING"].tolist()
