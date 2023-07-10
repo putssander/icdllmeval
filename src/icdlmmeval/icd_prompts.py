@@ -6,6 +6,7 @@ import logging
 from langchain.output_parsers import PydanticOutputParser
 from pydantic import BaseModel, Field, validator
 from typing import List
+import json
 
 
     # main_term: str = Field(description="translate the 'original phrase' to the standardized 'main term' to locate the medical code in the alphabetic icd-index")
@@ -18,11 +19,35 @@ class IcdItem(BaseModel):
     icd_code_description: str = Field(description="ICD code description")
     icd_code_description_es: str = Field(description="Translated ICD code description in Spanish")
 
+class IcdItemNer(BaseModel):
+    main_term: str = Field(description="main term")
+    context: str = Field(description="context")
+    icd_phrase: str = Field(description="substring for ICD coding")
+    icd_code: str = Field(description="ICD code")
+    icd_code_description: str = Field(description="ICD code description")
+    icd_code_description_es: str = Field(description="Translated ICD code description in Spanish")
 
 # Define your desired data structure.
 class IcdList(BaseModel):
     procedures: List[IcdItem] = Field(description="list of icd diagonse items")
     diagnoses: List[IcdItem] = Field(description="list of icd procedure items")
+
+# Define your desired data structure.
+class IcdListNer(BaseModel):
+    procedures: List[IcdItemNer] = Field(description="list of icd diagonse items")
+    diagnoses: List[IcdItem] = Field(description="list of icd procedure items")
+
+
+class TermItem(BaseModel):
+    original_phrase: str = Field(description="original phrase'")
+    main_term: List[str] = Field(description="preferably a single term for the main condition, no anatomical sites, laterality, aetiology, severity, type or other details ")
+
+# Define your desired data structure.
+class TermList(BaseModel):
+    main_terms: List[TermItem] = Field(description="list extracted main items")
+
+
+
 
 examples_context = [
   {
@@ -151,6 +176,65 @@ class IcdPrompts():
         print(output.content)
         try:
             json_substrings = parser.parse(output.content)
+            print(json_substrings)
+        except Exception as e: 
+            logging.error(e)            
+        return json_substrings
+    
+
+    def prompt_icd_description_from_main_terms(self, txt, main_terms):
+
+        # Set up a parser + inject instructions into the prompt template.
+        parser = PydanticOutputParser(pydantic_object=IcdList)
+
+        format_instructions = parser.get_format_instructions()
+        # coding_instructions = "What is the correct ICD-10 code for the substring. If you think the correct code is not listed, provide your best code suggestion in the json field 'code', always follow the format instructions."
+        behaviour_instructions = "You are an expert in medical ICD coding, teaching peers the highest level of coding possible."
+        system_message_prompt = SystemMessagePromptTemplate.from_template("{behaviour_instructions} {format_instructions}\n")
+        human_message_prompt = HumanMessagePromptTemplate.from_template("For each item in the lists, extract and add additional information in Spanish to preform an medical code lookup. The list '{main_terms}', use {format_instructions} in markdown!")
+
+        chat_prompt = ChatPromptTemplate(
+            messages=[system_message_prompt,human_message_prompt], 
+            input_variables=["substring", "txt"],
+            partial_variables={"behaviour_instructions": behaviour_instructions, "format_instructions": format_instructions,}
+        )
+        _input = chat_prompt.format_prompt( substring=main_terms, txt=txt)
+        logging.info(_input.to_messages())
+        output = self.chat(_input.to_messages())
+        logging.info(output.content)
+        print(output.content)
+        try:
+            json_substrings = parser.parse(output.content)
+            print(json_substrings)
+        except Exception as e: 
+            logging.error(e)            
+        return json_substrings
+
+    def prompt_main_terms(self, examples, unfiltered_substrings):
+
+        # Set up a parser + inject instructions into the prompt template.
+        parser = PydanticOutputParser(pydantic_object=TermList)
+
+        format_instructions = parser.get_format_instructions()
+        # coding_instructions = "What is the correct ICD-10 code for the substring. If you think the correct code is not listed, provide your best code suggestion in the json field 'code', always follow the format instructions."
+        behaviour_instructions = "You are an expert in medical ICD coding, teaching peers the highest level of coding possible."
+        system_message_prompt = SystemMessagePromptTemplate.from_template("{behaviour_instructions} {format_instructions}\n")
+        example_human = HumanMessagePromptTemplate.from_template("{question}", additional_kwargs={"name": "example_user"})
+        example_ai = AIMessagePromptTemplate.from_template("{answer}", additional_kwargs={"name": "example_assistant"})
+        human_message_prompt = HumanMessagePromptTemplate.from_template("For each item in the lists, extract a single or composed main term, closely follow the format instructions {format_instructions} in markdown and the given above example! Extract for the following list {unfiltered_substrings}")
+
+        chat_prompt = ChatPromptTemplate(
+            messages=[system_message_prompt,example_human, example_ai, human_message_prompt], 
+            input_variables=["question", "answer", "unfiltered_substrings"],
+            partial_variables={"behaviour_instructions": behaviour_instructions, "format_instructions": format_instructions,}
+        )
+        _input = chat_prompt.format_prompt(question=json.dumps(examples['question']), answer=json.dumps(examples['answer']), unfiltered_substrings=unfiltered_substrings)
+        logging.info(_input.to_messages())
+        output = self.chat(_input.to_messages())
+        logging.info(output.content)
+        print(output.content)
+        try:
+            json_substrings = json.loads(output.content)
             print(json_substrings)
         except Exception as e: 
             logging.error(e)            

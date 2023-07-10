@@ -1,6 +1,9 @@
 import pandas as pd
 import json
 from icdlmmeval import ner_parsing
+from icdlmmeval import text_util
+import re
+import configparser
 
 DIAGNOSTICO = "DIAGNOSTICO"
 PROCEDIMIENTO = "PROCEDIMIENTO"
@@ -8,14 +11,17 @@ PROCEDIMIENTO = "PROCEDIMIENTO"
 
 class CodiFormat:
 
-    header_X = ["FILE","TYPE", "CODE", "SUBSTRING", "OFFSETS"]      
+    header_X = ["FILE","TYPE", "CODE", "SUBSTRING", "OFFSETS"]   
+    DIAGNOSTICO = "DIAGNOSTICO"
+    PROCEDIMIENTO = "PROCEDIMIENTO"   
 
-
-    def __init__(self, path_codiesp):
-        self.path_codiesp = path_codiesp
+    def __init__(self):
+        config = configparser.ConfigParser()
+        config.read('./../resources/config.ini')
+        self.path_codiesp = config["codiesp"]['data']
 
     def get_text(self, split, id):
-        fp = open(f'{self.path_codiesp}/final_dataset_v4_to_publish/{split}/text_files/{id}.txt', 'r')
+        fp = open(f'{self.path_codiesp}/{split}/text_files/{id}.txt', 'r')
         txt = fp.read()
         fp.close()
         return txt
@@ -38,9 +44,11 @@ class CodiFormat:
     
 
     def get_df_x(self, split):
-        path_x = f"{self.path_codiesp}/final_dataset_v4_to_publish/{split}/{split}X.tsv"
+        path_x = f"{self.path_codiesp}/{split}/{split}X.tsv"
         return pd.read_csv(path_x, delimiter="\t", names=self.header_X)
 
+    def get_df_x_path(self, path_x):
+        return pd.read_csv(path_x, delimiter="\t", names=self.header_X)
 
     def format_codiesp(self, codes, file):
         for code in codes:
@@ -69,3 +77,10 @@ class CodiFormat:
         df_split_x = df_split_x[df_split_x["FILE"].isin(df_pred["FILE"].unique())]
 
         df_split_x.to_csv(path_gold, sep ='\t', index=False, header=False)
+
+
+    def get_term_offsets(self, offset_string):
+        start = int(offset_string.split(" ")[0])
+        end = int(offset_string.split(" ")[1])
+        return (start, end)
+
