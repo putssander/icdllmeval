@@ -1,7 +1,10 @@
 import pandas as pd
 import json
 from icdlmmeval import ner_parsing
-from icdlmmeval import text_util
+from icdlmmeval import util
+from icdlmmeval import util_text
+
+
 import re
 import configparser
 
@@ -84,3 +87,70 @@ class CodiFormat:
         end = int(offset_string.split(" ")[1])
         return (start, end)
 
+
+    def get_description_prompt(self, split, df_main_x, file_name, n):
+
+        df_select = df_main_x[df_main_x["FILE"] == file_name]
+        df_select_diagnoses = df_select[df_select["TYPE"] == CodiFormat.DIAGNOSTICO]
+
+        txt = self.get_text(split, file_name)
+        sentences = util_text.get_sentences(txt)
+        offsets = util_text.get_sentences_offsets(txt, sentences)
+        diagnoses_prompt = []
+        for idx, row, in df_select_diagnoses.iterrows():
+            item_output = {}
+            item_output["main_term"] = row["MAIN_SUBSTRING"].strip()
+            item_output["offsets"] = row["MAIN_OFFSETS"]
+            item_output["context"] = self.get_context(row["MAIN_OFFSETS"], offsets, sentences, n)
+            diagnoses_prompt.append(item_output)
+                   
+        prompt = {"diagnoses" :diagnoses_prompt, "procedures": []}
+        return prompt
+    
+    
+    def get_description_prompt_chunk(self, prompt, chunk_size):
+
+        diagnoses = prompt["diagnoses"]
+        diagnoses_chunked = util.chunk_list(diagnoses, chunk_size)
+        prompts_diagnoses = [{"diagnoses": diagnoses, "procedures": []} for diagnoses in diagnoses_chunked]
+         
+        procedures = prompt["procedures"]
+        procedures_chunked = util.chunk_list(procedures, chunk_size)
+        prompts_procedures = [{"diagnoses": [], "procedures": procedures} for procedures in procedures_chunked]
+
+        return prompts_diagnoses + prompts_procedures
+
+
+    def get_description_prompt_txt(self, split, df_main_x, file_name, n):
+
+        df_select = df_main_x[df_main_x["FILE"] == file_name]
+        df_select_diagnoses = df_select[df_select["TYPE"] == CodiFormat.DIAGNOSTICO]
+
+        txt = self.get_text(split, file_name)
+        sentences = util_text.get_sentences(txt)
+        offsets = util_text.get_sentences_offsets(txt, sentences)
+        diagnoses_prompt = []
+        for idx, row, in df_select_diagnoses.iterrows():
+            item_output = {}
+            item_output["main_term"] = row["MAIN_SUBSTRING"].strip()
+            item_output["offsets"] = row["MAIN_OFFSETS"]
+            item_output["context"] = self.get_context(row["MAIN_OFFSETS"], offsets, sentences, n)
+            diagnoses_prompt.append(item_output)
+                   
+        prompt = {"diagnoses" :diagnoses_prompt, "procedures": []}
+        return prompt
+
+    def get_context(self, offset_string, offsets, sentences, n):
+            term_offsets = self.get_term_offsets(offset_string)
+            sent_index = util_text.find_offset_index(offsets, term_offsets[0])
+            sent_offset = offsets[sent_index]
+            
+            start = term_offsets[0] - sent_offset
+            end = term_offsets[1] - sent_offset
+            
+            replace_sent_list = sentences.copy()
+            replace_sent_list[sent_index] = util_text.add_html(sent=replace_sent_list[sent_index], start=start, end=end)
+            context = ". ".join(util_text.get_surrounding_items(replace_sent_list, sent_index, n))
+            return context
+
+        

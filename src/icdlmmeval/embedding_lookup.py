@@ -2,12 +2,19 @@ from langchain.vectorstores import Chroma
 from langchain.embeddings.openai import OpenAIEmbeddings
 import json
 import re
+import configparser
 
 class EmbeddingLookup:
 
-    def __init__(self, path_diagnoses_db, path_procedures_db):
+    def __init__(self):
 
         embeddings = OpenAIEmbeddings(model='text-embedding-ada-002')
+
+        config = configparser.ConfigParser()
+        config.read('./../resources/config.ini')
+        path_diagnoses_db = config["vectorstore"]['diagnoses_db']
+        path_procedures_db= config["vectorstore"]['procedures_db']
+
         self.vectordb_diag = Chroma(persist_directory=path_diagnoses_db, embedding_function=embeddings)
         self.vectordb_proc = Chroma(persist_directory=path_procedures_db, embedding_function=embeddings)
         print('vector stores loaded')

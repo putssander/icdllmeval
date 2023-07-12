@@ -21,10 +21,11 @@ class IcdItem(BaseModel):
 
 class IcdItemNer(BaseModel):
     main_term: str = Field(description="main term")
-    context: str = Field(description="context")
+    # context: str = Field(description="context for main term")
+    offsets: str = Field(description="offsets in original text")
     icd_phrase: str = Field(description="substring for ICD coding")
-    icd_code: str = Field(description="ICD code")
-    icd_code_description: str = Field(description="ICD code description")
+    icd_code: str = Field(description="ICD code for the main term and icd_phrase considering its context")
+    icd_code_description_en: str = Field(description="ICD code description")
     icd_code_description_es: str = Field(description="Translated ICD code description in Spanish")
 
 # Define your desired data structure.
@@ -35,7 +36,7 @@ class IcdList(BaseModel):
 # Define your desired data structure.
 class IcdListNer(BaseModel):
     procedures: List[IcdItemNer] = Field(description="list of icd diagonse items")
-    diagnoses: List[IcdItem] = Field(description="list of icd procedure items")
+    diagnoses: List[IcdItemNer] = Field(description="list of icd procedure items")
 
 
 class TermItem(BaseModel):
@@ -126,7 +127,7 @@ class IcdPrompts():
     def select_code(self, item):
 
         format_instructions = self.output_parser_select.get_format_instructions()
-        coding_instructions = "What is the correct ICD-10 code for the substring. If you think the correct code is not listed, provide your best code suggestion in the json field 'code', always follow the format instructions."
+        coding_instructions = "What is the correct ICD-10 code for the icd_phrase. If you think the correct code is not listed, provide your best code suggestion in the json field 'code', always follow the format instructions."
         behaviour_instructions = "You are an expert in medical ICD coding, teaching peers the highest level of coding possible."
         system_message_prompt = SystemMessagePromptTemplate.from_template("{behaviour_instructions} {coding_instructions} {format_instructions}\n")
         # example_human = HumanMessagePromptTemplate.from_template("{question}", additional_kwargs={"name": "example_user"})
@@ -182,34 +183,6 @@ class IcdPrompts():
         return json_substrings
     
 
-    def prompt_icd_description_from_main_terms(self, txt, main_terms):
-
-        # Set up a parser + inject instructions into the prompt template.
-        parser = PydanticOutputParser(pydantic_object=IcdList)
-
-        format_instructions = parser.get_format_instructions()
-        # coding_instructions = "What is the correct ICD-10 code for the substring. If you think the correct code is not listed, provide your best code suggestion in the json field 'code', always follow the format instructions."
-        behaviour_instructions = "You are an expert in medical ICD coding, teaching peers the highest level of coding possible."
-        system_message_prompt = SystemMessagePromptTemplate.from_template("{behaviour_instructions} {format_instructions}\n")
-        human_message_prompt = HumanMessagePromptTemplate.from_template("For each item in the lists, extract and add additional information in Spanish to preform an medical code lookup. The list '{main_terms}', use {format_instructions} in markdown!")
-
-        chat_prompt = ChatPromptTemplate(
-            messages=[system_message_prompt,human_message_prompt], 
-            input_variables=["substring", "txt"],
-            partial_variables={"behaviour_instructions": behaviour_instructions, "format_instructions": format_instructions,}
-        )
-        _input = chat_prompt.format_prompt( substring=main_terms, txt=txt)
-        logging.info(_input.to_messages())
-        output = self.chat(_input.to_messages())
-        logging.info(output.content)
-        print(output.content)
-        try:
-            json_substrings = parser.parse(output.content)
-            print(json_substrings)
-        except Exception as e: 
-            logging.error(e)            
-        return json_substrings
-
     def prompt_main_terms(self, examples, unfiltered_substrings):
 
         # Set up a parser + inject instructions into the prompt template.
@@ -239,3 +212,66 @@ class IcdPrompts():
         except Exception as e: 
             logging.error(e)            
         return json_substrings
+    
+    def prompt_icd_description_from_main_terms(self, txt, main_terms):
+
+        # Set up a parser + inject instructions into the prompt template.
+        parser = PydanticOutputParser(pydantic_object=IcdList)
+
+        format_instructions = parser.get_format_instructions()
+        # coding_instructions = "What is the correct ICD-10 code for the substring. If you think the correct code is not listed, provide your best code suggestion in the json field 'code', always follow the format instructions."
+        behaviour_instructions = "You are an expert in medical ICD coding, teaching peers the highest level of coding possible."
+        system_message_prompt = SystemMessagePromptTemplate.from_template("{behaviour_instructions} {format_instructions}\n")
+        human_message_prompt = HumanMessagePromptTemplate.from_template("For each item in the lists, extract and add additional information in Spanish to preform an medical code lookup. The list '{main_terms}', use {format_instructions} in markdown!")
+
+        chat_prompt = ChatPromptTemplate(
+            messages=[system_message_prompt,human_message_prompt], 
+            input_variables=["substring", "txt"],
+            partial_variables={"behaviour_instructions": behaviour_instructions, "format_instructions": format_instructions,}
+        )
+        _input = chat_prompt.format_prompt( substring=main_terms, txt=txt)
+        logging.info(_input.to_messages())
+        output = self.chat(_input.to_messages())
+        logging.info(output.content)
+        print(output.content)
+        try:
+            json_substrings = parser.parse(output.content)
+            print(json_substrings)
+        except Exception as e: 
+            logging.error(e)            
+        return json_substrings
+    
+    def prompt_icd_code_description_from_main_terms(self, example, main_terms):
+
+        # Set up a parser + inject instructions into the prompt template.
+        parser = PydanticOutputParser(pydantic_object=IcdListNer)
+
+        format_instructions = parser.get_format_instructions()
+        # coding_instructions = "What is the correct ICD-10 code for the substring. If you think the correct code is not listed, provide your best code suggestion in the json field 'code', always follow the format instructions."
+        behaviour_instructions = "You are an expert in medical ICD coding, teaching peers the highest level of coding possible."
+        system_message_prompt = SystemMessagePromptTemplate.from_template("{behaviour_instructions} {format_instructions}\n")
+        example_human = HumanMessagePromptTemplate.from_template("{question}", additional_kwargs={"name": "example_user"})
+        example_ai = AIMessagePromptTemplate.from_template("{answer}", additional_kwargs={"name": "example_assistant"})
+
+        human_message_prompt = HumanMessagePromptTemplate.from_template("For each item in the lists, provide the additional information as shown in the example above. The list '{main_terms}', use {format_instructions} in markdown!")
+
+        chat_prompt = ChatPromptTemplate(
+            messages=[system_message_prompt,example_human,example_ai, human_message_prompt], 
+            input_variables=["main_terms", "question", "answer"],
+            partial_variables={"behaviour_instructions": behaviour_instructions, "format_instructions": format_instructions,}
+        )
+        _input = chat_prompt.format_prompt(
+            main_terms=json.dumps(main_terms,  ensure_ascii=False), 
+            question=json.dumps(example["prompt"], ensure_ascii=False), 
+            answer=json.dumps(example["output"],  ensure_ascii=False)
+            )
+        logging.info(_input.to_messages())
+        output = self.chat(_input.to_messages())
+        logging.info(output.content)
+        print(output.content)
+        try:
+            json_substrings = parser.parse(output.content)
+            print(json_substrings)
+        except Exception as e: 
+            logging.error(e)            
+        return output.content

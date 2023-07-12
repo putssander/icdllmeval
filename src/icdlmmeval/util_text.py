@@ -26,3 +26,21 @@ def get_surrounding_items(lst, index, n):
     end = min(len(lst), index + n + 1)
     return lst[start:end]
 
+def add_html_offset(txt, offsets, types):
+    offsets_start = [int(offset.split(" ")[0]) for offset in offsets]
+    offsets_end = [int(offset.split(" ")[1]) for offset in offsets]
+
+    tagged_txt = ""
+    for idx, char in enumerate(txt):
+        if idx in offsets_start:
+            index = offsets_start.index(idx)
+            offsets_index=offsets[index]
+            icd_type=types[index][0]
+            # tagged_txt += f"<main id=\"{index}\" offsets=\"{offsets_index}\" type=\"{icd_type}\">"
+            tagged_txt += f"<main id=\"{index}\" type=\"{icd_type}\">"
+        tagged_txt += char
+
+        if idx + 1 in offsets_end:
+            tagged_txt += "</main>"
+
+    return tagged_txt

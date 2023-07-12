@@ -6,12 +6,12 @@ import logging
 
 class LLMIcdCoding():
 
-    def __init__(self, model_name, path_diagnoses_db, path_procedures_db):
+    def __init__(self, model_name):
 
         print("load prompting module")
         self.icd_prompts = IcdPrompts(model_name=model_name)
         print("load embeddings")
-        self.embedding_lookup = EmbeddingLookup(path_diagnoses_db=path_diagnoses_db, path_procedures_db=path_procedures_db)
+        self.embedding_lookup = EmbeddingLookup()
 
     def code_txt(self, txt,  examples=[], examples_ranking=[], k=50):
 
