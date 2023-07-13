@@ -19,24 +19,26 @@ class IcdItem(BaseModel):
     icd_code_description: str = Field(description="ICD code description")
     icd_code_description_es: str = Field(description="Translated ICD code description in Spanish")
 
+
 class IcdItemNer(BaseModel):
+    id: str = Field(description="id of main tag")
     main_term: str = Field(description="main term")
-    # context: str = Field(description="context for main term")
+    context: str = Field(description="context for main term")
     offsets: str = Field(description="offsets in original text")
-    icd_phrase: str = Field(description="substring for ICD coding")
-    icd_code: str = Field(description="ICD code for the main term and icd_phrase considering its context")
+    icd_phrase: str = Field(description="substring for ICD coding containing the information to choose the specific ICD-10 code")
+    icd_code: str = Field(description="ICD-10 code for the main term and icd_phrase considering its context")
     icd_code_description_en: str = Field(description="ICD code description")
     icd_code_description_es: str = Field(description="Translated ICD code description in Spanish")
 
 # Define your desired data structure.
 class IcdList(BaseModel):
-    procedures: List[IcdItem] = Field(description="list of icd diagonse items")
+    procedures: List[IcdItem] = Field(description="list of icd diagnose items")
     diagnoses: List[IcdItem] = Field(description="list of icd procedure items")
 
 # Define your desired data structure.
 class IcdListNer(BaseModel):
-    procedures: List[IcdItemNer] = Field(description="list of icd diagonse items")
-    diagnoses: List[IcdItemNer] = Field(description="list of icd procedure items")
+    diagnoses: List[IcdItemNer] = Field(description="list of icd procedure items (main type=\"D\")")
+    procedures: List[IcdItemNer] = Field(description="list of icd diagnose items (main type=\"P\")")
 
 
 class TermItem(BaseModel):
@@ -137,7 +139,7 @@ class IcdPrompts():
         chat_prompt = ChatPromptTemplate(
             # messages=[system_message_prompt, example_human, example_ai, human_message_prompt], 
             messages=[system_message_prompt, human_message_prompt], 
-            input_variables=["question", "answer","substring", "docs"],
+            input_variables=["item"],
             partial_variables={"behaviour_instructions": behaviour_instructions, "coding_instructions": coding_instructions, "format_instructions": format_instructions,}
         )
         # _input = chat_prompt.format_prompt(question=examples[0]['question'], answer=examples[0]['answer'], item=item)

@@ -121,23 +121,10 @@ class CodiFormat:
         return prompts_diagnoses + prompts_procedures
 
 
-    def get_description_prompt_txt(self, split, df_main_x, file_name, n):
-
+    def get_description_prompt_txt(self, split, df_main_x, file_name):
         df_select = df_main_x[df_main_x["FILE"] == file_name]
-        df_select_diagnoses = df_select[df_select["TYPE"] == CodiFormat.DIAGNOSTICO]
-
         txt = self.get_text(split, file_name)
-        sentences = util_text.get_sentences(txt)
-        offsets = util_text.get_sentences_offsets(txt, sentences)
-        diagnoses_prompt = []
-        for idx, row, in df_select_diagnoses.iterrows():
-            item_output = {}
-            item_output["main_term"] = row["MAIN_SUBSTRING"].strip()
-            item_output["offsets"] = row["MAIN_OFFSETS"]
-            item_output["context"] = self.get_context(row["MAIN_OFFSETS"], offsets, sentences, n)
-            diagnoses_prompt.append(item_output)
-                   
-        prompt = {"diagnoses" :diagnoses_prompt, "procedures": []}
+        prompt = util_text.add_html_offset(txt, df_select["MAIN_OFFSETS"].to_list(), df_select["TYPE"].to_list())
         return prompt
 
     def get_context(self, offset_string, offsets, sentences, n):
