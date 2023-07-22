@@ -2,3 +2,4 @@ spacy-llm
 chromadb
 openai
 langchain
+trectools
