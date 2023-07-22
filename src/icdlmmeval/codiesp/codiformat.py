@@ -14,7 +14,12 @@ PROCEDIMIENTO = "PROCEDIMIENTO"
 
 class CodiFormat:
 
-    header_X = ["FILE","TYPE", "CODE", "SUBSTRING", "OFFSETS"]   
+    header_X = ["FILE","TYPE", "CODE", "SUBSTRING", "OFFSETS"]
+    header_X_eval = ["FILE", "OFFSETS", "TYPE", "CODE"]
+    header_D_P = ["FILE","TYPE", "CODE", "SUBSTRING", "OFFSETS"]
+
+
+
     DIAGNOSTICO = "DIAGNOSTICO"
     PROCEDIMIENTO = "PROCEDIMIENTO"   
 
@@ -45,6 +50,13 @@ class CodiFormat:
         json_object["procedures"] = select[select["TYPE"] == PROCEDIMIENTO]["SUBSTRING"].tolist()
         return json_object
     
+    def get_df_p(self, split):
+        path = f"{self.path_codiesp}/{split}/{split}P.tsv"
+        return pd.read_csv(path, delimiter="\t", names=self.header_D_P)
+    
+    def get_df_d(self, split):
+        path = f"{self.path_codiesp}/{split}/{split}D.tsv"
+        return pd.read_csv(path, delimiter="\t", names=self.header_D_P)
 
     def get_df_x(self, split):
         path_x = f"{self.path_codiesp}/{split}/{split}X.tsv"
@@ -52,6 +64,11 @@ class CodiFormat:
 
     def get_df_x_path(self, path_x):
         return pd.read_csv(path_x, delimiter="\t", names=self.header_X)
+    
+    def write_df_csv(self, path, df):
+        df.to_csv(path, sep="\t", index=False, header=False)
+
+
 
     def format_codiesp(self, codes, file):
         for code in codes:
@@ -121,10 +138,31 @@ class CodiFormat:
         return prompts_diagnoses + prompts_procedures
 
 
-    def get_description_prompt_txt(self, split, df_main_x, file_name):
-        df_select = df_main_x[df_main_x["FILE"] == file_name]
-        txt = self.get_text(split, file_name)
-        prompt = util_text.add_html_offset(txt, df_select["MAIN_OFFSETS"].to_list(), df_select["TYPE"].to_list())
+    def get_predicted_entities(self, df_ner, file_name):
+        df_select = df_ner[df_ner["file"] == file_name]
+        entities_list = []
+    
+        for idx, row in df_select.iterrows():
+            offset = row["offset"]
+            entities = json.loads(row["entities"])
+            for entity in entities:
+                entity["start"] = entity["start"] + offset
+                entity["end"] = entity["end"] + offset
+                entities_list.append(entity)
+        return entities_list
+    
+    def get_description_prompt_txt_entities(self, txt, entities):
+        ner_offsets = []
+        ner_types = []
+        for entity in entities:
+            entity_offset = " ".join([str(entity["start"]), str(entity["end"])])
+            ner_offsets.append(entity_offset)
+            if entity["entity_group"] == "D":
+                entity_type = DIAGNOSTICO
+            else:
+                entity_type = PROCEDIMIENTO
+            ner_types.append(entity_type)
+        prompt = util_text.add_html_offset(txt, ner_offsets, ner_types)
         return prompt
 
     def get_context(self, offset_string, offsets, sentences, n):

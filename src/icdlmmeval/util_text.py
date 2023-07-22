@@ -36,8 +36,8 @@ def add_html_offset(txt, offsets, types):
             index = offsets_start.index(idx)
             offsets_index=offsets[index]
             icd_type=types[index][0]
-            # tagged_txt += f"<main id=\"{index}\" offsets=\"{offsets_index}\" type=\"{icd_type}\">"
-            tagged_txt += f"<main id=\"{index}\" type=\"{icd_type}\">"
+            tagged_txt += f"<main id=\"{index}\" offsets=\"{offsets_index}\" type=\"{icd_type}\">"
+            # tagged_txt += f"<main id=\"{index}\" type=\"{icd_type}\">"
         tagged_txt += char
 
         if idx + 1 in offsets_end:
