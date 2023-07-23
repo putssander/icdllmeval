@@ -25,8 +25,9 @@ class PromptExamples:
         config.read('./../resources/config.ini')
         path_mapping = config["main"]["annotation"]
 
-        self.train_main_x = pd.read_excel(f"{path_mapping}/train_main_x.xlsx")
-        self.files = self.train_main_x["FILE"].unique()
+        # use dev for examples
+        self.dev_main_x = pd.read_excel(f"{path_mapping}/dev_main_x.xlsx")
+        self.files = self.dev_main_x["FILE"].unique()
         
         # self.path_codiesp = path_codiesp
         self.icdlookup = IcdLookup()
@@ -76,11 +77,11 @@ class PromptExamples:
 
     def get_prompt_description_example_txt(self, file_number=0, context_size=1, selected_codes=[]):
         file_name = self.files[file_number]
-        df_select = self.train_main_x[self.train_main_x["FILE"] == file_name]
+        df_select = self.dev_main_x[self.dev_main_x["FILE"] == file_name]
         #remove for procedures
         df_select = df_select[df_select["TYPE"] == CodiFormat.DIAGNOSTICO]
 
-        txt = self.codiformat.get_text('train', file_name)
+        txt = self.codiformat.get_text('dev', file_name)
         sentences = util_text.get_sentences(txt)
         offsets = util_text.get_sentences_offsets(txt, sentences)
         output_diagnoses = []
@@ -89,15 +90,15 @@ class PromptExamples:
             item_output = {}
             item_output["id"] = idx
             item_output["main_term"] = row["MAIN_SUBSTRING"].strip()
-            # item_output["offsets"] = row["MAIN_OFFSETS"]
+            item_output["offsets"] = row["MAIN_OFFSETS"]
             item_output["context"] = self.codiformat.get_context(row["MAIN_OFFSETS"], offsets, sentences, context_size)
-            item_output["icd_code"] = row["CODE"]
             if selected_codes and row["CODE"] not in selected_codes:
                 continue
             item_output["icd_phrase"] = row["SUBSTRING"]
+            # item_output["icd_code"] = row["CODE"]
             if row["TYPE"] == CodiFormat.DIAGNOSTICO:
-                item_output["icd_code_description_en"] = self.icdlookup.get_diangose_description_en(row["CODE"])
-                item_output["icd_code_description_es"] =  self.icdlookup.get_diangose_description_es(row["CODE"])
+                item_output["icd_code_lookup_terms_en"] = self.icdlookup.get_diangose_description_en(row["CODE"])
+                item_output["icd_code_lookup_terms_es"] =  self.icdlookup.get_diangose_description_es(row["CODE"])
                 output_diagnoses.append(item_output)
 
         # diagnoses_prompt = [self.get_description_prompt(item) for item in diagnoses_outputs]

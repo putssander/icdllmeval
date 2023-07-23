@@ -16,7 +16,7 @@ class CodiFormat:
 
     header_X = ["FILE","TYPE", "CODE", "SUBSTRING", "OFFSETS"]
     header_X_eval = ["FILE", "OFFSETS", "TYPE", "CODE"]
-    header_D_P = ["FILE","TYPE", "CODE", "SUBSTRING", "OFFSETS"]
+    header_D_P = ["FILE","CODE"]
 
 
 

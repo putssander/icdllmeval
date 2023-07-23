@@ -23,12 +23,11 @@ class IcdItem(BaseModel):
 class IcdItemNer(BaseModel):
     id: str = Field(description="id of main tag")
     main_term: str = Field(description="main term")
+    offsets: str = Field(description="main term offsets in src txt")
     context: str = Field(description="context for main term")
-    offsets: str = Field(description="offsets in original text")
     icd_phrase: str = Field(description="substring for ICD coding containing the information to choose the specific ICD-10 code")
-    icd_code: str = Field(description="ICD-10 code for the main term and icd_phrase considering its context")
-    icd_code_description_en: str = Field(description="ICD code description")
-    icd_code_description_es: str = Field(description="Translated ICD code description in Spanish")
+    icd_code_lookup_terms_en: str = Field(description="The icd_phrase into standardized key terms used for an ICD dictionary lookup")
+    icd_code_lookup_terms_es: str = Field(description="Translation of icd_code_lookup_terms_en in Spanish")
 
 # Define your desired data structure.
 class IcdList(BaseModel):
@@ -71,8 +70,8 @@ class IcdPrompts():
         self.format_instructions_substrings = self.get_format_instructions_substrings(self.output_parser_substrings )
         self.output_parser_select = self.get_output_parser_select()
         # model_name = "gpt-3.5-turbo"
-        temperature = 0.0
-        self.chat = ChatOpenAI(model_name=model_name, temperature=temperature)
+        self.temperature = 0.0
+        self.chat = ChatOpenAI(model_name=model_name, temperature=self.temperature)
 
     def get_output_parser_substrings(self):
         response_schemas = [
@@ -277,3 +276,6 @@ class IcdPrompts():
         except Exception as e: 
             logging.error(e)            
         return output.content
+    
+    def set_model(self, model_name):
+        self.chat = ChatOpenAI(model_name=model_name, temperature=self.temperature)

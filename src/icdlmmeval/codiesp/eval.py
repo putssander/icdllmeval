@@ -24,10 +24,10 @@ def get_dfs_d_eval(split, llmcodes):
 def get_dfs_p_eval(split, llmcodes):
     codiformat = CodiFormat()
     df_gold = codiformat.get_df_p(split)
-    return get_dfs_d_p_eval(df_gold, llmcodes, codiformat.DIAGNOSTICO)
+    return get_dfs_d_p_eval(df_gold, llmcodes, codiformat.PROCEDIMIENTO)
 
 def get_dfs_d_p_eval(df_gold, llmcodes, type):
-    print('eval type={type}')
+    print(f'eval type={type}')
     files = llmcodes["file"].unique()
     df_gold = df_gold[df_gold["FILE"].isin(files)]
     llmcodes = llmcodes[llmcodes["type"] == type]
