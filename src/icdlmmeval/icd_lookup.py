@@ -1,6 +1,7 @@
 import pandas as pd
 from bs4 import BeautifulSoup
 import configparser
+import re
 
 
 header_icd10_codes = ["LINE"]
@@ -18,6 +19,7 @@ class IcdLookup:
         path_icd_10_cm_codes = config['gov.cms.icd']['path_icd_10_cm_codes']
         path_icd_10_pcs_codes = config['gov.cms.icd']['path_icd_10_pcs_codes']
         path_icd_10_cm_code_tables = config['gov.cms.icd']['path_icd_10_cm_code_tables']
+        path_icd_10_pcm_code_tables = config['gov.cms.icd']['path_icd_10_pcm_code_tables']
 
         print("read path_icd_10_cm_codes")
         df_icd10cm_codes = pd.read_csv(f"{path_icd_10_cm_codes}/2020 Code Descriptions/icd10cm_codes_2020.txt", names=header_icd10_codes, sep="\t")
@@ -43,7 +45,15 @@ class IcdLookup:
         print("read icd10cm_index")
         with open(f'{path_icd_10_cm_code_tables}/2020 Table and Index/icd10cm_index_2020.xml', 'r') as f:
             data = f.read()
-        self.bs_data = BeautifulSoup(data, "xml")
+        self.bs_data_diagnoses = BeautifulSoup(data, "xml")
+        print("read icd10cm_neoplasm")
+        with open(f'{path_icd_10_cm_code_tables}/2020 Table and Index/icd10cm_neoplasm_2020.xml', 'r') as f:
+            data = f.read()
+        self.bs_data_neoplasm = BeautifulSoup(data, "xml")
+        print("read icd10pcs_index")
+        with open(f'{path_icd_10_pcm_code_tables}/PCS_2020/icd10pcs_index_2020.xml', 'r') as f:
+            data = f.read()
+        self.bs_data_pcs = BeautifulSoup(data, "xml")
         print("lookup dictonaries loaded")
 
 
@@ -82,11 +92,21 @@ class IcdLookup:
 
     def get_main_terms(self, code):
         code = code.upper()
-        items = self.bs_data.find_all(lambda tag: tag.name == "code" and code in tag.text)
+        if re.match(r'^C|D', code):
+            items = self.bs_data_neoplasm.find_all(lambda tag: tag.name == "cell" and code in tag.text)
+        else:
+            items = self.bs_data_diagnoses.find_all(lambda tag: tag.name == "code" and code in tag.text)
         result = [self.get_main_term(item) for item in items]
         return {code: result}
 
 
+    def get_main_terms_pcs(self, code):
+        code = code.upper()
+        items = self.bs_data_pcs.find_all(lambda tag: tag.name == "code" and code in tag.text)
+        result = [self.get_main_term(item) for item in items]
+        return {code: result}
+    
+ 
     def get_main_term(self, item):
         parent = item.parent
         children = []
@@ -97,3 +117,28 @@ class IcdLookup:
             else:
                 parent = parent.parent
         return None, children
+    
+       
+    def get_main_terms_list(self, code):
+        code = code.upper()
+        if re.match(r'^C|D', code):
+            return ["Neoplasm, neoplastic"]
+        item = self.get_main_terms(code)
+        code_item = item[code.upper()]
+        main_set = set()
+        for main in code_item:
+            main_set.add(main[0])
+        main_list = list(main_set)
+        main_list.sort()
+        return main_list
+
+    def get_main_terms_list_pcs(self, code):
+        code = code.upper()
+        item = self.get_main_terms_pcs(code)
+        code_item = item[code.upper()]
+        main_set = set()
+        for main in code_item:
+            main_set.add(main[0])
+        main_list = list(main_set)
+        main_list.sort()
+        return main_list
