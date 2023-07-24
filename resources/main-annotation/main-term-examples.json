@@ -1,0 +1,71 @@
+{
+    "question": [ "exposición a Brucella", "ingurgitación de vena yugular", "síndrome febril", "dolores osteoarticulares", "leiomioma vesical", "retroperitoneal masa", "masa testes", "cordón espermático izquierdo neoplásica", "pérdida de peso", "tumor paratesticular izquierdo", "cordón espermático doloroso", "rabdomiosarcoma pleomórfico del cordón espermático", "tumorales cordón espermático izquierdo", "paraplejia completa"],
+    "answer": {"main_terms": [
+
+    {
+      "original_phrase": "exposición a Brucella",
+      "main_term": ["Brucella"]
+    },
+    {
+      "original_phrase": "ingurgitación de vena yugular",
+      "main_term": ["ingurgitación"]
+    },
+    {
+      "original_phrase": "síndrome febril",
+      "main_term": ["síndrome"]
+    },
+    {
+      "original_phrase": "dolores osteoarticulares",
+      "main_term": ["dolores"]
+    },
+    {
+      "original_phrase": "leiomioma vesical",
+      "main_term": ["leiomioma"]
+    },
+    {
+      "original_phrase": "retroperitoneal masa",
+      "main_term": ["masa"]
+    },
+    {
+      "original_phrase": "masa testes",
+      "main_term": ["masa"]
+    },
+    {
+      "original_phrase": "cordón espermático izquierdo neoplásica",
+      "main_term": ["neoplásica"]
+    },
+    {
+      "original_phrase": "pérdida de peso",
+      "main_term": ["pérdida de peso"]
+    },
+    {
+      "original_phrase": "tumor paratesticular izquierdo",
+      "main_term": ["tumor"]
+    },
+    {
+      "original_phrase": "cordón espermático doloroso",
+      "main_term": ["doloroso"]
+    },
+    {
+      "original_phrase": "rabdomiosarcoma pleomórfico del cordón espermático",
+      "main_term": ["rabdomiosarcoma"]
+    },
+    {
+      "original_phrase": "tumorales cordón espermático izquierdo",
+      "main_term": ["tumorales"]
+    },
+    {
+      "original_phrase": "paraplejia completa",
+      "main_term": ["paraplejia"]
+    },
+    {
+        "original_phrase": "riñón derecho Tumor fibroso solitario",
+        "main_term": ["Tumor"]
+      },
+      {
+        "original_phrase": "riñón atrófico",
+        "main_term": ["atrófico"]
+      } 
+  ]
+}
+}

@@ -1,0 +1,91 @@
+{
+  "question": [
+    "Rx tórax",
+    "Estreptomicina intramuscular",
+    "Ecografía abdominal",
+    "Ecografía testicular",
+    "TAC craneal",
+    "estudio ecográfico pélvico",
+    "resección cordón espermático izquierdo",
+    "CT de abdomen",
+    "RMN cerebral",
+    "trasplante hepático",
+    "sonda vesical",
+    "ecografía prostática",
+    "RTU de próstata",
+    "nefrectomía simple derecha por lumbotomía",
+    "endoscopia vesical",
+    "renal Gammagrafía Tc99m-MDP",
+    "derecha ureterectomía parcial"
+  ],
+  "answer": [
+    {
+      "original_phrase": "Rx tórax",
+      "main_term": "Rx"
+    },
+    {
+      "original_phrase": "Estreptomicina intramuscular",
+      "main_term": "Estreptomicina"
+    },
+    {
+      "original_phrase": "Ecografía abdominal",
+      "main_term": "Ecografía"
+    },
+    {
+      "original_phrase": "Ecografía testicular",
+      "main_term": "Ecografía"
+    },
+    {
+      "original_phrase": "TAC craneal",
+      "main_term": "TAC"
+    },
+    {
+      "original_phrase": "estudio ecográfico pélvico",
+      "main_term": "ecográfico"
+    },
+    {
+      "original_phrase": "resección cordón espermático izquierdo",
+      "main_term": "resección"
+    },
+    {
+      "original_phrase": "CT de abdomen",
+      "main_term": "CT"
+    },
+    {
+      "original_phrase": "RMN cerebral",
+      "main_term": "RMN"
+    },
+    {
+      "original_phrase": "trasplante hepático",
+      "main_term": "trasplante"
+    },
+    {
+      "original_phrase": "sonda vesical",
+      "main_term": "sonda"
+    },
+    {
+      "original_phrase": "ecografía prostática",
+      "main_term": "ecografía"
+    },
+    {
+      "original_phrase": "RTU de próstata",
+      "main_term": "RTU"
+    },
+    {
+      "original_phrase": "nefrectomía simple derecha por lumbotomía",
+      "main_term": "lumbotomía"
+    },
+    {
+      "original_phrase": "endoscopia vesical",
+      "main_term": "endoscopia"
+    },
+    {
+      "original_phrase": "renal Gammagrafía Tc99m-MDP",
+      "main_term": "Gammagrafía"
+    },
+    {
+      "original_phrase": "derecha ureterectomía parcial",
+      "main_term": "ureterectomía"
+    }
+  ]
+}
