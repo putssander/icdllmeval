@@ -23,12 +23,12 @@ class IcdItem(BaseModel):
 
 class IcdItemNer(BaseModel):
     id: str = Field(description="id of main tag")
-    main_term: str = Field(description="main term")
+    main_term: str = Field(description="main term extracted by NER")
     offsets: str = Field(description="main term offsets in src txt")
-    context: str = Field(description="context for main term")
-    icd_phrase: str = Field(description="substring for ICD coding containing the information to choose the specific ICD-10 code")
-    icd_code_lookup_terms_en: str = Field(description="The icd_phrase into standardized key terms used for an ICD dictionary lookup")
-    icd_code_lookup_terms_es: str = Field(description="Translation of icd_code_lookup_terms_en in Spanish")
+    context: str = Field(description="Summary of full text in approximately 2 sentences containing all relevant information to ICD code the main term")
+    icd_phrase: str = Field(description="substring containing all information to assign the correct ICD-10 code")
+    icd_code_lookup_terms_en: str = Field(description="generated ICD code description, include main term (if not negated) and add all relevant terms to assign correct category, subcategory, subclassifications and extension, description can be non-existent")
+    icd_code_lookup_terms_es: str = Field(description="translation of icd_code_lookup_terms_en in Spanish")
 
 # Define your desired data structure.
 class IcdList(BaseModel):
@@ -92,10 +92,12 @@ class IcdPrompts():
 
     def get_output_parser_select(self):
         response_schemas_code = [
-            ResponseSchema(name="code", description="correct ICD-10 code"),
+            ResponseSchema(name="code_listed", description="best listed ICD-10 code"),
+            ResponseSchema(name="code_suggestion", description="suggested ICD-10 code"),
             ResponseSchema(name="listed", description="was the correct code listed (boolean)"),
-            ResponseSchema(name="reasoning", description="explain why the your code is the correct one"),
-            ResponseSchema(name="confidence", description="confidence (probablity from 0-1) the ICD code is correctly assigned and fits the context")
+            ResponseSchema(name="reasoning", description="explanation of final code assigned"),
+            ResponseSchema(name="code_assigned", description="final code to assigned, empty if no code should be assigned"),
+            ResponseSchema(name="confidence", description="correctly ICD code_assigned confidence (probablity from 0-1)")
         ]
         output_parser_code = StructuredOutputParser.from_response_schemas(response_schemas_code)
         return output_parser_code
@@ -128,7 +130,7 @@ class IcdPrompts():
     def select_code(self, item):
 
         format_instructions = self.output_parser_select.get_format_instructions()
-        coding_instructions = "What is the correct ICD-10 code for the icd_phrase for the listed hits. If you think the correct code is not listed, provide your best code suggestion in the json field 'code', always follow the format instructions."
+        coding_instructions = "Manditory, assign the best ICD-10 code for the icd_phrase from the listed hits. Optional, provide a code suggestion in the json field 'code_suggestion' if the code is not listed, always follow the format instructions."
         behaviour_instructions = "You are an expert in medical ICD coding, teaching peers the highest level of coding possible."
         system_message_prompt = SystemMessagePromptTemplate.from_template("{behaviour_instructions} {coding_instructions} {format_instructions}\n")
         # example_human = HumanMessagePromptTemplate.from_template("{question}", additional_kwargs={"name": "example_user"})

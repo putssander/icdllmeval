@@ -31,9 +31,10 @@ def get_dfs_d_p_eval(df_gold, llmcodes, type):
     files = llmcodes["file"].unique()
     df_gold = df_gold[df_gold["FILE"].isin(files)]
     llmcodes = llmcodes[llmcodes["type"] == type]
+    llmcodes.sort_values(by='confidence', ascending=False)
+    llmcodes = llmcodes.drop_duplicates(subset=["code"], keep=False)
     llmcodes = llmcodes[['file', 'code']]
     llmcodes.rename(columns={'file': 'FILE', 'code': 'CODE'}, inplace=True)
-
     return df_gold, llmcodes
 
 
