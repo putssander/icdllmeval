@@ -7,6 +7,7 @@ from langchain.output_parsers import PydanticOutputParser
 from pydantic import BaseModel, Field, validator
 from typing import List
 import json
+import tiktoken
 
 
     # main_term: str = Field(description="translate the 'original phrase' to the standardized 'main term' to locate the medical code in the alphabetic icd-index")
@@ -69,9 +70,7 @@ class IcdPrompts():
         self.output_parser_substrings = self.get_output_parser_substrings()
         self.format_instructions_substrings = self.get_format_instructions_substrings(self.output_parser_substrings )
         self.output_parser_select = self.get_output_parser_select()
-        # model_name = "gpt-3.5-turbo"
-        self.temperature = 0.0
-        self.chat = ChatOpenAI(model_name=model_name, temperature=self.temperature)
+        self.set_model(model_name=model_name)
 
     def get_output_parser_substrings(self):
         response_schemas = [
@@ -95,7 +94,8 @@ class IcdPrompts():
         response_schemas_code = [
             ResponseSchema(name="code", description="correct ICD-10 code"),
             ResponseSchema(name="listed", description="was the correct code listed (boolean)"),
-            ResponseSchema(name="reasoning", description="explain why the your code is the correct one")
+            ResponseSchema(name="reasoning", description="explain why the your code is the correct one"),
+            ResponseSchema(name="confidence", description="confidence (probablity from 0-1) the ICD code is correctly assigned and fits the context")
         ]
         output_parser_code = StructuredOutputParser.from_response_schemas(response_schemas_code)
         return output_parser_code
@@ -128,7 +128,7 @@ class IcdPrompts():
     def select_code(self, item):
 
         format_instructions = self.output_parser_select.get_format_instructions()
-        coding_instructions = "What is the correct ICD-10 code for the icd_phrase. If you think the correct code is not listed, provide your best code suggestion in the json field 'code', always follow the format instructions."
+        coding_instructions = "What is the correct ICD-10 code for the icd_phrase for the listed hits. If you think the correct code is not listed, provide your best code suggestion in the json field 'code', always follow the format instructions."
         behaviour_instructions = "You are an expert in medical ICD coding, teaching peers the highest level of coding possible."
         system_message_prompt = SystemMessagePromptTemplate.from_template("{behaviour_instructions} {coding_instructions} {format_instructions}\n")
         # example_human = HumanMessagePromptTemplate.from_template("{question}", additional_kwargs={"name": "example_user"})
@@ -146,13 +146,8 @@ class IcdPrompts():
         logging.info(_input.to_messages())
         output = self.chat(_input.to_messages())
         logging.info(output.content)
-        try:
-            json_substrings = self.output_parser_select.parse(output.content)
-            code = json_substrings["code"]
-        except Exception as e: 
-            logging.error(e)            
-            code = "-NA-"
-        return code
+        json_substrings = self.output_parser_select.parse(output.content)      
+        return json_substrings
     
 
     def prompt_icd_item_info(self, txt, substrings):
@@ -268,14 +263,10 @@ class IcdPrompts():
             )
         logging.info(_input.to_messages())
         output = self.chat(_input.to_messages())
-        logging.info(output.content)
-        print(output.content)
-        try:
-            json_substrings = parser.parse(output.content)
-            print(json_substrings)
-        except Exception as e: 
-            logging.error(e)            
+        logging.info(output.content)          
         return output.content
     
-    def set_model(self, model_name):
-        self.chat = ChatOpenAI(model_name=model_name, temperature=self.temperature)
+    def set_model(self, model_name, temperature = 0.0):
+        self.chat = ChatOpenAI(model_name=model_name, temperature=temperature)
+        self.encoding = tiktoken.encoding_for_model(model_name)
+

@@ -1,5 +1,5 @@
 import re
-
+import tiktoken
 
 def get_sentences(txt):
     sents = re.split("(\\.\s)", txt)
@@ -44,3 +44,48 @@ def add_html_offset(txt, offsets, types):
             tagged_txt += "</main>"
 
     return tagged_txt
+
+
+def num_tokens_from_string(string: str, encoding) -> int:
+    num_tokens = len(encoding.encode(string))
+    print(num_tokens)
+    return num_tokens
+
+def get_sections_max_length(section, max_length, encoding):
+    section_list = []
+    sentences = re.split("(\\.\s)", section)
+    sub_section = ""
+    sub_section_tokens_len = num_tokens_from_string(sub_section, encoding)
+    for sent in sentences:
+        sent_token_length = num_tokens_from_string(sent, encoding)
+
+        if sub_section_tokens_len + sent_token_length < max_length:
+            sub_section = sub_section + sent
+            sub_section_tokens_len = sub_section_tokens_len + sent_token_length
+        else:
+            section_list.append(sub_section)
+            sub_section = sent
+            sub_section_tokens_len = sent_token_length
+
+    if sub_section:
+        section_list.append(sub_section)
+
+    return section_list
+
+
+def get_sections(text, max_length, encoding):
+    sections_len = []
+    sections = text.split('\n\n')
+
+    for section in sections:
+        if not section:
+            continue
+        if num_tokens_from_string(section, encoding) < max_length:
+            sections_len.append(section)
+        else:
+            sections_len.extend(get_sections_max_length(section, max_length, encoding))    
+    return sections_len
+
+
+def get_encoding(model_name):
+   return tiktoken.encoding_for_model(model_name)
