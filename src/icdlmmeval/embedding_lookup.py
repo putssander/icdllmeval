@@ -20,11 +20,15 @@ class EmbeddingLookup:
         print('vector stores loaded')
 
 
-    def search_diagnose(self, substring, k=50):
-        return self.vectordb_diag.similarity_search(substring, k=k)
+    def search_diagnose(self, substring, icd_phrase, k=25):
+        subsearch = self.vectordb_diag.similarity_search(substring, k=k)
+        phrasesearch = self.vectordb_diag.similarity_search(icd_phrase, k=k)
+        return subsearch + phrasesearch
 
-    def search_procedure(self, substring, k=50):
-        return self.vectordb_proc.similarity_search(substring, k=k)
+    def search_procedure(self, substring, icd_phrase, k=25):
+        subsearch = self.vectordb_proc.similarity_search(substring, k=k)
+        phrasesearch = self.vectordb_proc.similarity_search(icd_phrase, k=k)
+        return subsearch + phrasesearch
 
     def docs_to_json(self, docs):
         json_array = []

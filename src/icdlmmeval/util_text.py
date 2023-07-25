@@ -48,7 +48,6 @@ def add_html_offset(txt, offsets, types):
 
 def num_tokens_from_string(string: str, encoding) -> int:
     num_tokens = len(encoding.encode(string))
-    print(num_tokens)
     return num_tokens
 
 def get_sections_max_length(section, max_length, encoding):
@@ -72,6 +71,26 @@ def get_sections_max_length(section, max_length, encoding):
 
     return section_list
 
+def merge_sections(sections, max_length, encoding):
+    merged_sections = []
+    current_section = ""
+
+    for section in sections:
+        if num_tokens_from_string(current_section, encoding) + num_tokens_from_string(section, encoding ) <= max_length:
+            if current_section:
+                current_section += "\n\n" + section
+            else:
+                current_section += section
+        else:
+            merged_sections.append(current_section)
+            current_section = section
+
+    # Append any remaining section
+    if current_section:
+        merged_sections.append(current_section)
+
+    return merged_sections
+
 
 def get_sections(text, max_length, encoding):
     sections_len = []
@@ -85,7 +104,6 @@ def get_sections(text, max_length, encoding):
         else:
             sections_len.extend(get_sections_max_length(section, max_length, encoding))    
     return sections_len
-
 
 def get_encoding(model_name):
    return tiktoken.encoding_for_model(model_name)

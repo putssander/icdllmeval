@@ -25,10 +25,10 @@ class IcdItemNer(BaseModel):
     id: str = Field(description="id of main tag")
     main_term: str = Field(description="main term extracted by NER")
     offsets: str = Field(description="main term offsets in src txt")
-    context: str = Field(description="Summary of full text in approximately 2 sentences containing all relevant information to ICD code the main term")
-    icd_phrase: str = Field(description="substring containing all information to assign the correct ICD-10 code")
-    icd_code_lookup_terms_en: str = Field(description="generated ICD code description, include main term (if not negated) and add all relevant terms to assign correct category, subcategory, subclassifications and extension, description can be non-existent")
-    icd_code_lookup_terms_es: str = Field(description="translation of icd_code_lookup_terms_en in Spanish")
+    context: str = Field(description="main term within its context")
+    icd_phrase: str = Field(description="substring containing all additional descriptives of the main term")
+    icd_description_en: str = Field(description="icd_phrase converted into an official code description for an ICD dictionary lookup")
+    icd_description_es: str = Field(description="translation of icd_description_en in Spanish")
 
 # Define your desired data structure.
 class IcdList(BaseModel):
