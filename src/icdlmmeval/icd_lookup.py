@@ -142,3 +142,23 @@ class IcdLookup:
         main_list = list(main_set)
         main_list.sort()
         return main_list
+    
+
+    def get_cm_main_terms(self):
+        main_terms = self.bs_data_diagnoses.find_all(lambda tag: tag.name == "mainTerm")
+        titles = [item.title.text for item in main_terms]
+        return titles
+    
+    def get_pcs_main_terms(self):
+        main_terms = self.bs_data_pcs.find_all(lambda tag: tag.name == "mainTerm")
+        titles = [item.title.text for item in main_terms]
+        return titles
+    
+
+    def get_cm_main_terms_entry(self, main_term):
+        entries = self.bs_data_diagnoses.find_all(lambda tag: tag.name == "mainTerm" and main_term in tag.title.text)
+        return entries
+    
+    def get_pcs_main_terms_entry(self, main_term):
+        entries = self.bs_data_pcs.find_all(lambda tag: tag.name == "mainTerm" and main_term in tag.title.text)
+        return entries

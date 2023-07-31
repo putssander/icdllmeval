@@ -27,8 +27,8 @@ class IcdItemNer(BaseModel):
     offsets: str = Field(description="main term offsets in src txt")
     context: str = Field(description="main term within its context")
     icd_phrase: str = Field(description="substring containing all additional descriptives of the main term")
-    icd_description_en: str = Field(description="icd_phrase converted into an official code description for an ICD dictionary lookup")
-    icd_description_es: str = Field(description="translation of icd_description_en in Spanish")
+    icd_description_en: str = Field(description="ICD code description")
+    icd_description_es: str = Field(description="Translated ICD code description in Spanishh")
 
 # Define your desired data structure.
 class IcdList(BaseModel):
