@@ -3,3 +3,4 @@ chromadb
 openai
 langchain
 trectools
+tiktoken
