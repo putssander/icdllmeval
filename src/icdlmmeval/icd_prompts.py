@@ -85,6 +85,8 @@ class IcdPrompts():
         self.output_parser_substrings = self.get_output_parser_substrings()
         self.format_instructions_substrings = self.get_format_instructions_substrings(self.output_parser_substrings )
         self.output_parser_select = self.get_output_parser_select()
+        self.output_parser_select_simple = self.get_output_parser_select_simple()
+
         self.set_model(model_name=model_name)
 
     def get_output_parser_substrings(self):
@@ -118,6 +120,13 @@ class IcdPrompts():
         return output_parser_code
     
 
+    def get_output_parser_select_simple(self):
+        response_schemas_code = [
+            ResponseSchema(name="selected_code", description="best listed ICD-10 code"),
+        ]
+        output_parser_code = StructuredOutputParser.from_response_schemas(response_schemas_code)
+        return output_parser_code
+    
 
     def extract_substrings(self, txt, examples):
         format_instructions = self.format_instructions_substrings
@@ -166,6 +175,26 @@ class IcdPrompts():
         json_substrings = self.output_parser_select.parse(output.content)      
         return json_substrings
     
+
+    def select_code_simple(self, item):
+
+        format_instructions = self.output_parser_select_simple.get_format_instructions()
+        coding_instructions = "Select the best ICD-10 code for the icd_phrase from the listed hits."
+        behaviour_instructions = "You are an expert in medical ICD coding, teaching peers the highest level of coding possible."
+        system_message_prompt = SystemMessagePromptTemplate.from_template("{behaviour_instructions} {coding_instructions} {format_instructions}\n")
+        human_message_prompt = HumanMessagePromptTemplate.from_template("item: {item}. Select the best ICD-10 code for the icd_phrase from the listed hits. Always follow the format instructions.")
+
+        chat_prompt = ChatPromptTemplate(
+            messages=[system_message_prompt, human_message_prompt], 
+            input_variables=["item"],
+            partial_variables={"behaviour_instructions": behaviour_instructions, "coding_instructions": coding_instructions, "format_instructions": format_instructions,}
+        )
+        _input = chat_prompt.format_prompt(item=item)
+        logging.info(_input.to_messages())
+        output = self.chat(_input.to_messages())
+        logging.info(output.content)
+        json_substrings = self.output_parser_select_simple.parse(output.content)      
+        return json_substrings
 
     def prompt_icd_item_info(self, txt, substrings):
 

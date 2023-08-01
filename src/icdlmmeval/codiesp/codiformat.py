@@ -205,3 +205,8 @@ class CodiFormat:
         prompt["type"] = row["TYPE"]
 
         return prompt
+    
+    def get_description_prompt_select(self, txt, row, idx=0, n=1, hits=[]):
+        prompt = self.get_description_prompt_substring(txt, row, idx=0, n=1)
+        prompt["hits"] = hits
+        return prompt
