@@ -77,8 +77,8 @@ class IcdLookup:
 
     def get_procedure_description_en(self, code):
         code = code.replace(".", "").upper()
-        if code in self.df_icd10pcs_codes_dict_es:
-            return self.df_icd10pcs_codes_dict_es[code]
+        if code in self.df_icd10pcs_codes_dict:
+            return self.df_icd10pcs_codes_dict[code]
         else:
             return None 
 

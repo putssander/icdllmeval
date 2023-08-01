@@ -28,7 +28,9 @@ class IcdItemNer(BaseModel):
     context: str = Field(description="main term within its context")
     icd_phrase: str = Field(description="substring containing all additional descriptives of the main term")
     icd_description_en: str = Field(description="ICD code description")
-    icd_description_es: str = Field(description="Translated ICD code description in Spanishh")
+    icd_description_es: str = Field(description="Translated ICD code description in Spanish")
+
+
 
 # Define your desired data structure.
 class IcdList(BaseModel):
@@ -50,6 +52,19 @@ class TermList(BaseModel):
     main_terms: List[TermItem] = Field(description="list extracted main items")
 
 
+
+class IcdPhraseDescriptionPrompt(BaseModel):
+    id: str = Field(description="id of the icd item")
+    context: str = Field(description="context")
+    icd_phrase: str = Field(description="textual evidence for the medical code")
+
+class IcdPhraseDescriptionOutput(BaseModel):
+    id: str = Field(description="id of the icd item")
+    icd_description_en: str = Field(description="Official ICD-10 code description for the icd_phrase within its context")
+    icd_description_es: str = Field(description="Translated ICD-10 code description in Spanish")
+
+class IcdPhraseDescriptionList(BaseModel):
+    descriptions: List[IcdPhraseDescriptionOutput] = Field(description="output list of code descriptions")
 
 
 examples_context = [
@@ -272,3 +287,37 @@ class IcdPrompts():
         self.chat = ChatOpenAI(model_name=model_name, temperature=temperature)
         self.encoding = tiktoken.encoding_for_model(model_name)
 
+
+    def prompt_icd_description_from_icd_phrase(self, examples, icd_phrases_list):
+
+        # Set up a parser + inject instructions into the prompt template.
+        parser = PydanticOutputParser(pydantic_object=IcdPhraseDescriptionList)
+
+        format_instructions = parser.get_format_instructions()
+        # coding_instructions = "What is the correct ICD-10 code for the substring. If you think the correct code is not listed, provide your best code suggestion in the json field 'code', always follow the format instructions."
+        behaviour_instructions = "You are an expert in medical ICD coding, teaching peers the highest level of coding possible."
+        system_message_prompt = SystemMessagePromptTemplate.from_template("{behaviour_instructions} {format_instructions}\n")
+        example_human = HumanMessagePromptTemplate.from_template("{question}", additional_kwargs={"name": "example_user"})
+        example_ai = AIMessagePromptTemplate.from_template("{answer}", additional_kwargs={"name": "example_assistant"})
+        human_message_prompt = HumanMessagePromptTemplate.from_template("For each item in the lists, add the ICD-10 code description, closely follow the format instructions {format_instructions} in markdown and the given above example! Extract for the following list {prompt_list}")
+
+        chat_prompt = ChatPromptTemplate(
+            messages=[system_message_prompt, example_human, example_ai, human_message_prompt], 
+            input_variables=["question", "answer", "prompt_list"],
+            partial_variables={"behaviour_instructions": behaviour_instructions, "format_instructions": format_instructions,}
+        )
+        _input = chat_prompt.format_prompt(
+            question=json.dumps(examples['prompt'], ensure_ascii=False), 
+            answer=json.dumps(examples['output'], ensure_ascii=False), 
+            prompt_list=json.dumps(icd_phrases_list, ensure_ascii=False)
+        )
+        logging.info(_input.to_messages())
+        output = self.chat(_input.to_messages())
+        logging.info(output.content)
+        print(output.content)
+        try:
+            json_substrings = json.loads(output.content)
+            print(json_substrings)
+        except Exception as e: 
+            logging.error(e)            
+        return json_substrings

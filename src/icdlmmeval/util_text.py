@@ -15,9 +15,9 @@ def find_offset_index(offsets, input_offset):
             return i - 1
     return len(offsets) - 1
 
-def add_html(sent, start, end):
-    sent = sent[:end] + "</main>" + sent[end:]
-    sent = sent[:start] + "<main>" + sent[start:]
+def add_html(sent, start, end, tag):
+    sent = sent[:end] + f"</{tag}>" + sent[end:]
+    sent = sent[:start] + f"<{tag}>" + sent[start:]
     return sent
 
 

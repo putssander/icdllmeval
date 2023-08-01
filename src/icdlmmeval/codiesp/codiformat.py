@@ -99,6 +99,13 @@ class CodiFormat:
         df_split_x.to_csv(path_gold, sep ='\t', index=False, header=False)
 
 
+    def get_substring_offsets(self, offsets):
+        if ";" in offsets:
+            offsets_list = offsets.split(";")
+        else:
+            offsets_list = [offsets]
+        return offsets_list
+
     def get_term_offsets(self, offset_string):
         start = int(offset_string.split(" ")[0])
         end = int(offset_string.split(" ")[1])
@@ -165,7 +172,7 @@ class CodiFormat:
         prompt = util_text.add_html_offset(txt, ner_offsets, ner_types)
         return prompt
 
-    def get_context(self, offset_string, offsets, sentences, n):
+    def get_context(self, offset_string, offsets, sentences, n, tag="main"):
             term_offsets = self.get_term_offsets(offset_string)
             sent_index = util_text.find_offset_index(offsets, term_offsets[0])
             sent_offset = offsets[sent_index]
@@ -174,8 +181,27 @@ class CodiFormat:
             end = term_offsets[1] - sent_offset
             
             replace_sent_list = sentences.copy()
-            replace_sent_list[sent_index] = util_text.add_html(sent=replace_sent_list[sent_index], start=start, end=end)
+            replace_sent_list[sent_index] = util_text.add_html(sent=replace_sent_list[sent_index], start=start, end=end, tag=tag)
             context = ". ".join(util_text.get_surrounding_items(replace_sent_list, sent_index, n))
             return context
 
         
+    def get_description_prompt_substring(self, txt, row, idx=0, n=1):
+        prompt = {}
+        offsets_substring = row["OFFSETS"]
+
+        offsets = self.get_substring_offsets(offsets_substring)
+
+        sentences = util_text.get_sentences(txt)
+        sentence_offsets = util_text.get_sentences_offsets(txt, sentences)
+
+        context = []
+        for term_offset in offsets:
+            context.append(self.get_context(term_offset, sentence_offsets, sentences, n, tag="icd_phrase"))
+        
+        prompt["id"] = str(idx)
+        prompt["icd_phrase"] = row["SUBSTRING"]
+        prompt["context"] = " ".join(context)
+        prompt["type"] = row["TYPE"]
+
+        return prompt

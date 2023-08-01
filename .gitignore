@@ -1,3 +1,4 @@
 *.pyc
 resources/download/
 src/icdlmmeval/__pycache__/
+resources/main-pred/roberta-base-biomedical-clinical-es-codiesp-ner-finetuned/
