@@ -18,6 +18,11 @@ examples_ranking = [
   }
   ]
 
+def isNaNorNone(num):
+    if not num:
+        return True
+    return num != num
+
 class PromptExamples:
     
     def __init__(self):
@@ -25,14 +30,16 @@ class PromptExamples:
         config.read('./../resources/config.ini')
         path_mapping = config["main"]["annotation"]
 
-        # use dev for examples
-        self.dev_main_x = pd.read_excel(f"{path_mapping}/dev_main_x.xlsx")
-        self.files = self.dev_main_x["FILE"].unique()
-        
         # self.path_codiesp = path_codiesp
         self.icdlookup = IcdLookup()
         self.codiformat = CodiFormat()
         
+        # use dev for examples
+        self.dev_main_x = pd.read_excel(f"{path_mapping}/dev_main_x.xlsx")
+        self.dev_x = self.codiformat.get_df_x("dev")
+        
+        self.files = self.dev_main_x["FILE"].unique()
+
 
     def get_description_prompt(self, item_output):
         item_prompt = {}
@@ -78,8 +85,6 @@ class PromptExamples:
     def get_prompt_description_example_txt(self, file_number=0, context_size=1, selected_codes=[]):
         file_name = self.files[file_number]
         df_select = self.dev_main_x[self.dev_main_x["FILE"] == file_name]
-        #remove for procedures
-        df_select = df_select[df_select["TYPE"] == CodiFormat.DIAGNOSTICO]
 
         txt = self.codiformat.get_text('dev', file_name)
         sentences = util_text.get_sentences(txt)
@@ -111,3 +116,43 @@ class PromptExamples:
         example["output"] = {"diagnoses": output_diagnoses}
 
         return example
+    
+
+
+    def get_prompt_description_example_substrings_txt(self, file_number=0, context_size=1, selected_codes=[], max_examples=5):
+        file_name = self.files[file_number]
+        df_select = self.dev_x[self.dev_x["FILE"] == file_name]
+        txt = self.codiformat.get_text(split="dev", id=file_name)
+        
+        prompt_items = []
+        output_items = []
+        found_procudure = False
+
+        for idx, row, in df_select.iterrows():
+            if selected_codes and row["CODE"] not in selected_codes:
+                continue
+            prompt_item = self.codiformat.get_description_prompt_substring(txt=txt, row=row, n=context_size)
+            prompt_item["id"] = len(prompt_items)
+            
+            output_item = {}
+            output_item["id"] = len(prompt_items)
+
+            if row["TYPE"] == CodiFormat.DIAGNOSTICO:
+                output_item["description_en"] = self.icdlookup.get_diangose_description_en(row["CODE"])
+                output_item["description_es"] = self.icdlookup.get_diangose_description_es(row["CODE"])
+            else:
+                output_item["description_en"] = self.icdlookup.get_procedure_description_en(row["CODE"])
+                output_item["description_es"] = self.icdlookup.get_procedure_description_es(row["CODE"])
+
+            if not isNaNorNone(output_item["description_es"]) and not isNaNorNone(output_item["description_en"]):
+                if output_item["description_es"] != output_item["description_en"]:
+                    prompt_items.append(prompt_item)
+                    output_items.append(output_item)
+                    if row["TYPE"] == CodiFormat.PROCEDIMIENTO:
+                        found_procudure = True
+            
+            if len(prompt_items) > max_examples and found_procudure:
+                break
+                
+
+        return {"prompt": prompt_items, "output": output_items}
