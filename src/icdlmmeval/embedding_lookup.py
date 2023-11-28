@@ -3,6 +3,7 @@ from langchain.embeddings.openai import OpenAIEmbeddings
 import json
 import re
 import configparser
+from icdlmmeval.codiesp.codiformat import CodiFormat
 
 class EmbeddingLookup:
 
@@ -44,5 +45,16 @@ class EmbeddingLookup:
                 return idx
         else:
             return -1
-
-            
+  
+    def get_code_index_parent(self, docs_json, code, type):
+        code = code.replace("X", ".")
+        if type == CodiFormat.DIAGNOSTICO:
+            code = code[:3]
+        else:
+            code = code[:4]
+        for idx, doc in enumerate(json.loads(docs_json)):
+            current_code = doc['code']
+            if re.search(code, current_code, re.IGNORECASE):
+                return idx
+        else:
+            return -1

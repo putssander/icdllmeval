@@ -38,3 +38,15 @@ def get_dfs_d_p_eval(df_gold, llmcodes, type, code_field):
     return df_gold, llmcodes
 
 
+def is_match_parent(code, selected_code, type):
+    if type == CodiFormat.DIAGNOSTICO:
+        if code[:3].upper() in selected_code[:3].upper():
+            return True
+        else:
+            return False
+    else:
+        if code[:4].upper() in selected_code[:4].upper():
+            return True
+        else:
+            return False
+
