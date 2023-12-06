@@ -2,7 +2,7 @@ import pandas as pd
 import configparser
 from icdlmmeval.icd_lookup import IcdLookup
 from icdlmmeval.codiesp.codiformat import CodiFormat
-
+from icdlmmeval.icd_prompts import IcdItemNer, IcdListNer
 
 from icdlmmeval import util_text
 
@@ -35,7 +35,7 @@ class PromptExamples:
         self.codiformat = CodiFormat()
         
         # use dev for examples
-        self.dev_main_x = pd.read_excel(f"{path_mapping}/dev_main_x.xlsx")
+        self.dev_main_x = pd.read_excel(f"{path_mapping}/main_x_dev.xlsx")
         self.dev_x = self.codiformat.get_df_x("dev")
         
         self.files = self.dev_main_x["FILE"].unique()
@@ -48,40 +48,6 @@ class PromptExamples:
         item_prompt["context"] = item_output["context"]
         return item_prompt
 
-    def get_prompt_description_example(self, file_number=0, context_size=1, selected_codes=[]):
-        file_name = self.files[file_number]
-        df_select = self.train_main_x[self.train_main_x["FILE"] == file_name]
-        txt = self.codiformat.get_text('train', file_name)
-        sentences = util_text.get_sentences(txt)
-        offsets = util_text.get_sentences_offsets(txt, sentences)
-        diagnoses_outputs = []
-
-        for idx, row, in df_select.iterrows():
-            item_output = {}
-            item_output["main_term"] = row["MAIN_SUBSTRING"].strip()
-            item_output["offsets"] = row["MAIN_OFFSETS"]
-            item_output["context"] = self.codiformat.get_context(row["MAIN_OFFSETS"], offsets, sentences, context_size)
-            item_output["icd_code"] = row["CODE"]
-            if selected_codes and row["CODE"] not in selected_codes:
-                continue
-            item_output["icd_phrase"] = row["SUBSTRING"]
-            if row["TYPE"] == CodiFormat.DIAGNOSTICO:
-                item_output["icd_code_description_en"] = self.icdlookup.get_diangose_description_en(row["CODE"])
-                item_output["icd_code_description_es"] =  self.icdlookup.get_diangose_description_es(row["CODE"])
-                diagnoses_outputs.append(item_output)
-
-        diagnoses_prompt = [self.get_description_prompt(item) for item in diagnoses_outputs]
-
-        # for item in diagnoses_outputs:
-        #     item.pop("context")
-
-        example = {}
-        example["prompt"] = {"diagnoses" :diagnoses_prompt, "procedures": []}
-        example["output"] = {"diagnoses" :diagnoses_outputs, "procedures": []}
-
-        return example
-
-
     def get_prompt_description_example_txt(self, file_number=0, context_size=1, selected_codes=[]):
         file_name = self.files[file_number]
         df_select = self.dev_main_x[self.dev_main_x["FILE"] == file_name]
@@ -90,30 +56,37 @@ class PromptExamples:
         sentences = util_text.get_sentences(txt)
         offsets = util_text.get_sentences_offsets(txt, sentences)
         output_diagnoses = []
+        output_procedures = []
 
         for idx, row, in df_select.iterrows():
-            item_output = {}
-            item_output["id"] = idx
-            item_output["main_term"] = row["MAIN_SUBSTRING"].strip()
-            item_output["offsets"] = row["MAIN_OFFSETS"]
-            item_output["context"] = self.codiformat.get_context(row["MAIN_OFFSETS"], offsets, sentences, context_size)
             if selected_codes and row["CODE"] not in selected_codes:
                 continue
-            item_output["icd_phrase"] = row["SUBSTRING"]
-            # item_output["icd_code"] = row["CODE"]
-            if row["TYPE"] == CodiFormat.DIAGNOSTICO:
-                item_output["icd_code_lookup_terms_en"] = self.icdlookup.get_diangose_description_en(row["CODE"])
-                item_output["icd_code_lookup_terms_es"] =  self.icdlookup.get_diangose_description_es(row["CODE"])
-                output_diagnoses.append(item_output)
 
-        # diagnoses_prompt = [self.get_description_prompt(item) for item in diagnoses_outputs]
+            print(row["CODE"])
+            item_idx = idx
+            item_main_term = str(row["MAIN_SUBSTRING"]).strip()
+            item_offsets = str(row["MAIN_OFFSETS"])
+            item_context = self.codiformat.get_context(str(row["MAIN_OFFSETS"]), offsets, sentences, context_size)
+            item_icd_phrase= row["SUBSTRING"]
+
+            if row["TYPE"] == CodiFormat.DIAGNOSTICO:
+                item_icd_description_en = self.icdlookup.get_diagnose_description_en(row["CODE"])
+                item_icd_description_es =  self.icdlookup.get_diagnose_description_es(row["CODE"])
+                item_output = IcdItemNer(id=item_idx, main_term=item_main_term, offsets=item_offsets, context=item_context, icd_phrase=item_icd_phrase, 
+                                         icd_description_en=item_icd_description_en, icd_description_es=item_icd_description_es)
+                output_diagnoses.append(item_output)
+            else:
+                item_icd_description_en = self.icdlookup.get_procedure_description_en(row["CODE"])
+                item_icd_description_es =  self.icdlookup.get_procedure_description_es(row["CODE"])
+                item_output = IcdItemNer(id=item_idx, main_term=item_main_term, offsets=item_offsets, context=item_context, icd_phrase=item_icd_phrase, 
+                                 icd_description_en=item_icd_description_en, icd_description_es=item_icd_description_es)
+                output_procedures.append(item_output)
+
         prompt = util_text.add_html_offset(txt, df_select["MAIN_OFFSETS"].to_list(), df_select["TYPE"].to_list())
-        # for item in diagnoses_outputs:
-        #     item.pop("context")
 
         example = {}
         example["prompt"] = prompt
-        example["output"] = {"diagnoses": output_diagnoses}
+        example["output"] = IcdListNer(diagnoses= output_diagnoses, procedures=output_procedures)
 
         return example
     

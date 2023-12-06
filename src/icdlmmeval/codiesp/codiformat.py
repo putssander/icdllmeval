@@ -1,6 +1,5 @@
 import pandas as pd
 import json
-from icdlmmeval import ner_parsing
 from icdlmmeval import util
 from icdlmmeval import util_text
 
@@ -107,8 +106,8 @@ class CodiFormat:
         return offsets_list
 
     def get_term_offsets(self, offset_string):
-        start = int(offset_string.split(" ")[0])
-        end = int(offset_string.split(" ")[1])
+        start = int(str(offset_string).split(" ")[0])
+        end = int(str(offset_string).split(" ")[1])
         return (start, end)
 
 

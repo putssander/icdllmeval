@@ -20,7 +20,6 @@ class IcdItem(BaseModel):
     icd_code_description: str = Field(description="ICD code description")
     icd_code_description_es: str = Field(description="Translated ICD code description in Spanish")
 
-
 class IcdItemNer(BaseModel):
     id: str = Field(description="id of main tag")
     main_term: str = Field(description="main term extracted by NER")
@@ -30,28 +29,21 @@ class IcdItemNer(BaseModel):
     icd_description_en: str = Field(description="ICD code description")
     icd_description_es: str = Field(description="Translated ICD code description in Spanish")
 
-
-
-# Define your desired data structure.
 class IcdList(BaseModel):
     procedures: List[IcdItem] = Field(description="list of icd diagnose items")
     diagnoses: List[IcdItem] = Field(description="list of icd procedure items")
 
-# Define your desired data structure.
+# PROMPT 1&2 object
 class IcdListNer(BaseModel):
-    diagnoses: List[IcdItemNer] = Field(description="list of icd procedure items (main type=\"D\")")
-    procedures: List[IcdItemNer] = Field(description="list of icd diagnose items (main type=\"P\")")
-
+    diagnoses: List[IcdItemNer] = Field(description="list of icd diagnose items (main type=\"D\")")
+    procedures: List[IcdItemNer] = Field(description="list of icd procedure items (main type=\"P\")")
 
 class TermItem(BaseModel):
     original_phrase: str = Field(description="original phrase'")
     main_term: List[str] = Field(description="preferably a single term for the main condition, no anatomical sites, laterality, aetiology, severity, type or other details ")
 
-# Define your desired data structure.
 class TermList(BaseModel):
     main_terms: List[TermItem] = Field(description="list extracted main items")
-
-
 
 class IcdPhraseDescriptionPrompt(BaseModel):
     id: str = Field(description="id of the icd item")
@@ -66,18 +58,6 @@ class IcdPhraseDescriptionOutput(BaseModel):
 class IcdPhraseDescriptionList(BaseModel):
     descriptions: List[IcdPhraseDescriptionOutput] = Field(description="output list of code descriptions")
 
-
-examples_context = [
-  {
-    "question": """[Document(page_content='Reimplantación de ovario, izquierdo, abordaje abierto', metadata={'code': '0UM10ZZ'}), Document(page_content='Destrucción de pelvis renal, izquierda, abordaje orificio natural o artificial', metadata={'code': '0T547ZZ'}), Document(page_content='Destrucción de ovario, izquierdo, abordaje abierto', metadata={'code': '0U510ZZ'}), Document(page_content='Extirpación en ovario, izquierdo, abordaje percutáneo', metadata={'code': '0UC13ZZ'}), Document(page_content='Resección de tendón tronco, lado izquierdo, abordaje abierto', metadata={'code': '0LTB0ZZ'}), Document(page_content='Amputación de interpelviabdominal, izquierda, abordaje abierto', metadata={'code': '0Y630ZZ'}), Document(page_content='Resección de riñón, izquierdo, abordaje abierto', metadata={'code': '0TT10ZZ'}), Document(page_content='Resección de intestino grueso, izquierdo, abordaje orificio natural o artificial', metadata={'code': '0DTG7ZZ'}), Document(page_content='Resección de pelvis renal, izquierda, abordaje abierto', metadata={'code': '0TT40ZZ'}), Document(page_content='Extirpación en ovario, izquierdo, abordaje endoscópico percutáneo', metadata={'code': '0UC14ZZ'}), Document(page_content='Resección de trompa de eustaquio, izquierda, abordaje orificio natural o artificial', metadata={'code': '09TG7ZZ'}), Document(page_content='Resección de uréter, izquierdo, abordaje abierto', metadata={'code': '0TT70ZZ'}), Document(page_content='Extirpación en riñón, izquierdo, abordaje orificio natural o artificial', metadata={'code': '0TC17ZZ'}), Document(page_content='Extirpación en vena renal, izquierda, abordaje abierto', metadata={'code': '06CB0ZZ'}), Document(page_content='Resección de testículo, izquierdo, abordaje abierto', metadata={'code': '0VTB0ZZ'}), Document(page_content='Extirpación en rótula, izquierda, abordaje abierto', metadata={'code': '0QCF0ZZ'}), Document(page_content='Extirpación en pelvis renal, izquierda, abordaje endoscópico percutáneo', metadata={'code': '0TC44ZZ'}), Document(page_content='Extirpación en rótula, izquierda, abordaje endoscópico percutáneo', metadata={'code': '0QCF4ZZ'})]
-    """,   
-    "answer": """
-    ```json
-{"code": "0VTB0ZZ", "listed": true, "reasoning": "This response code was not suggested but listed"})
-```
-"""
-  }
-  ]
 
 class IcdPrompts():
 
@@ -196,6 +176,7 @@ class IcdPrompts():
         json_substrings = self.output_parser_select_simple.parse(output.content)      
         return json_substrings
 
+
     def prompt_icd_item_info(self, txt, substrings):
 
         # Set up a parser + inject instructions into the prompt template.
@@ -205,7 +186,7 @@ class IcdPrompts():
         # coding_instructions = "What is the correct ICD-10 code for the substring. If you think the correct code is not listed, provide your best code suggestion in the json field 'code', always follow the format instructions."
         behaviour_instructions = "You are an expert in medical ICD coding, teaching peers the highest level of coding possible."
         system_message_prompt = SystemMessagePromptTemplate.from_template("{behaviour_instructions} {format_instructions}\n")
-        human_message_prompt = HumanMessagePromptTemplate.from_template("For each of items in the lists, add additional information in Spanish to preform an medical code lookup for '{substring}', use {format_instructions} in markdown! Extract from the following text {txt}. The number of list items of the output should match the input, ")
+        human_message_prompt = HumanMessagePromptTemplate.from_template("For each of items in the lists, add additional information in Spanish to preform an medical code lookup for '{substring}', use {format_instructions} in markdown! Extract from the following text {txt}. The number of listed items of the output should match the input.")
 
         chat_prompt = ChatPromptTemplate(
             messages=[system_message_prompt,human_message_prompt], 
@@ -255,13 +236,13 @@ class IcdPrompts():
             logging.error(e)            
         return json_substrings
     
+    # prompt-1
     def prompt_icd_description_from_main_terms(self, txt, main_terms):
 
         # Set up a parser + inject instructions into the prompt template.
         parser = PydanticOutputParser(pydantic_object=IcdList)
 
         format_instructions = parser.get_format_instructions()
-        # coding_instructions = "What is the correct ICD-10 code for the substring. If you think the correct code is not listed, provide your best code suggestion in the json field 'code', always follow the format instructions."
         behaviour_instructions = "You are an expert in medical ICD coding, teaching peers the highest level of coding possible."
         system_message_prompt = SystemMessagePromptTemplate.from_template("{behaviour_instructions} {format_instructions}\n")
         human_message_prompt = HumanMessagePromptTemplate.from_template("For each item in the lists, extract and add additional information in Spanish to preform an medical code lookup. The list '{main_terms}', use {format_instructions} in markdown!")
@@ -283,13 +264,13 @@ class IcdPrompts():
             logging.error(e)            
         return json_substrings
     
+    # prompt-1 and 2
     def prompt_icd_code_description_from_main_terms(self, example, main_terms):
 
         # Set up a parser + inject instructions into the prompt template.
         parser = PydanticOutputParser(pydantic_object=IcdListNer)
 
         format_instructions = parser.get_format_instructions()
-        # coding_instructions = "What is the correct ICD-10 code for the substring. If you think the correct code is not listed, provide your best code suggestion in the json field 'code', always follow the format instructions."
         behaviour_instructions = "You are an expert in medical ICD coding, teaching peers the highest level of coding possible."
         system_message_prompt = SystemMessagePromptTemplate.from_template("{behaviour_instructions} {format_instructions}\n")
         example_human = HumanMessagePromptTemplate.from_template("{question}", additional_kwargs={"name": "example_user"})
@@ -298,14 +279,14 @@ class IcdPrompts():
         human_message_prompt = HumanMessagePromptTemplate.from_template("For each item in the lists, provide the additional information as shown in the example above. The list '{main_terms}', use {format_instructions} in markdown!")
 
         chat_prompt = ChatPromptTemplate(
-            messages=[system_message_prompt,example_human,example_ai, human_message_prompt], 
+            messages=[system_message_prompt, example_human, example_ai, human_message_prompt], 
             input_variables=["main_terms", "question", "answer"],
             partial_variables={"behaviour_instructions": behaviour_instructions, "format_instructions": format_instructions,}
         )
         _input = chat_prompt.format_prompt(
             main_terms=json.dumps(main_terms,  ensure_ascii=False), 
             question=json.dumps(example["prompt"], ensure_ascii=False), 
-            answer=json.dumps(example["output"],  ensure_ascii=False)
+            answer=json.dumps(example["output"].dict(),  ensure_ascii=False)
             )
         logging.info(_input.to_messages())
         output = self.chat(_input.to_messages())

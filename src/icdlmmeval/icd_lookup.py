@@ -58,7 +58,7 @@ class IcdLookup:
 
 
 
-    def get_diangose_description_en(self, code):
+    def get_diagnose_description_en(self, code):
         code = code.replace(".", "").upper()
         if code in self.df_icd10cm_codes_dict:
             return self.df_icd10cm_codes_dict[code]
@@ -67,7 +67,7 @@ class IcdLookup:
 
    
 
-    def get_diangose_description_es(self, code):
+    def get_diagnose_description_es(self, code):
         code = code.upper()
         if code in self.df_icd10cm_codes_dict_es:
             return self.df_icd10cm_codes_dict_es[code]

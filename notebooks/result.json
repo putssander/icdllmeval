@@ -1,0 +1,2587 @@
+{
+    "S0004-06142005000500011-1": [
+        {
+            "id": "0",
+            "icd_description_en": "Fracture of rib(s), sternum and thoracic spine",
+            "icd_description_es": "Fractura de costilla(s), esternón y columna torácica"
+        },
+        {
+            "id": "1",
+            "icd_description_en": "Transurethral (endoscopic) resection of bladder lesion or tissue",
+            "icd_description_es": "Resección transuretral (endoscópica) de lesión o tejido de la vejiga"
+        },
+        {
+            "id": "2",
+            "icd_description_en": "Ultrasonography of prostate",
+            "icd_description_es": "Ecografía de próstata"
+        },
+        {
+            "id": "3",
+            "icd_description_en": "Simple cortical cyst of kidney",
+            "icd_description_es": "Quiste cortical simple del riñón"
+        },
+        {
+            "id": "4",
+            "icd_description_en": "Disease, unspecified",
+            "icd_description_es": "Enfermedad, no especificada"
+        },
+        {
+            "id": "5",
+            "icd_description_en": "Tobacco use disorder",
+            "icd_description_es": "Trastorno por uso de tabaco"
+        },
+        {
+            "id": "6",
+            "icd_description_en": "Hematuria, unspecified",
+            "icd_description_es": "Hematuria, no especificada"
+        },
+        {
+            "id": "7",
+            "icd_description_en": "Tobacco use disorder",
+            "icd_description_es": "Trastorno por uso de tabaco"
+        },
+        {
+            "id": "8",
+            "icd_description_en": "Microscopic hematuria, unspecified",
+            "icd_description_es": "Hematuria microscópica, no especificada"
+        },
+        {
+            "id": "9",
+            "icd_description_en": "Gross hematuria",
+            "icd_description_es": "Hematuria macroscópica"
+        },
+        {
+            "id": "10",
+            "icd_description_en": "Degeneration of lumbar or lumbosacral intervertebral disc",
+            "icd_description_es": "Degeneración del disco intervertebral lumbar o lumbosacro"
+        },
+        {
+            "id": "11",
+            "icd_description_en": "Digital rectal examination",
+            "icd_description_es": "Examen rectal digital"
+        },
+        {
+            "id": "12",
+            "icd_description_en": "Alcohol abuse with intoxication, uncomplicated",
+            "icd_description_es": "Abuso de alcohol con intoxicación, sin complicaciones"
+        },
+        {
+            "id": "13",
+            "icd_description_en": "Hyperuricemia without signs of inflammatory arthritis and tophaceous disease",
+            "icd_description_es": "Hiperuricemia sin signos de artritis inflamatoria y enfermedad tofácea"
+        },
+        {
+            "id": "14",
+            "icd_description_en": "Bladder calculus",
+            "icd_description_es": "Cálculo de vejiga"
+        },
+        {
+            "id": "15",
+            "icd_description_en": "Type 2 diabetes mellitus without complications",
+            "icd_description_es": "Diabetes mellitus tipo 2 sin complicaciones"
+        },
+        {
+            "id": "16",
+            "icd_description_en": "Fracture of lumbar vertebra",
+            "icd_description_es": "Fractura de vértebra lumbar"
+        },
+        {
+            "id": "17",
+            "icd_description_en": "Plain abdominal X-ray",
+            "icd_description_es": "Radiografía abdominal simple"
+        },
+        {
+            "id": "18",
+            "icd_description_en": "Fracture, unspecified",
+            "icd_description_es": "Fractura, no especificada"
+        },
+        {
+            "id": "19",
+            "icd_description_en": "Nephrocalcinosis, unspecified",
+            "icd_description_es": "Nefrocalcinosis, no especificada"
+        },
+        {
+            "id": "20",
+            "icd_description_en": "Abdominal CT scan",
+            "icd_description_es": "Tomografía computarizada abdominal"
+        },
+        {
+            "id": "21",
+            "icd_description_en": "Ureteral diverticulum",
+            "icd_description_es": "Divertículo ureteral"
+        },
+        {
+            "id": "22",
+            "icd_description_en": "Cystoscopy and ureteroscopy",
+            "icd_description_es": "Cistoscopia y ureteroscopia"
+        },
+        {
+            "id": "23",
+            "icd_description_en": "Superficial bladder urothelial carcinoma",
+            "icd_description_es": "Carcinoma urotelial superficial de vejiga"
+        },
+        {
+            "id": "24",
+            "icd_description_en": "Dupuytren's contracture, right hand",
+            "icd_description_es": "Contractura de Dupuytren, mano derecha"
+        },
+        {
+            "id": "25",
+            "icd_description_en": "Urological ultrasound",
+            "icd_description_es": "Ecografía urológica"
+        },
+        {
+            "id": "26",
+            "icd_description_en": "Benign prostatic hyperplasia",
+            "icd_description_es": "Hiperplasia benigna de próstata"
+        },
+        {
+            "id": "27",
+            "icd_description_en": "Hypercholesterolemia, unspecified",
+            "icd_description_es": "Hipercolesterolemia, no especificada"
+        }
+    ],
+    "S0004-06142005000900014-1": [
+        {
+            "id": "28",
+            "icd_description_en": "Injury of bladder",
+            "icd_description_es": "Lesión de vejiga"
+        },
+        {
+            "id": "29",
+            "icd_description_en": "Painful urination",
+            "icd_description_es": "Micción dolorosa"
+        },
+        {
+            "id": "30",
+            "icd_description_en": "Hematuria, unspecified",
+            "icd_description_es": "Hematuria, no especificada"
+        },
+        {
+            "id": "31",
+            "icd_description_en": "Abdominal ultrasound",
+            "icd_description_es": "Ecografía abdominal"
+        },
+        {
+            "id": "32",
+            "icd_description_en": "Transurethral resection of bladder lesion",
+            "icd_description_es": "Resección transuretral de lesión vesical"
+        },
+        {
+            "id": "33",
+            "icd_description_en": "Leiomyoma of bladder",
+            "icd_description_es": "Leiomioma de vejiga"
+        },
+        {
+            "id": "34",
+            "icd_description_en": "Frequent urination",
+            "icd_description_es": "Polaquiuria"
+        },
+        {
+            "id": "35",
+            "icd_description_en": "Cystoscopy",
+            "icd_description_es": "Cistoscopia"
+        },
+        {
+            "id": "36",
+            "icd_description_en": "Injury of bladder",
+            "icd_description_es": "Lesión de vejiga"
+        },
+        {
+            "id": "37",
+            "icd_description_en": "Necrosis, unspecified",
+            "icd_description_es": "Necrosis, no especificada"
+        },
+        {
+            "id": "38",
+            "icd_description_en": "Injury of bladder",
+            "icd_description_es": "Lesión de vejiga"
+        },
+        {
+            "id": "39",
+            "icd_description_en": "Injury of bladder",
+            "icd_description_es": "Lesión de vejiga"
+        },
+        {
+            "id": "40",
+            "icd_description_en": "Injury of bladder",
+            "icd_description_es": "Lesión de vejiga"
+        }
+    ],
+    "S0004-06142006000100010-1": [
+        {
+            "id": "41",
+            "icd_description_en": "Ultrasonography of abdomen",
+            "icd_description_es": "Ultrasonido abdominal"
+        },
+        {
+            "id": "42",
+            "icd_description_en": "Low back pain",
+            "icd_description_es": "Dolor lumbar"
+        },
+        {
+            "id": "43",
+            "icd_description_en": "Adrenal gland tumor",
+            "icd_description_es": "Tumor de la glándula suprarrenal"
+        },
+        {
+            "id": "44",
+            "icd_description_en": "Adrenal gland tumor",
+            "icd_description_es": "Tumor de la glándula suprarrenal"
+        },
+        {
+            "id": "45",
+            "icd_description_en": "Obesity",
+            "icd_description_es": "Obesidad"
+        },
+        {
+            "id": "46",
+            "icd_description_en": "Adrenal gland tumor",
+            "icd_description_es": "Tumor de la glándula suprarrenal"
+        },
+        {
+            "id": "47",
+            "icd_description_en": "Essential (primary) hypertension",
+            "icd_description_es": "Hipertensión esencial (primaria)"
+        },
+        {
+            "id": "48",
+            "icd_description_en": "Type 2 diabetes mellitus",
+            "icd_description_es": "Diabetes mellitus tipo 2"
+        },
+        {
+            "id": "49",
+            "icd_description_en": "Myelolipoma of adrenal gland",
+            "icd_description_es": "Mielolipoma de la glándula suprarrenal"
+        },
+        {
+            "id": "50",
+            "icd_description_en": "Computed tomography of abdomen",
+            "icd_description_es": "Tomografía computarizada del abdomen"
+        },
+        {
+            "id": "51",
+            "icd_description_en": "Renal mass",
+            "icd_description_es": "Masa renal"
+        },
+        {
+            "id": "52",
+            "icd_description_en": "Calcinosis of kidney",
+            "icd_description_es": "Calcificación del riñón"
+        },
+        {
+            "id": "53",
+            "icd_description_en": "Hemorrhage, unspecified",
+            "icd_description_es": "Hemorragia, no especificada"
+        }
+    ],
+    "S0004-06142006000500012-1": [
+        {
+            "id": "54",
+            "icd_description_en": "Penile mass",
+            "icd_description_es": "Masa en el pene"
+        },
+        {
+            "id": "55",
+            "icd_description_en": "Microadenopathy",
+            "icd_description_es": "Microadenopatías"
+        },
+        {
+            "id": "56",
+            "icd_description_en": "Pain, unspecified",
+            "icd_description_es": "Dolor, no especificado"
+        },
+        {
+            "id": "57",
+            "icd_description_en": "Thrombosis, unspecified",
+            "icd_description_es": "Trombosis, no especificada"
+        },
+        {
+            "id": "58",
+            "icd_description_en": "Illness, unspecified",
+            "icd_description_es": "Enfermedad NEOM"
+        },
+        {
+            "id": "59",
+            "icd_description_en": "Pain, unspecified",
+            "icd_description_es": "Dolor, no especificado"
+        },
+        {
+            "id": "60",
+            "icd_description_en": "Thrombosis of renal vein",
+            "icd_description_es": "Trombosis de la vena renal"
+        },
+        {
+            "id": "61",
+            "icd_description_en": "Clear cell carcinoma of kidney",
+            "icd_description_es": "Carcinoma de células claras del riñón"
+        },
+        {
+            "id": "62",
+            "icd_description_en": "Renal mass",
+            "icd_description_es": "Masa renal"
+        },
+        {
+            "id": "63",
+            "icd_description_en": "Radical nephrectomy, right",
+            "icd_description_es": "Nefrectomía radical, derecha"
+        },
+        {
+            "id": "64",
+            "icd_description_en": "Lymphadenopathy",
+            "icd_description_es": "Adenopatías"
+        },
+        {
+            "id": "65",
+            "icd_description_en": "Magnetic resonance imaging of abdomen",
+            "icd_description_es": "Resonancia magnética del abdomen"
+        },
+        {
+            "id": "66",
+            "icd_description_en": "Secondary malignant neoplasm of penis",
+            "icd_description_es": "Neoplasia maligna secundaria del pene"
+        },
+        {
+            "id": "67",
+            "icd_description_en": "Malignant neoplasm of kidney, except renal pelvis",
+            "icd_description_es": "Neoplasia maligna del riñón, excepto la pelvis renal"
+        },
+        {
+            "id": "68",
+            "icd_description_en": "Pulmonary nodules",
+            "icd_description_es": "Nódulos pulmonares"
+        },
+        {
+            "id": "69",
+            "icd_description_en": "Secondary malignant neoplasm of brain",
+            "icd_description_es": "Neoplasia maligna secundaria del cerebro"
+        },
+        {
+            "id": "70",
+            "icd_description_en": "Computed tomography of abdomen",
+            "icd_description_es": "Tomografía computarizada del abdomen"
+        },
+        {
+            "id": "71",
+            "icd_description_en": "Clouding of consciousness",
+            "icd_description_es": "Obnubilación de la conciencia"
+        },
+        {
+            "id": "72",
+            "icd_description_en": "Ultrasonography of abdomen",
+            "icd_description_es": "Ecografía del abdomen"
+        },
+        {
+            "id": "73",
+            "icd_description_en": "Pulmonary embolism",
+            "icd_description_es": "Embolismo pulmonar"
+        },
+        {
+            "id": "74",
+            "icd_description_en": "Total penectomy",
+            "icd_description_es": "Penectomía total"
+        },
+        {
+            "id": "75",
+            "icd_description_en": "Hematuria, unspecified",
+            "icd_description_es": "Hematuria, no especificada"
+        },
+        {
+            "id": "76",
+            "icd_description_en": "Disturbances of sensation and motor function",
+            "icd_description_es": "Alteraciones de la sensación y la función motora"
+        },
+        {
+            "id": "77",
+            "icd_description_en": "Magnetic resonance imaging of pelvis",
+            "icd_description_es": "Resonancia magnética de la pelvis"
+        },
+        {
+            "id": "78",
+            "icd_description_en": "Penile mass",
+            "icd_description_es": "Masa peniana"
+        },
+        {
+            "id": "79",
+            "icd_description_en": "Computed tomography of head",
+            "icd_description_es": "Tomografía computarizada de la cabeza"
+        },
+        {
+            "id": "80",
+            "icd_description_en": "Malignant neoplasm of kidney, except renal pelvis",
+            "icd_description_es": "Neoplasia maligna del riñón, excepto la pelvis renal"
+        }
+    ],
+    "S0004-06142006000600014-1": [
+        {
+            "id": "81",
+            "icd_description_en": "Urethrorrhagia",
+            "icd_description_es": "Uretrorragia"
+        },
+        {
+            "id": "82",
+            "icd_description_en": "Radiography of urethra",
+            "icd_description_es": "Radiografía de uretra"
+        },
+        {
+            "id": "83",
+            "icd_description_en": "Urethral ultrasonography",
+            "icd_description_es": "Ecografía de uretra"
+        },
+        {
+            "id": "84",
+            "icd_description_en": "Inverted papilloma of urethra",
+            "icd_description_es": "Papiloma invertido de uretra"
+        },
+        {
+            "id": "85",
+            "icd_description_en": "Urethrorrhagia",
+            "icd_description_es": "Uretrorragia"
+        },
+        {
+            "id": "86",
+            "icd_description_en": "Dysuria",
+            "icd_description_es": "Disuria"
+        },
+        {
+            "id": "87",
+            "icd_description_en": "Cystoscopy",
+            "icd_description_es": "Cistoscopia"
+        },
+        {
+            "id": "88",
+            "icd_description_en": "Cystourethroscopy",
+            "icd_description_es": "Cistouretroscopia"
+        },
+        {
+            "id": "89",
+            "icd_description_en": "Dysuria",
+            "icd_description_es": "Disuria"
+        }
+    ],
+    "S0004-06142006000700011-1": [
+        {
+            "id": "90",
+            "icd_description_en": "Erythematous conditions of the skin",
+            "icd_description_es": "Condiciones eritematosas de la piel"
+        },
+        {
+            "id": "91",
+            "icd_description_en": "Pain in penis",
+            "icd_description_es": "Dolor en el pene"
+        },
+        {
+            "id": "92",
+            "icd_description_en": "Malignant neoplasm of rectum",
+            "icd_description_es": "Neoplasia maligna del recto"
+        },
+        {
+            "id": "93",
+            "icd_description_en": "Circumcision",
+            "icd_description_es": "Circuncisión"
+        },
+        {
+            "id": "94",
+            "icd_description_en": "Secondary malignant neoplasm of skin",
+            "icd_description_es": "Neoplasia maligna secundaria de la piel"
+        },
+        {
+            "id": "95",
+            "icd_description_en": "Malignant neoplasm of large intestine, unspecified",
+            "icd_description_es": "Neoplasia maligna del intestino grueso, no especificada"
+        }
+    ],
+    "S0004-06142006000700012-1": [
+        {
+            "id": "96",
+            "icd_description_en": "Unspecified diagnostic ultrasound of left kidney",
+            "icd_description_es": "Ecografía diagnóstica no especificada del riñón izquierdo"
+        },
+        {
+            "id": "97",
+            "icd_description_en": "Unspecified renal mass",
+            "icd_description_es": "Masa renal no especificada"
+        },
+        {
+            "id": "98",
+            "icd_description_en": "Unspecified diagnostic ultrasound of left kidney",
+            "icd_description_es": "Ecografía diagnóstica no especificada del riñón izquierdo"
+        },
+        {
+            "id": "99",
+            "icd_description_en": "Unspecified renal mass",
+            "icd_description_es": "Masa renal no especificada"
+        },
+        {
+            "id": "100",
+            "icd_description_en": "Unspecified magnetic resonance imaging (MRI) of left kidney",
+            "icd_description_es": "Imagen por resonancia magnética (IRM) no especificada del riñón izquierdo"
+        },
+        {
+            "id": "101",
+            "icd_description_en": "Hydatid cyst of kidney",
+            "icd_description_es": "Quiste hidatídico del riñón"
+        },
+        {
+            "id": "102",
+            "icd_description_en": "Echinococcosis, unspecified",
+            "icd_description_es": "Echinococcosis no especificada"
+        },
+        {
+            "id": "103",
+            "icd_description_en": "Hydatid cyst of kidney",
+            "icd_description_es": "Quiste hidatídico del riñón"
+        },
+        {
+            "id": "104",
+            "icd_description_en": "Nephroma, unspecified",
+            "icd_description_es": "Nefroma no especificado"
+        },
+        {
+            "id": "105",
+            "icd_description_en": "Hydatid cyst of kidney",
+            "icd_description_es": "Quiste hidatídico del riñón"
+        },
+        {
+            "id": "106",
+            "icd_description_en": "Hydatid cyst of kidney",
+            "icd_description_es": "Quiste hidatídico del riñón"
+        },
+        {
+            "id": "107",
+            "icd_description_en": "Eosinophilia, unspecified",
+            "icd_description_es": "Eosinofilia, no especificada"
+        },
+        {
+            "id": "108",
+            "icd_description_en": "Hydatid cyst of liver, unspecified",
+            "icd_description_es": "Quiste hidatídico de hígado, no especificado"
+        },
+        {
+            "id": "109",
+            "icd_description_en": "Essential (primary) hypertension",
+            "icd_description_es": "Hipertensión esencial (primaria)"
+        },
+        {
+            "id": "110",
+            "icd_description_en": "Essential (primary) hypertension",
+            "icd_description_es": "Hipertensión esencial (primaria)"
+        },
+        {
+            "id": "111",
+            "icd_description_en": "Eosinophilia, unspecified",
+            "icd_description_es": "Eosinofilia, no especificada"
+        },
+        {
+            "id": "112",
+            "icd_description_en": "Wilms' tumor, unspecified",
+            "icd_description_es": "Tumor de Wilms, no especificado"
+        },
+        {
+            "id": "113",
+            "icd_description_en": "Computerized axial tomography of left kidney",
+            "icd_description_es": "Tomografía axial computarizada de riñón izquierdo"
+        }
+    ],
+    "S0004-06142007000100011-1": [
+        {
+            "id": "114",
+            "icd_description_en": "Erythematous condition, unspecified",
+            "icd_description_es": "Condición eritematosa, no especificada"
+        },
+        {
+            "id": "115",
+            "icd_description_en": "Pain in unspecified part of limb",
+            "icd_description_es": "Dolor en parte no especificada de la extremidad"
+        },
+        {
+            "id": "116",
+            "icd_description_en": "Injury of scrotum",
+            "icd_description_es": "Lesión del escroto"
+        },
+        {
+            "id": "117",
+            "icd_description_en": "Biopsy of penis",
+            "icd_description_es": "Biopsia del pene"
+        },
+        {
+            "id": "118",
+            "icd_description_en": "Injury of penis",
+            "icd_description_es": "Lesión del pene"
+        },
+        {
+            "id": "119",
+            "icd_description_en": "Injury of penis",
+            "icd_description_es": "Lesión del pene"
+        },
+        {
+            "id": "120",
+            "icd_description_en": "Behçet's disease",
+            "icd_description_es": "Enfermedad de Behçet"
+        },
+        {
+            "id": "121",
+            "icd_description_en": "Sexually transmitted infection, unspecified",
+            "icd_description_es": "Infección de transmisión sexual, no especificada"
+        },
+        {
+            "id": "122",
+            "icd_description_en": "Arthralgia, unspecified",
+            "icd_description_es": "Artralgia, no especificada"
+        },
+        {
+            "id": "123",
+            "icd_description_en": "Recurrent oral aphthae",
+            "icd_description_es": "Aftas orales recurrentes"
+        },
+        {
+            "id": "124",
+            "icd_description_en": "Necrosis, unspecified",
+            "icd_description_es": "Necrosis, no especificada"
+        },
+        {
+            "id": "125",
+            "icd_description_en": "Oral aphthous ulcer",
+            "icd_description_es": "Úlcera aftosa oral"
+        },
+        {
+            "id": "126",
+            "icd_description_en": "Unspecified visual disturbances",
+            "icd_description_es": "Trastornos visuales no especificados"
+        },
+        {
+            "id": "127",
+            "icd_description_en": "Behçet's disease",
+            "icd_description_es": "Enfermedad de Behçet"
+        },
+        {
+            "id": "128",
+            "icd_description_en": "Unspecified visual loss",
+            "icd_description_es": "Pérdida visual no especificada"
+        },
+        {
+            "id": "129",
+            "icd_description_en": "Unspecified uveitis",
+            "icd_description_es": "Uveítis no especificada"
+        },
+        {
+            "id": "130",
+            "icd_description_en": "Total loss of vision",
+            "icd_description_es": "Pérdida total de la visión"
+        }
+    ],
+    "S0004-06142007000200011-1": [
+        {
+            "id": "131",
+            "icd_description_en": "Benign neoplasm of unspecified adrenal gland",
+            "icd_description_es": "Neoplasia benigna de glándula suprarrenal no especificada"
+        },
+        {
+            "id": "132",
+            "icd_description_en": "Phaeochromocytoma",
+            "icd_description_es": "Feocromocitoma"
+        },
+        {
+            "id": "133",
+            "icd_description_en": "Ultrasonography of abdomen",
+            "icd_description_es": "Ecografía abdominal"
+        },
+        {
+            "id": "134",
+            "icd_description_en": "Lipoma of skin and subcutaneous tissue of limbs",
+            "icd_description_es": "Lipoma de piel y tejido subcutáneo de extremidades"
+        },
+        {
+            "id": "135",
+            "icd_description_en": "Tobacco use disorder",
+            "icd_description_es": "Trastorno por uso de tabaco"
+        },
+        {
+            "id": "136",
+            "icd_description_en": "Essential (primary) hypertension",
+            "icd_description_es": "Hipertensión esencial (primaria)"
+        },
+        {
+            "id": "137",
+            "icd_description_en": "Cystic lymphangioma",
+            "icd_description_es": "Linfangioma quístico"
+        }
+    ],
+    "S0004-06142007000200017-1": [
+        {
+            "id": "138",
+            "icd_description_en": "Malignant neoplasm of unspecified testis",
+            "icd_description_es": "Neoplasia maligna de testículo no especificado"
+        },
+        {
+            "id": "139",
+            "icd_description_en": "Testicular microlithiasis, bilateral",
+            "icd_description_es": "Microlitiasis testicular, bilateral"
+        },
+        {
+            "id": "140",
+            "icd_description_en": "Ultrasonography of testes",
+            "icd_description_es": "Ecografía de los testículos"
+        },
+        {
+            "id": "141",
+            "icd_description_en": "Computerized axial tomography of abdomen and pelvis",
+            "icd_description_es": "Tomografía axial computarizada de abdomen y pelvis"
+        },
+        {
+            "id": "142",
+            "icd_description_en": "Pain in testicle",
+            "icd_description_es": "Dolor en el testículo"
+        },
+        {
+            "id": "143",
+            "icd_description_en": "Unspecified weight loss",
+            "icd_description_es": "Pérdida de peso no especificada"
+        },
+        {
+            "id": "144",
+            "icd_description_en": "Disease, unspecified",
+            "icd_description_es": "Enfermedad, no especificada"
+        },
+        {
+            "id": "145",
+            "icd_description_en": "Lymphadenopathy, unspecified",
+            "icd_description_es": "Adenopatía, no especificada"
+        },
+        {
+            "id": "146",
+            "icd_description_en": "Seminoma, unspecified site",
+            "icd_description_es": "Seminoma, sitio no especificado"
+        },
+        {
+            "id": "147",
+            "icd_description_en": "Classic seminoma, unspecified site",
+            "icd_description_es": "Seminoma clásico, sitio no especificado"
+        },
+        {
+            "id": "148",
+            "icd_description_en": "Atrophy of testis",
+            "icd_description_es": "Atrofia del testículo"
+        },
+        {
+            "id": "149",
+            "icd_description_en": "Classic seminoma",
+            "icd_description_es": "Seminoma clásico"
+        },
+        {
+            "id": "150",
+            "icd_description_en": "Atrophic left testicle",
+            "icd_description_es": "Testículo izquierdo atrófico"
+        },
+        {
+            "id": "151",
+            "icd_description_en": "Testicular lesion",
+            "icd_description_es": "Lesión testicular"
+        },
+        {
+            "id": "152",
+            "icd_description_en": "Testicular neoplasia",
+            "icd_description_es": "Neoplasia testicular"
+        },
+        {
+            "id": "153",
+            "icd_description_en": "Chest radiography",
+            "icd_description_es": "Radiografía de tórax"
+        }
+    ],
+    "S0004-06142007000500017-1": [
+        {
+            "id": "154",
+            "icd_description_en": "Lower urinary tract symptoms suggestive of benign prostatic obstruction",
+            "icd_description_es": "Síntomas del tracto urinario inferior sugerentes de obstrucción prostática benigna"
+        },
+        {
+            "id": "155",
+            "icd_description_en": "Ultrasonography of prostate",
+            "icd_description_es": "Ecografía de próstata"
+        },
+        {
+            "id": "156",
+            "icd_description_en": "Transrectal ultrasonography of prostate",
+            "icd_description_es": "Ecografía transrectal de próstata"
+        },
+        {
+            "id": "157",
+            "icd_description_en": "Transrectal biopsy of prostate",
+            "icd_description_es": "Biopsia transrectal de próstata"
+        },
+        {
+            "id": "158",
+            "icd_description_en": "Elevated prostate specific antigen [PSA]",
+            "icd_description_es": "Antígeno prostático específico elevado [PSA]"
+        },
+        {
+            "id": "159",
+            "icd_description_en": "Chronic inflammation of prostate",
+            "icd_description_es": "Inflamación crónica de próstata"
+        },
+        {
+            "id": "160",
+            "icd_description_en": "Blue nevus, not elsewhere classified",
+            "icd_description_es": "Nevus azul, no clasificado en otra parte"
+        }
+    ],
+    "S0004-06142007000600012-1": [
+        {
+            "id": "161",
+            "icd_description_en": "Radiographic examination of hip",
+            "icd_description_es": "Examen radiográfico de la cadera"
+        },
+        {
+            "id": "162",
+            "icd_description_en": "Radiographic examination of hip",
+            "icd_description_es": "Examen radiográfico de la cadera"
+        },
+        {
+            "id": "163",
+            "icd_description_en": "Hydrocele",
+            "icd_description_es": "Hidrocele"
+        },
+        {
+            "id": "164",
+            "icd_description_en": "Abdominal ultrasound",
+            "icd_description_es": "Ultrasonido abdominal"
+        },
+        {
+            "id": "165",
+            "icd_description_en": "Erythema",
+            "icd_description_es": "Eritema"
+        },
+        {
+            "id": "166",
+            "icd_description_en": "Pain",
+            "icd_description_es": "Dolor"
+        },
+        {
+            "id": "167",
+            "icd_description_en": "Edema of penis",
+            "icd_description_es": "Edema del pene"
+        },
+        {
+            "id": "168",
+            "icd_description_en": "Aseptic necrosis of the femoral head",
+            "icd_description_es": "Necrosis aséptica de la cabeza del fémur"
+        },
+        {
+            "id": "169",
+            "icd_description_en": "Lymphedema",
+            "icd_description_es": "Linfedema"
+        },
+        {
+            "id": "170",
+            "icd_description_en": "Penile lymphedema",
+            "icd_description_es": "Linfedema del pene"
+        },
+        {
+            "id": "171",
+            "icd_description_en": "Varicocele",
+            "icd_description_es": "Varicocele"
+        },
+        {
+            "id": "172",
+            "icd_description_en": "Edema, unspecified",
+            "icd_description_es": "Edema, no especificado"
+        },
+        {
+            "id": "173",
+            "icd_description_en": "Aseptic necrosis of head of femur",
+            "icd_description_es": "Necrosis aséptica de la cabeza del fémur"
+        },
+        {
+            "id": "174",
+            "icd_description_en": "Hypertrophy of muscle, unspecified",
+            "icd_description_es": "Hipertrofia del músculo, no especificada"
+        },
+        {
+            "id": "175",
+            "icd_description_en": "Inguinal lymphadenopathy",
+            "icd_description_es": "Adenopatía inguinal"
+        },
+        {
+            "id": "176",
+            "icd_description_en": "Computed tomography of abdomen and pelvis",
+            "icd_description_es": "Tomografía computarizada de abdomen y pelvis"
+        },
+        {
+            "id": "177",
+            "icd_description_en": "Edema of male genital organs",
+            "icd_description_es": "Edema de los órganos genitales masculinos"
+        },
+        {
+            "id": "178",
+            "icd_description_en": "Male erectile disorder",
+            "icd_description_es": "Trastorno de la erección del hombre"
+        },
+        {
+            "id": "179",
+            "icd_description_en": "Pain, unspecified",
+            "icd_description_es": "Dolor, no especificado"
+        },
+        {
+            "id": "180",
+            "icd_description_en": "Chyluria",
+            "icd_description_es": "Quiluria"
+        }
+    ],
+    "S0004-06142007000900011-1": [
+        {
+            "id": "181",
+            "icd_description_en": "Hematoma, unspecified",
+            "icd_description_es": "Hematoma, no especificado"
+        },
+        {
+            "id": "182",
+            "icd_description_en": "Pain localized to left lower abdomen",
+            "icd_description_es": "Dolor localizado en el hemiabdomen izquierdo"
+        },
+        {
+            "id": "183",
+            "icd_description_en": "Computerized axial tomography of abdomen",
+            "icd_description_es": "Tomografía computarizada axial del abdomen"
+        },
+        {
+            "id": "184",
+            "icd_description_en": "Hemorrhage, unspecified",
+            "icd_description_es": "Hemorragia, no especificada"
+        },
+        {
+            "id": "185",
+            "icd_description_en": "Hematoma, unspecified",
+            "icd_description_es": "Hematoma, no especificado"
+        },
+        {
+            "id": "186",
+            "icd_description_en": "Upper gastrointestinal hemorrhage, unspecified",
+            "icd_description_es": "Hemorragia gastrointestinal superior, no especificada"
+        },
+        {
+            "id": "187",
+            "icd_description_en": "Hypertensive urgency",
+            "icd_description_es": "Urgencia hipertensiva"
+        },
+        {
+            "id": "188",
+            "icd_description_en": "Essential (primary) hypertension",
+            "icd_description_es": "Hipertensión esencial (primaria)"
+        },
+        {
+            "id": "189",
+            "icd_description_en": "Plain radiography of thorax",
+            "icd_description_es": "Radiografía simple de tórax"
+        },
+        {
+            "id": "190",
+            "icd_description_en": "Pain localized to left lower abdomen",
+            "icd_description_es": "Dolor localizado en la fosa ilíaca izquierda"
+        },
+        {
+            "id": "191",
+            "icd_description_en": "Electrocardiogram (ECG) (EKG)",
+            "icd_description_es": "Electrocardiograma (ECG)"
+        },
+        {
+            "id": "192",
+            "icd_description_en": "Long term (current) use of anticoagulants and antithrombotics",
+            "icd_description_es": "Uso a largo plazo (actual) de anticoagulantes y antitrombóticos"
+        },
+        {
+            "id": "193",
+            "icd_description_en": "Transient cerebral ischemic attacks and related syndromes",
+            "icd_description_es": "Ataques isquémicos cerebrales transitorios y síndromes relacionados"
+        },
+        {
+            "id": "194",
+            "icd_description_en": "Unilateral adrenalectomy",
+            "icd_description_es": "Suprarrenalectomía unilateral"
+        },
+        {
+            "id": "195",
+            "icd_description_en": "Necrosis of adrenal gland",
+            "icd_description_es": "Necrosis de la glándula suprarrenal"
+        },
+        {
+            "id": "196",
+            "icd_description_en": "Neoplasm of uncertain behavior of adrenal gland",
+            "icd_description_es": "Neoplasia de comportamiento incierto de la glándula suprarrenal"
+        },
+        {
+            "id": "197",
+            "icd_description_en": "Pain localized to other parts of lower abdomen",
+            "icd_description_es": "Dolor localizado en otras partes del abdomen inferior"
+        }
+    ],
+    "S0004-06142007000900012-1": [
+        {
+            "id": "198",
+            "icd_description_en": "Unspecified renal mass",
+            "icd_description_es": "Masa renal no especificada"
+        },
+        {
+            "id": "199",
+            "icd_description_en": "Laparoscopic radical nephrectomy, right",
+            "icd_description_es": "Nefrectomía radical laparoscópica, derecha"
+        },
+        {
+            "id": "200",
+            "icd_description_en": "Ultrasonography of right kidney",
+            "icd_description_es": "Ecografía del riñón derecho"
+        },
+        {
+            "id": "201",
+            "icd_description_en": "Nephritic colic",
+            "icd_description_es": "Cólico nefrítico"
+        },
+        {
+            "id": "202",
+            "icd_description_en": "Computed tomography (CT) scan of right kidney",
+            "icd_description_es": "Tomografía computarizada (TC) del riñón derecho"
+        },
+        {
+            "id": "203",
+            "icd_description_en": "Renal dilation",
+            "icd_description_es": "Dilatación renal"
+        },
+        {
+            "id": "204",
+            "icd_description_en": "Appendectomy",
+            "icd_description_es": "Apendicectomía"
+        },
+        {
+            "id": "205",
+            "icd_description_en": "Hypernephroma of right kidney",
+            "icd_description_es": "Hipernefroma del riñón derecho"
+        },
+        {
+            "id": "206",
+            "icd_description_en": "Fracture of fibula",
+            "icd_description_es": "Fractura de peroné"
+        },
+        {
+            "id": "207",
+            "icd_description_en": "Hypernephroma, right",
+            "icd_description_es": "Hipernefroma, derecha"
+        },
+        {
+            "id": "208",
+            "icd_description_en": "Fracture of tibia",
+            "icd_description_es": "Fractura de tibia"
+        },
+        {
+            "id": "209",
+            "icd_description_en": "Enlarged lymph nodes",
+            "icd_description_es": "Adenopatías"
+        },
+        {
+            "id": "210",
+            "icd_description_en": "Hiatus hernia without obstruction or gangrene",
+            "icd_description_es": "Hernia de hiato sin obstrucción ni gangrena"
+        }
+    ],
+    "S0004-06142007000900014-1": [
+        {
+            "id": "211",
+            "icd_description_en": "Pain, unspecified",
+            "icd_description_es": "Dolor, no especificado"
+        },
+        {
+            "id": "212",
+            "icd_description_en": "Leiomyosarcoma of inferior vena cava",
+            "icd_description_es": "Leiomiosarcoma de vena cava inferior"
+        },
+        {
+            "id": "213",
+            "icd_description_en": "Adrenal mass, unspecified",
+            "icd_description_es": "Masa suprarrenal, no especificada"
+        },
+        {
+            "id": "214",
+            "icd_description_en": "Computed tomography of abdomen",
+            "icd_description_es": "Tomografía computarizada del abdomen"
+        },
+        {
+            "id": "215",
+            "icd_description_en": "Secondary malignant neoplasm of lymph nodes",
+            "icd_description_es": "Neoplasia maligna secundaria de ganglios linfáticos"
+        },
+        {
+            "id": "216",
+            "icd_description_en": "Magnetic resonance imaging of adrenal gland",
+            "icd_description_es": "Imagen por resonancia magnética de la glándula suprarrenal"
+        },
+        {
+            "id": "217",
+            "icd_description_en": "Computed tomography of adrenal gland",
+            "icd_description_es": "Tomografía computarizada de la glándula suprarrenal"
+        },
+        {
+            "id": "218",
+            "icd_description_en": "Thrombosis, unspecified",
+            "icd_description_es": "Trombosis, no especificada"
+        },
+        {
+            "id": "219",
+            "icd_description_en": "Computed tomography of adrenal gland",
+            "icd_description_es": "Tomografía computarizada de la glándula suprarrenal"
+        },
+        {
+            "id": "220",
+            "icd_description_en": "Pain, unspecified",
+            "icd_description_es": "Dolor, no especificado"
+        },
+        {
+            "id": "221",
+            "icd_description_en": "Disease, unspecified",
+            "icd_description_es": "Enfermedad, no especificada"
+        },
+        {
+            "id": "222",
+            "icd_description_en": "Secondary malignant neoplasm, unspecified",
+            "icd_description_es": "Neoplasia maligna secundaria, no especificada"
+        },
+        {
+            "id": "223",
+            "icd_description_en": "Obesity, unspecified",
+            "icd_description_es": "Obesidad, no especificada"
+        },
+        {
+            "id": "224",
+            "icd_description_en": "Change in bowel habit, unspecified",
+            "icd_description_es": "Cambio en el hábito intestinal, no especificado"
+        },
+        {
+            "id": "225",
+            "icd_description_en": "Secondary malignant neoplasm of retroperitoneum and peritoneum",
+            "icd_description_es": "Neoplasia maligna secundaria de retroperitoneo y peritoneo"
+        },
+        {
+            "id": "226",
+            "icd_description_en": "Magnetic resonance imaging of abdomen",
+            "icd_description_es": "Imagen por resonancia magnética del abdomen"
+        },
+        {
+            "id": "227",
+            "icd_description_en": "Secondary malignant neoplasm of retroperitoneum and peritoneum",
+            "icd_description_es": "Neoplasia maligna secundaria de retroperitoneo y peritoneo"
+        },
+        {
+            "id": "228",
+            "icd_description_en": "Excision of adrenal gland, open approach",
+            "icd_description_es": "Exéresis de la glándula suprarrenal, abordaje abierto"
+        },
+        {
+            "id": "229",
+            "icd_description_en": "Computed tomography of abdomen",
+            "icd_description_es": "Tomografía computarizada del abdomen"
+        },
+        {
+            "id": "230",
+            "icd_description_en": "Ultrasonography of right adrenal gland",
+            "icd_description_es": "Ecografía de la glándula suprarrenal derecha"
+        },
+        {
+            "id": "231",
+            "icd_description_en": "Pain in right upper quadrant",
+            "icd_description_es": "Dolor en el cuadrante superior derecho"
+        },
+        {
+            "id": "232",
+            "icd_description_en": "Secondary malignant neoplasm of liver",
+            "icd_description_es": "Neoplasia maligna secundaria del hígado"
+        },
+        {
+            "id": "233",
+            "icd_description_en": "Unspecified abdominal swelling, mass and lump",
+            "icd_description_es": "Hinchazón, masa y bulto abdominales no especificados"
+        },
+        {
+            "id": "234",
+            "icd_description_en": "Adrenal gland necrosis",
+            "icd_description_es": "Necrosis de la glándula suprarrenal"
+        },
+        {
+            "id": "235",
+            "icd_description_en": "Abdominal ultrasound",
+            "icd_description_es": "Ecografía abdominal"
+        },
+        {
+            "id": "236",
+            "icd_description_en": "Pain in right hypochondrium",
+            "icd_description_es": "Dolor en hipocondrio derecho"
+        }
+    ],
+    "S0004-06142008000300012-1": [
+        {
+            "id": "237",
+            "icd_description_en": "Thrombosis of inferior vena cava",
+            "icd_description_es": "Trombosis de la vena cava inferior"
+        },
+        {
+            "id": "238",
+            "icd_description_en": "Budd-Chiari syndrome",
+            "icd_description_es": "Síndrome de Budd-Chiari"
+        },
+        {
+            "id": "239",
+            "icd_description_en": "Pain, unspecified",
+            "icd_description_es": "Dolor, no especificado"
+        },
+        {
+            "id": "240",
+            "icd_description_en": "Abdominal pain, unspecified",
+            "icd_description_es": "Dolor abdominal, no especificado"
+        },
+        {
+            "id": "241",
+            "icd_description_en": "Pain, unspecified",
+            "icd_description_es": "Dolor, no especificado"
+        },
+        {
+            "id": "242",
+            "icd_description_en": "Pain, unspecified",
+            "icd_description_es": "Dolor, no especificado"
+        },
+        {
+            "id": "243",
+            "icd_description_en": "Pain, unspecified",
+            "icd_description_es": "Dolor, no especificado"
+        },
+        {
+            "id": "244",
+            "icd_description_en": "Computed tomography of left kidney",
+            "icd_description_es": "Tomografía computarizada del riñón izquierdo"
+        },
+        {
+            "id": "245",
+            "icd_description_en": "Computed tomography of left kidney",
+            "icd_description_es": "Tomografía computarizada del riñón izquierdo"
+        },
+        {
+            "id": "246",
+            "icd_description_en": "Computed tomography of pancreas",
+            "icd_description_es": "Tomografía computarizada del páncreas"
+        },
+        {
+            "id": "247",
+            "icd_description_en": "Epigastric pain",
+            "icd_description_es": "Dolor epigástrico"
+        },
+        {
+            "id": "248",
+            "icd_description_en": "Abdominopelvic echography",
+            "icd_description_es": "Ecografía abdominopélvica"
+        },
+        {
+            "id": "249",
+            "icd_description_en": "Elevated transaminases",
+            "icd_description_es": "Transaminasas elevadas"
+        },
+        {
+            "id": "250",
+            "icd_description_en": "Deep vein thrombosis (DVT)",
+            "icd_description_es": "Trombosis venosa profunda (TVP)"
+        },
+        {
+            "id": "251",
+            "icd_description_en": "Hepatomegaly",
+            "icd_description_es": "Hepatomegalia"
+        },
+        {
+            "id": "252",
+            "icd_description_en": "Renal angiomyolipoma",
+            "icd_description_es": "Angiomiolipoma renal"
+        },
+        {
+            "id": "253",
+            "icd_description_en": "Deep vein thrombosis (DVT)",
+            "icd_description_es": "Trombosis venosa profunda (TVP)"
+        },
+        {
+            "id": "254",
+            "icd_description_en": "Computed tomography (CT) of pancreas",
+            "icd_description_es": "Tomografía computarizada (TC) de páncreas"
+        },
+        {
+            "id": "255",
+            "icd_description_en": "Abdominal computed tomography (CT)",
+            "icd_description_es": "Tomografía computarizada (TC) abdominal"
+        },
+        {
+            "id": "256",
+            "icd_description_en": "Abdominopelvic computed tomography (CT)",
+            "icd_description_es": "Tomografía computarizada (TC) abdominopélvica"
+        },
+        {
+            "id": "257",
+            "icd_description_en": "Computed tomography (CT) of liver",
+            "icd_description_es": "Tomografía computarizada (TC) de hígado"
+        },
+        {
+            "id": "258",
+            "icd_description_en": "Thrombus",
+            "icd_description_es": "Trombo"
+        },
+        {
+            "id": "259",
+            "icd_description_en": "Thrombosis, unspecified",
+            "icd_description_es": "Trombosis, no especificada"
+        },
+        {
+            "id": "260",
+            "icd_description_en": "Thrombosis, unspecified",
+            "icd_description_es": "Trombosis, no especificada"
+        },
+        {
+            "id": "261",
+            "icd_description_en": "Paracentesis",
+            "icd_description_es": "Paracentesis"
+        },
+        {
+            "id": "262",
+            "icd_description_en": "Thrombosis, unspecified",
+            "icd_description_es": "Trombosis, no especificada"
+        },
+        {
+            "id": "263",
+            "icd_description_en": "Vomiting, unspecified",
+            "icd_description_es": "Vómitos, no especificados"
+        },
+        {
+            "id": "264",
+            "icd_description_en": "Neutrophilia, unspecified",
+            "icd_description_es": "Neutrofilia, no especificada"
+        },
+        {
+            "id": "265",
+            "icd_description_en": "Cholecystitis, unspecified",
+            "icd_description_es": "Colecistitis, no especificada"
+        },
+        {
+            "id": "266",
+            "icd_description_en": "Lipoma, unspecified",
+            "icd_description_es": "Lipoma, no especificado"
+        },
+        {
+            "id": "267",
+            "icd_description_en": "Pancreatitis, unspecified",
+            "icd_description_es": "Pancreatitis, no especificada"
+        },
+        {
+            "id": "268",
+            "icd_description_en": "Budd-Chiari syndrome",
+            "icd_description_es": "Síndrome de Budd-Chiari"
+        },
+        {
+            "id": "269",
+            "icd_description_en": "Angiomyolipoma, unspecified",
+            "icd_description_es": "Angiomiolipoma, no especificado"
+        },
+        {
+            "id": "270",
+            "icd_description_en": "Thrombosis of inferior vena cava",
+            "icd_description_es": "Trombosis de la vena cava inferior"
+        },
+        {
+            "id": "271",
+            "icd_description_en": "Epigastric pain",
+            "icd_description_es": "Dolor epigástrico"
+        },
+        {
+            "id": "272",
+            "icd_description_en": "Renal lipoma",
+            "icd_description_es": "Lipoma renal"
+        },
+        {
+            "id": "273",
+            "icd_description_en": "Renal thrombosis",
+            "icd_description_es": "Trombosis renal"
+        },
+        {
+            "id": "274",
+            "icd_description_en": "Renal vein thrombosis",
+            "icd_description_es": "Trombosis de la vena renal"
+        },
+        {
+            "id": "275",
+            "icd_description_en": "Peritoneal paracentesis",
+            "icd_description_es": "Paracentesis peritoneal"
+        },
+        {
+            "id": "276",
+            "icd_description_en": "Abdominopelvic computed tomography (CT)",
+            "icd_description_es": "Tomografía computarizada (TC) abdominopélvica"
+        },
+        {
+            "id": "277",
+            "icd_description_en": "Angiomyolipoma",
+            "icd_description_es": "Angiomiolipoma"
+        },
+        {
+            "id": "278",
+            "icd_description_en": "Edema",
+            "icd_description_es": "Edema"
+        },
+        {
+            "id": "279",
+            "icd_description_en": "Hepatic congestion",
+            "icd_description_es": "Congestión hepática"
+        },
+        {
+            "id": "280",
+            "icd_description_en": "Bilateral pleural effusion",
+            "icd_description_es": "Derrame pleural bilateral"
+        },
+        {
+            "id": "281",
+            "icd_description_en": "Other diseases of pericardium",
+            "icd_description_es": "Otras enfermedades del pericardio"
+        },
+        {
+            "id": "282",
+            "icd_description_en": "Peritonitis and other diseases of peritoneum",
+            "icd_description_es": "Peritonitis y otras enfermedades del peritoneo"
+        },
+        {
+            "id": "283",
+            "icd_description_en": "Venous thrombosis, unspecified",
+            "icd_description_es": "Trombosis venosa, no especificada"
+        },
+        {
+            "id": "284",
+            "icd_description_en": "Diagnostic ultrasound of abdomen and retroperitoneum",
+            "icd_description_es": "Ultrasonido diagnóstico del abdomen y retroperitoneo"
+        },
+        {
+            "id": "285",
+            "icd_description_en": "Thrombosis, unspecified",
+            "icd_description_es": "Trombosis, no especificada"
+        },
+        {
+            "id": "286",
+            "icd_description_en": "Abdominal and pelvic pain",
+            "icd_description_es": "Dolor abdominal y pélvico"
+        },
+        {
+            "id": "287",
+            "icd_description_en": "Benign neoplasm of kidney, except renal pelvis",
+            "icd_description_es": "Neoplasia benigna del riñón, excepto la pelvis renal"
+        },
+        {
+            "id": "288",
+            "icd_description_en": "Abdominal and pelvic pain",
+            "icd_description_es": "Dolor abdominal y pélvico"
+        },
+        {
+            "id": "289",
+            "icd_description_en": "Pallor",
+            "icd_description_es": "Palidez"
+        },
+        {
+            "id": "290",
+            "icd_description_en": "Edema, unspecified",
+            "icd_description_es": "Edema, no especificado"
+        },
+        {
+            "id": "291",
+            "icd_description_en": "Edema, unspecified",
+            "icd_description_es": "Edema, no especificado"
+        },
+        {
+            "id": "292",
+            "icd_description_en": "Left nephrectomy",
+            "icd_description_es": "Nefrectomía izquierda"
+        },
+        {
+            "id": "293",
+            "icd_description_en": "Ligation of inferior mesenteric vein",
+            "icd_description_es": "Ligadura de vena mesentérica inferior"
+        },
+        {
+            "id": "294",
+            "icd_description_en": "Achromia, unspecified",
+            "icd_description_es": "Acolia, no especificada"
+        },
+        {
+            "id": "295",
+            "icd_description_en": "Fever, unspecified",
+            "icd_description_es": "Fiebre, no especificada"
+        },
+        {
+            "id": "296",
+            "icd_description_en": "Dark urine",
+            "icd_description_es": "Coluria"
+        },
+        {
+            "id": "297",
+            "icd_description_en": "Acute myeloid leukemia, unspecified",
+            "icd_description_es": "Leucemia mieloide aguda, no especificada"
+        },
+        {
+            "id": "298",
+            "icd_description_en": "Bilious vomiting",
+            "icd_description_es": "Vómitos biliosos"
+        },
+        {
+            "id": "299",
+            "icd_description_en": "Cough, unspecified",
+            "icd_description_es": "Tos, no especificada"
+        },
+        {
+            "id": "300",
+            "icd_description_en": "Budd-Chiari syndrome",
+            "icd_description_es": "Síndrome de Budd-Chiari"
+        },
+        {
+            "id": "301",
+            "icd_description_en": "Thrombosis of vena cava",
+            "icd_description_es": "Trombo en cava"
+        },
+        {
+            "id": "302",
+            "icd_description_en": "Nausea",
+            "icd_description_es": "Náuseas"
+        },
+        {
+            "id": "303",
+            "icd_description_en": "Abdominal pain, unspecified",
+            "icd_description_es": "Dolor abdominal, no especificado"
+        },
+        {
+            "id": "304",
+            "icd_description_en": "Lipoma, unspecified",
+            "icd_description_es": "Lipoma, no especificado"
+        }
+    ],
+    "S0004-06142008000300015-1": [
+        {
+            "id": "305",
+            "icd_description_en": "Undescended testicle, unilateral",
+            "icd_description_es": "Testículo no descendido, unilateral"
+        },
+        {
+            "id": "306",
+            "icd_description_en": "Hydrocele, unspecified",
+            "icd_description_es": "Hidrocele, no especificado"
+        },
+        {
+            "id": "307",
+            "icd_description_en": "Epididymal cyst",
+            "icd_description_es": "Quiste del epidídimo"
+        },
+        {
+            "id": "308",
+            "icd_description_en": "Neoplasm of uncertain behavior of testis",
+            "icd_description_es": "Neoplasia de comportamiento incierto del testículo"
+        },
+        {
+            "id": "309",
+            "icd_description_en": "Testicular lump, unspecified",
+            "icd_description_es": "Bulto testicular, no especificado"
+        },
+        {
+            "id": "310",
+            "icd_description_en": "Neoplasm of uncertain behavior of testis",
+            "icd_description_es": "Neoplasia de comportamiento incierto del testículo"
+        },
+        {
+            "id": "311",
+            "icd_description_en": "Neoplasm of uncertain behavior of testis",
+            "icd_description_es": "Neoplasia de comportamiento incierto del testículo"
+        },
+        {
+            "id": "312",
+            "icd_description_en": "Injury of unspecified body region",
+            "icd_description_es": "Lesión de región corporal no especificada"
+        }
+    ],
+    "S0004-06142008000400010-1": [
+        {
+            "id": "313",
+            "icd_description_en": "Unspecified eyelid disorder",
+            "icd_description_es": "Trastorno no especificado del párpado"
+        },
+        {
+            "id": "314",
+            "icd_description_en": "Inflammation of eyelid, unspecified",
+            "icd_description_es": "Inflamación del párpado, no especificada"
+        },
+        {
+            "id": "315",
+            "icd_description_en": "Hyperemia of eyelid",
+            "icd_description_es": "Hiperemia del párpado"
+        },
+        {
+            "id": "316",
+            "icd_description_en": "Pleural aspiration",
+            "icd_description_es": "Aspiración pleural"
+        },
+        {
+            "id": "317",
+            "icd_description_en": "Atelectasis, unspecified",
+            "icd_description_es": "Atelectasia, no especificada"
+        },
+        {
+            "id": "318",
+            "icd_description_en": "Hydronephrosis with renal and ureteral calculous obstruction",
+            "icd_description_es": "Hidronefrosis con obstrucción calculosa renal y ureteral"
+        },
+        {
+            "id": "319",
+            "icd_description_en": "Secondary malignant neoplasm of lung",
+            "icd_description_es": "Neoplasia maligna secundaria del pulmón"
+        },
+        {
+            "id": "320",
+            "icd_description_en": "Mediastinal lymph nodes, unspecified",
+            "icd_description_es": "Nódulos linfáticos mediastínicos, no especificados"
+        },
+        {
+            "id": "321",
+            "icd_description_en": "Secondary malignant neoplasm of bone",
+            "icd_description_es": "Neoplasia maligna secundaria del hueso"
+        },
+        {
+            "id": "322",
+            "icd_description_en": "Secondary malignant neoplasm of bone and bone marrow",
+            "icd_description_es": "Neoplasia maligna secundaria del hueso y médula ósea"
+        },
+        {
+            "id": "323",
+            "icd_description_en": "Diplopia",
+            "icd_description_es": "Diplopía"
+        },
+        {
+            "id": "324",
+            "icd_description_en": "Hyperostosis of orbit",
+            "icd_description_es": "Hiperostosis de la órbita"
+        },
+        {
+            "id": "325",
+            "icd_description_en": "Increased frequency of urination",
+            "icd_description_es": "Aumento de la frecuencia de la micción"
+        },
+        {
+            "id": "326",
+            "icd_description_en": "Computed tomography of thorax, abdomen and pelvis",
+            "icd_description_es": "Tomografía computarizada de tórax, abdomen y pelvis"
+        },
+        {
+            "id": "327",
+            "icd_description_en": "Headache",
+            "icd_description_es": "Cefalea"
+        },
+        {
+            "id": "328",
+            "icd_description_en": "Malignant neoplasm of prostate",
+            "icd_description_es": "Neoplasia maligna de la próstata"
+        },
+        {
+            "id": "329",
+            "icd_description_en": "Exophthalmos",
+            "icd_description_es": "Exoftalmos"
+        },
+        {
+            "id": "330",
+            "icd_description_en": "Edema of right eyelid",
+            "icd_description_es": "Edema del párpado derecho"
+        },
+        {
+            "id": "331",
+            "icd_description_en": "Biopsy of prostate",
+            "icd_description_es": "Biopsia de próstata"
+        },
+        {
+            "id": "332",
+            "icd_description_en": "Nocturia",
+            "icd_description_es": "Nicturia"
+        },
+        {
+            "id": "333",
+            "icd_description_en": "Renal insufficiency, unspecified",
+            "icd_description_es": "Insuficiencia renal, no especificada"
+        },
+        {
+            "id": "334",
+            "icd_description_en": "Dyspnea",
+            "icd_description_es": "Disnea"
+        },
+        {
+            "id": "335",
+            "icd_description_en": "Palliative care",
+            "icd_description_es": "Cuidados paliativos"
+        },
+        {
+            "id": "336",
+            "icd_description_en": "Bladder irrigation",
+            "icd_description_es": "Lavado vesical"
+        },
+        {
+            "id": "337",
+            "icd_description_en": "Nerve block",
+            "icd_description_es": "Bloqueo nervioso"
+        },
+        {
+            "id": "338",
+            "icd_description_en": "Nerve block",
+            "icd_description_es": "Bloqueo nervioso"
+        },
+        {
+            "id": "339",
+            "icd_description_en": "Bone lesions",
+            "icd_description_es": "Lesiones óseas"
+        },
+        {
+            "id": "340",
+            "icd_description_en": "Right pleural effusion",
+            "icd_description_es": "Derrame pleural derecho"
+        },
+        {
+            "id": "341",
+            "icd_description_en": "Prostatic adenocarcinoma",
+            "icd_description_es": "Adenocarcinoma prostático"
+        },
+        {
+            "id": "342",
+            "icd_description_en": "Prostate adenocarcinoma",
+            "icd_description_es": "Adenocarcinoma de próstata"
+        },
+        {
+            "id": "343",
+            "icd_description_en": "Bone scan with Tc99m",
+            "icd_description_es": "Rastreo óseo con Tc99m"
+        },
+        {
+            "id": "344",
+            "icd_description_en": "Bone metastases",
+            "icd_description_es": "Metástasis óseas"
+        },
+        {
+            "id": "345",
+            "icd_description_en": "Orbital CT scan",
+            "icd_description_es": "TAC orbitario"
+        },
+        {
+            "id": "346",
+            "icd_description_en": "Transurethral resection of bladder",
+            "icd_description_es": "Resección transuretral de la vejiga"
+        },
+        {
+            "id": "347",
+            "icd_description_en": "Diplopia",
+            "icd_description_es": "Diplopía"
+        },
+        {
+            "id": "348",
+            "icd_description_en": "Hematuria, unspecified",
+            "icd_description_es": "Hematuria, no especificada"
+        },
+        {
+            "id": "349",
+            "icd_description_en": "Malignant neoplasm of prostate",
+            "icd_description_es": "Neoplasia maligna de la próstata"
+        },
+        {
+            "id": "350",
+            "icd_description_en": "Meningioma",
+            "icd_description_es": "Meningioma"
+        },
+        {
+            "id": "351",
+            "icd_description_en": "Swelling, mass, or lump in head and neck",
+            "icd_description_es": "Hinchazón, masa o bulto en la cabeza y el cuello"
+        }
+    ],
+    "S0004-06142008000500009-1": [
+        {
+            "id": "352",
+            "icd_description_en": "Computed tomography of right kidney",
+            "icd_description_es": "Tomografía computarizada del riñón derecho"
+        },
+        {
+            "id": "353",
+            "icd_description_en": "Bilateral salpingo-oophorectomy",
+            "icd_description_es": "Anexectomía bilateral"
+        },
+        {
+            "id": "354",
+            "icd_description_en": "Intravenous urography of right kidney",
+            "icd_description_es": "Urografía intravenosa del riñón derecho"
+        },
+        {
+            "id": "355",
+            "icd_description_en": "Intravenous urography",
+            "icd_description_es": "Urografía intravenosa"
+        },
+        {
+            "id": "356",
+            "icd_description_en": "Urinoma",
+            "icd_description_es": "Urinoma"
+        },
+        {
+            "id": "357",
+            "icd_description_en": "Endometriosis, unspecified",
+            "icd_description_es": "Endometriosis, no especificada"
+        },
+        {
+            "id": "358",
+            "icd_description_en": "Intravenous urography of right kidney",
+            "icd_description_es": "Urografía intravenosa del riñón derecho"
+        },
+        {
+            "id": "359",
+            "icd_description_en": "Bilateral salpingo-oophorectomy",
+            "icd_description_es": "Anexectomía bilateral"
+        },
+        {
+            "id": "360",
+            "icd_description_en": "Pain in right iliac region",
+            "icd_description_es": "Dolor en la región ilíaca derecha"
+        },
+        {
+            "id": "361",
+            "icd_description_en": "Ureterolysis of right ureter",
+            "icd_description_es": "Ureterolisis del uréter derecho"
+        },
+        {
+            "id": "362",
+            "icd_description_en": "Urinoma",
+            "icd_description_es": "Urinoma"
+        },
+        {
+            "id": "363",
+            "icd_description_en": "Abdominal hysterectomy",
+            "icd_description_es": "Histerectomía abdominal"
+        },
+        {
+            "id": "364",
+            "icd_description_en": "Endometriosis of ovary",
+            "icd_description_es": "Endometriosis ovárica"
+        },
+        {
+            "id": "365",
+            "icd_description_en": "Endometriosis, unspecified",
+            "icd_description_es": "Endometriosis, no especificada"
+        },
+        {
+            "id": "366",
+            "icd_description_en": "Abdominal ultrasound",
+            "icd_description_es": "Ecografía abdominal"
+        },
+        {
+            "id": "367",
+            "icd_description_en": "Pain in lumbar region",
+            "icd_description_es": "Dolor en la región lumbar"
+        },
+        {
+            "id": "368",
+            "icd_description_en": "Pain in lumbar region",
+            "icd_description_es": "Dolor en la región lumbar"
+        },
+        {
+            "id": "369",
+            "icd_description_en": "Pain in lumbar region",
+            "icd_description_es": "Dolor en la región lumbar"
+        },
+        {
+            "id": "370",
+            "icd_description_en": "Intravenous urography",
+            "icd_description_es": "Urografía intravenosa"
+        },
+        {
+            "id": "371",
+            "icd_description_en": "Computerized axial tomography of right kidney",
+            "icd_description_es": "Tomografía axial computarizada del riñón derecho"
+        },
+        {
+            "id": "372",
+            "icd_description_en": "Intravenous urography",
+            "icd_description_es": "Urografía intravenosa"
+        }
+    ],
+    "S0004-06142008000600014-1": [
+        {
+            "id": "373",
+            "icd_description_en": "Biopsy of testis, percutaneous, needle",
+            "icd_description_es": "Biopsia de testículo, percutánea, aguja"
+        },
+        {
+            "id": "374",
+            "icd_description_en": "Pain in left testicle",
+            "icd_description_es": "Dolor en el testículo izquierdo"
+        },
+        {
+            "id": "375",
+            "icd_description_en": "Malignant neoplasm of testis, unspecified",
+            "icd_description_es": "Neoplasia maligna del testículo, no especificada"
+        },
+        {
+            "id": "376",
+            "icd_description_en": "Ligation of spermatic cord, not otherwise specified",
+            "icd_description_es": "Ligadura del cordón espermático, no especificada de otra manera"
+        },
+        {
+            "id": "377",
+            "icd_description_en": "Orchiectomy, simple, left",
+            "icd_description_es": "Orquiectomía, simple, izquierda"
+        },
+        {
+            "id": "378",
+            "icd_description_en": "Computed tomography of abdomen and pelvis",
+            "icd_description_es": "Tomografía computarizada de abdomen y pelvis"
+        },
+        {
+            "id": "379",
+            "icd_description_en": "Malignant neoplasm of testis, unspecified",
+            "icd_description_es": "Neoplasia maligna del testículo, no especificada"
+        },
+        {
+            "id": "380",
+            "icd_description_en": "Pain in left testicle",
+            "icd_description_es": "Dolor en el testículo izquierdo"
+        },
+        {
+            "id": "381",
+            "icd_description_en": "Nodular lesion on testis",
+            "icd_description_es": "Lesión nodular en el testículo"
+        },
+        {
+            "id": "382",
+            "icd_description_en": "Malignant neoplasm of testis, bilateral",
+            "icd_description_es": "Neoplasia maligna del testículo, bilateral"
+        },
+        {
+            "id": "383",
+            "icd_description_en": "Neoplasm of uncertain behavior of testis",
+            "icd_description_es": "Neoplasia de comportamiento incierto del testículo"
+        },
+        {
+            "id": "384",
+            "icd_description_en": "High ligation of left spermatic cord",
+            "icd_description_es": "Ligadura alta del cordón espermático izquierdo"
+        },
+        {
+            "id": "385",
+            "icd_description_en": "Nodular lesion in left testicle",
+            "icd_description_es": "Lesión nodular en el testículo izquierdo"
+        },
+        {
+            "id": "386",
+            "icd_description_en": "Right testicle seminoma",
+            "icd_description_es": "Seminoma de testículo derecho"
+        },
+        {
+            "id": "387",
+            "icd_description_en": "Inflammation of left testicle",
+            "icd_description_es": "Inflamación del testículo izquierdo"
+        },
+        {
+            "id": "388",
+            "icd_description_en": "Left testicular inflammation",
+            "icd_description_es": "Inflamación testicular izquierda"
+        },
+        {
+            "id": "389",
+            "icd_description_en": "Testicular ultrasound",
+            "icd_description_es": "Ecografía testicular"
+        },
+        {
+            "id": "390",
+            "icd_description_en": "Right inguinal orchiectomy",
+            "icd_description_es": "Orquiectomía inguinal derecha"
+        },
+        {
+            "id": "391",
+            "icd_description_en": "Pain",
+            "icd_description_es": "Dolor"
+        },
+        {
+            "id": "392",
+            "icd_description_en": "Painful right testicle",
+            "icd_description_es": "Testículo derecho doloroso"
+        },
+        {
+            "id": "393",
+            "icd_description_en": "Right testicle tumor",
+            "icd_description_es": "Tumoración de testículo derecho"
+        },
+        {
+            "id": "394",
+            "icd_description_en": "Solid nodular lesions in right testicle",
+            "icd_description_es": "Lesiones nodulares sólidas en testículo derecho"
+        },
+        {
+            "id": "395",
+            "icd_description_en": "Fever, unspecified",
+            "icd_description_es": "Fiebre no especificada"
+        },
+        {
+            "id": "396",
+            "icd_description_en": "Pain in left testicle",
+            "icd_description_es": "Dolor en el testículo izquierdo"
+        }
+    ],
+    "S0004-06142008000700003-1": [
+        {
+            "id": "397",
+            "icd_description_en": "Recurrent urinary tract infections",
+            "icd_description_es": "Infecciones recurrentes del tracto urinario"
+        },
+        {
+            "id": "398",
+            "icd_description_en": "Removal of foreign body from bladder",
+            "icd_description_es": "Extracción de cuerpo extraño de la vejiga"
+        },
+        {
+            "id": "399",
+            "icd_description_en": "Diabetes mellitus",
+            "icd_description_es": "Diabetes mellitus"
+        },
+        {
+            "id": "400",
+            "icd_description_en": "Bladder stone",
+            "icd_description_es": "Litiasis vesical"
+        },
+        {
+            "id": "401",
+            "icd_description_en": "Uterine prolapse",
+            "icd_description_es": "Prolapso uterino"
+        },
+        {
+            "id": "402",
+            "icd_description_en": "Fever",
+            "icd_description_es": "Fiebre"
+        },
+        {
+            "id": "403",
+            "icd_description_en": "Urethrocystoscopy",
+            "icd_description_es": "Uretrocistoscopia"
+        },
+        {
+            "id": "404",
+            "icd_description_en": "Lower abdominal pain",
+            "icd_description_es": "Dolor en el bajo vientre"
+        },
+        {
+            "id": "405",
+            "icd_description_en": "Pelvic computed tomography",
+            "icd_description_es": "Tomografía computarizada pélvica"
+        },
+        {
+            "id": "406",
+            "icd_description_en": "Bladder X-ray",
+            "icd_description_es": "Radiografía de la vejiga"
+        },
+        {
+            "id": "407",
+            "icd_description_en": "Vaginal hysterectomy",
+            "icd_description_es": "Histerectomía vaginal"
+        },
+        {
+            "id": "408",
+            "icd_description_en": "Recurrent urinary tract infection",
+            "icd_description_es": "Infección recurrente del tracto urinario"
+        },
+        {
+            "id": "409",
+            "icd_description_en": "Recurrent urinary tract infections",
+            "icd_description_es": "Infecciones recurrentes del tracto urinario"
+        },
+        {
+            "id": "410",
+            "icd_description_en": "Pain, unspecified",
+            "icd_description_es": "Dolor, no especificado"
+        },
+        {
+            "id": "411",
+            "icd_description_en": "Pain, unspecified",
+            "icd_description_es": "Dolor, no especificado"
+        },
+        {
+            "id": "412",
+            "icd_description_en": "Abscess, unspecified",
+            "icd_description_es": "Absceso, no especificado"
+        },
+        {
+            "id": "413",
+            "icd_description_en": "Abscess, unspecified",
+            "icd_description_es": "Absceso, no especificado"
+        },
+        {
+            "id": "414",
+            "icd_description_en": "Abscess of vagina",
+            "icd_description_es": "Absceso de la vagina"
+        },
+        {
+            "id": "415",
+            "icd_description_en": "Foreign body in bladder, unspecified",
+            "icd_description_es": "Cuerpo extraño en la vejiga, no especificado"
+        },
+        {
+            "id": "416",
+            "icd_description_en": "Abscess of vagina",
+            "icd_description_es": "Absceso de la vagina"
+        },
+        {
+            "id": "417",
+            "icd_description_en": "Essential (primary) hypertension",
+            "icd_description_es": "Hipertensión esencial (primaria)"
+        },
+        {
+            "id": "418",
+            "icd_description_en": "Bladder examination (procedure)",
+            "icd_description_es": "Examen de la vejiga (procedimiento)"
+        },
+        {
+            "id": "419",
+            "icd_description_en": "Urinary tract infection, site not specified",
+            "icd_description_es": "Infección del tracto urinario, sitio no especificado"
+        },
+        {
+            "id": "420",
+            "icd_description_en": "Plain radiography of urinary system",
+            "icd_description_es": "Radiografía simple del sistema urinario"
+        },
+        {
+            "id": "421",
+            "icd_description_en": "Bladder stone",
+            "icd_description_es": "Litiasis vesical"
+        },
+        {
+            "id": "422",
+            "icd_description_en": "Ultrasound of bladder",
+            "icd_description_es": "Ecografía de vejiga"
+        },
+        {
+            "id": "423",
+            "icd_description_en": "Recurrent urinary tract infection",
+            "icd_description_es": "Infecciones urinarias de repetición"
+        },
+        {
+            "id": "424",
+            "icd_description_en": "Ultrasound of bladder",
+            "icd_description_es": "Ecografía de vejiga"
+        },
+        {
+            "id": "425",
+            "icd_description_en": "Bladder stone",
+            "icd_description_es": "Litiasis vesical"
+        },
+        {
+            "id": "426",
+            "icd_description_en": "Urinary tract infection, site not specified",
+            "icd_description_es": "Infección del tracto urinario, sitio no especificado"
+        },
+        {
+            "id": "427",
+            "icd_description_en": "Plain radiography of urinary system",
+            "icd_description_es": "Radiografía simple del sistema urinario"
+        },
+        {
+            "id": "428",
+            "icd_description_en": "Hematuria, unspecified",
+            "icd_description_es": "Hematuria, no especificada"
+        },
+        {
+            "id": "429",
+            "icd_description_en": "Urinary tract infection, site not specified",
+            "icd_description_es": "Infección del tracto urinario, sitio no especificado"
+        },
+        {
+            "id": "430",
+            "icd_description_en": "Urinary tract infection, site not specified",
+            "icd_description_es": "Infección del tracto urinario, sitio no especificado"
+        },
+        {
+            "id": "431",
+            "icd_description_en": "Recurrent urinary tract infection",
+            "icd_description_es": "Infección recurrente del tracto urinario"
+        },
+        {
+            "id": "432",
+            "icd_description_en": "Cystotomy",
+            "icd_description_es": "Cistotomía"
+        },
+        {
+            "id": "433",
+            "icd_description_en": "Cystolithotomy",
+            "icd_description_es": "Cistolitotomía"
+        },
+        {
+            "id": "434",
+            "icd_description_en": "Urinary tract infection, site not specified",
+            "icd_description_es": "Infección del tracto urinario, sitio no especificado"
+        },
+        {
+            "id": "435",
+            "icd_description_en": "Foreign body in genitourinary tract, part not specified",
+            "icd_description_es": "Cuerpo extraño en el tracto genitourinario, parte no especificada"
+        },
+        {
+            "id": "436",
+            "icd_description_en": "Foreign body in genitourinary tract, part not specified",
+            "icd_description_es": "Cuerpo extraño en el tracto genitourinario, parte no especificada"
+        },
+        {
+            "id": "437",
+            "icd_description_en": "Hysterectomy, not otherwise specified",
+            "icd_description_es": "Histerectomía, no especificada de otra manera"
+        }
+    ],
+    "S0004-06142009000100009-1": [
+        {
+            "id": "438",
+            "icd_description_en": "Pain, unspecified",
+            "icd_description_es": "Dolor, no especificado"
+        },
+        {
+            "id": "439",
+            "icd_description_en": "Neoplasm of uncertain behavior of other and unspecified male genital organs",
+            "icd_description_es": "Neoplasia de comportamiento incierto de otros órganos genitales masculinos y los no especificados"
+        },
+        {
+            "id": "440",
+            "icd_description_en": "Hydrocele and spermatocele",
+            "icd_description_es": "Hidrocele y espermatocele"
+        },
+        {
+            "id": "441",
+            "icd_description_en": "Injury of unspecified body region",
+            "icd_description_es": "Lesión de región del cuerpo no especificada"
+        },
+        {
+            "id": "442",
+            "icd_description_en": "Hydrocele and spermatocele",
+            "icd_description_es": "Hidrocele y espermatocele"
+        },
+        {
+            "id": "443",
+            "icd_description_en": "Testicular hypofunction",
+            "icd_description_es": "Hipofunción testicular"
+        },
+        {
+            "id": "444",
+            "icd_description_en": "Computerized axial tomography of abdomen",
+            "icd_description_es": "Tomografía axial computarizada del abdomen"
+        },
+        {
+            "id": "445",
+            "icd_description_en": "Injury of scrotum and testes",
+            "icd_description_es": "Lesión del escroto y testículos"
+        },
+        {
+            "id": "446",
+            "icd_description_en": "Neoplasm of uncertain behavior of other and unspecified male genital organs",
+            "icd_description_es": "Neoplasia de comportamiento incierto de otros órganos genitales masculinos y los no especificados"
+        },
+        {
+            "id": "447",
+            "icd_description_en": "Enlargement of lymph nodes",
+            "icd_description_es": "Agrandamiento de los ganglios linfáticos"
+        },
+        {
+            "id": "448",
+            "icd_description_en": "Ultrasonography of scrotum and contents",
+            "icd_description_es": "Ultrasonografía del escroto y su contenido"
+        },
+        {
+            "id": "449",
+            "icd_description_en": "Enlargement of right hemiscrotum",
+            "icd_description_es": "Aumento del tamaño del hemiescroto derecho"
+        },
+        {
+            "id": "450",
+            "icd_description_en": "Right hydrocele",
+            "icd_description_es": "Hidrocele derecho"
+        },
+        {
+            "id": "451",
+            "icd_description_en": "Polyorchidism",
+            "icd_description_es": "Poliorquidismo"
+        },
+        {
+            "id": "452",
+            "icd_description_en": "Hydrocele, unspecified",
+            "icd_description_es": "Hidrocele, no especificado"
+        },
+        {
+            "id": "453",
+            "icd_description_en": "Exploratory scrototomy",
+            "icd_description_es": "Escrototomía exploratoria"
+        },
+        {
+            "id": "454",
+            "icd_description_en": "Testicular discomfort",
+            "icd_description_es": "Molestias testiculares"
+        }
+    ],
+    "S0004-06142009000100010-3": [
+        {
+            "id": "455",
+            "icd_description_en": "Malignant neoplasm of right kidney, except renal pelvis",
+            "icd_description_es": "Neoplasia maligna del riñón derecho, excepto la pelvis renal"
+        },
+        {
+            "id": "456",
+            "icd_description_en": "Varicose veins of unspecified site",
+            "icd_description_es": "Varices de sitio no especificado"
+        },
+        {
+            "id": "457",
+            "icd_description_en": "Low back pain",
+            "icd_description_es": "Dolor en la parte baja de la espalda"
+        },
+        {
+            "id": "458",
+            "icd_description_en": "Cyst of kidney, unspecified",
+            "icd_description_es": "Quiste del riñón, no especificado"
+        },
+        {
+            "id": "459",
+            "icd_description_en": "Echinococcus granulosus infection of liver",
+            "icd_description_es": "Infección de hígado por Echinococcus granulosus"
+        },
+        {
+            "id": "460",
+            "icd_description_en": "Long term (current) use of non-steroidal anti-inflammatories (NSAID)",
+            "icd_description_es": "Uso a largo plazo (actual) de antiinflamatorios no esteroides (AINE)"
+        },
+        {
+            "id": "461",
+            "icd_description_en": "Diagnostic imaging of abdomen",
+            "icd_description_es": "Imagen diagnóstica del abdomen"
+        },
+        {
+            "id": "462",
+            "icd_description_en": "Computed tomography (CT) scan of abdomen",
+            "icd_description_es": "Tomografía computarizada (TC) del abdomen"
+        },
+        {
+            "id": "463",
+            "icd_description_en": "Echinococcus granulosus infection of right kidney",
+            "icd_description_es": "Infección de riñón derecho por Echinococcus granulosus"
+        },
+        {
+            "id": "464",
+            "icd_description_en": "Major depressive disorder, single episode, unspecified",
+            "icd_description_es": "Trastorno depresivo mayor, episodio único, no especificado"
+        },
+        {
+            "id": "465",
+            "icd_description_en": "Cyst of right kidney, unspecified",
+            "icd_description_es": "Quiste del riñón derecho, no especificado"
+        },
+        {
+            "id": "466",
+            "icd_description_en": "Right nephrectomy",
+            "icd_description_es": "Nefrectomía derecha"
+        },
+        {
+            "id": "467",
+            "icd_description_en": "Regional lymphadenopathy",
+            "icd_description_es": "Adenopatías regionales"
+        },
+        {
+            "id": "468",
+            "icd_description_en": "Right kidney tumor",
+            "icd_description_es": "Tumoración de riñón derecho"
+        },
+        {
+            "id": "469",
+            "icd_description_en": "Right kidney tumor",
+            "icd_description_es": "Tumoración de riñón derecho"
+        },
+        {
+            "id": "470",
+            "icd_description_en": "Hydatid cyst of kidney",
+            "icd_description_es": "Quiste hidatídico de riñón"
+        },
+        {
+            "id": "471",
+            "icd_description_en": "Hydatid disease",
+            "icd_description_es": "Hidatidosis"
+        }
+    ],
+    "S0004-06142009000100014-1": [
+        {
+            "id": "472",
+            "icd_description_en": "Urinary urgency",
+            "icd_description_es": "Urgencia miccional"
+        },
+        {
+            "id": "473",
+            "icd_description_en": "Frequent urination",
+            "icd_description_es": "Polaquiuria"
+        },
+        {
+            "id": "474",
+            "icd_description_en": "Bone pain",
+            "icd_description_es": "Dolores óseos"
+        },
+        {
+            "id": "475",
+            "icd_description_en": "Prostate biopsy",
+            "icd_description_es": "Biopsia prostática"
+        },
+        {
+            "id": "476",
+            "icd_description_en": "Metastatic bone disease",
+            "icd_description_es": "Afectación ósea metastásica"
+        },
+        {
+            "id": "477",
+            "icd_description_en": "Magnetic resonance imaging of pelvis",
+            "icd_description_es": "RNM pelvis ósea"
+        },
+        {
+            "id": "478",
+            "icd_description_en": "Retroperitoneal lymph node metastases",
+            "icd_description_es": "Metástasis ganglionares retroperitoneales"
+        },
+        {
+            "id": "479",
+            "icd_description_en": "Generalized bone pain",
+            "icd_description_es": "Dolores óseos generalizados"
+        },
+        {
+            "id": "480",
+            "icd_description_en": "Protrusion of left eyeball",
+            "icd_description_es": "Protrusión del globo ocular izquierdo"
+        },
+        {
+            "id": "481",
+            "icd_description_en": "Palliative care",
+            "icd_description_es": "Cuidado paliativo"
+        },
+        {
+            "id": "482",
+            "icd_description_en": "Drooping of the upper eyelid",
+            "icd_description_es": "Ptosis palpebral"
+        },
+        {
+            "id": "483",
+            "icd_description_en": "Proptosis, unspecified",
+            "icd_description_es": "Proptosis, no especificada"
+        },
+        {
+            "id": "484",
+            "icd_description_en": "Secondary malignant neoplasm of bone and bone marrow",
+            "icd_description_es": "Neoplasia maligna secundaria de hueso y médula ósea"
+        },
+        {
+            "id": "485",
+            "icd_description_en": "Transrectal ultrasound of prostate",
+            "icd_description_es": "Ecografía transrectal de próstata"
+        },
+        {
+            "id": "486",
+            "icd_description_en": "Magnetic resonance imaging of orbit",
+            "icd_description_es": "Imagen por resonancia magnética de la órbita"
+        },
+        {
+            "id": "487",
+            "icd_description_en": "Secondary malignant neoplasm of bone marrow",
+            "icd_description_es": "Neoplasia maligna secundaria de la médula ósea"
+        },
+        {
+            "id": "488",
+            "icd_description_en": "Elevated prostate specific antigen [PSA]",
+            "icd_description_es": "Antígeno prostático específico elevado [PSA]"
+        },
+        {
+            "id": "489",
+            "icd_description_en": "Pain, unspecified",
+            "icd_description_es": "Dolor, no especificado"
+        },
+        {
+            "id": "490",
+            "icd_description_en": "Pain, unspecified",
+            "icd_description_es": "Dolor, no especificado"
+        },
+        {
+            "id": "491",
+            "icd_description_en": "Mydriasis",
+            "icd_description_es": "Midriasis"
+        },
+        {
+            "id": "492",
+            "icd_description_en": "Androgen deprivation therapy",
+            "icd_description_es": "Terapia de privación de andrógenos"
+        },
+        {
+            "id": "493",
+            "icd_description_en": "Magnetic resonance imaging of neck",
+            "icd_description_es": "Imagen por resonancia magnética del cuello"
+        },
+        {
+            "id": "494",
+            "icd_description_en": "Radiation of dorsolumbar vertebrae with 30 Gy",
+            "icd_description_es": "Irradiación de las vértebras dorsolumbares con 30 Gy"
+        },
+        {
+            "id": "495",
+            "icd_description_en": "Proptosis of eyeball",
+            "icd_description_es": "Proptosis del globo ocular"
+        },
+        {
+            "id": "496",
+            "icd_description_en": "Palliative care",
+            "icd_description_es": "Cuidado paliativo"
+        },
+        {
+            "id": "497",
+            "icd_description_en": "Prostate adenocarcinoma",
+            "icd_description_es": "Adenocarcinoma de próstata"
+        },
+        {
+            "id": "498",
+            "icd_description_en": "Progressive rise of PSA",
+            "icd_description_es": "Ascenso progresivo del PSA"
+        }
+    ],
+    "S0004-06142009000300014-1": [
+        {
+            "id": "499",
+            "icd_description_en": "Pain, unspecified",
+            "icd_description_es": "Dolor, no especificado"
+        },
+        {
+            "id": "500",
+            "icd_description_en": "Lipoma of spermatic cord",
+            "icd_description_es": "Lipoma del cordón espermático"
+        },
+        {
+            "id": "501",
+            "icd_description_en": "Neoplasm of uncertain behavior of male genital organs",
+            "icd_description_es": "Neoplasia de comportamiento incierto de los órganos genitales masculinos"
+        },
+        {
+            "id": "502",
+            "icd_description_en": "Orchidectomy, not otherwise specified",
+            "icd_description_es": "Orquiectomía, no especificada de otra manera"
+        },
+        {
+            "id": "503",
+            "icd_description_en": "Neoplasm of uncertain behavior of testis",
+            "icd_description_es": "Neoplasia de comportamiento incierto del testículo"
+        },
+        {
+            "id": "504",
+            "icd_description_en": "Neoplasm of uncertain behavior of testis",
+            "icd_description_es": "Neoplasia de comportamiento incierto del testículo"
+        },
+        {
+            "id": "505",
+            "icd_description_en": "Ultrasonography of scrotum and contents",
+            "icd_description_es": "Ultrasonografía del escroto y su contenido"
+        },
+        {
+            "id": "506",
+            "icd_description_en": "Lipoma of spermatic cord",
+            "icd_description_es": "Lipoma del cordón espermático"
+        }
+    ]
+}
