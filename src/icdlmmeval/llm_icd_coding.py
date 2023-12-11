@@ -1,8 +1,10 @@
 from .embedding_lookup import EmbeddingLookup
 from .icd_prompts import IcdPrompts
 from icdlmmeval import ner_parsing
+import json
 
 import logging
+from icdlmmeval.codiesp.codiformat import CodiFormat
 
 class LLMIcdCoding():
 
@@ -109,3 +111,44 @@ class LLMIcdCoding():
         # code_gpt = self.icd_prompts.select_code(item=item, examples=examples_ranking)
         return code_gpt
 
+
+    def predict_code_from_description(self, file_name, description, code_type):
+        icd_phrase = description["icd_phrase"]
+        if description["icd_description_es"]:
+            substring = description["icd_description_es"]
+        else:
+            substring = description["icd_phrase"]
+        
+        if code_type is CodiFormat.DIAGNOSTICO:
+            embedding_description_hits = self.embedding_lookup.docs_to_json(self.embedding_lookup.search_diagnose(substring=substring))
+        else:
+            embedding_description_hits = self.embedding_lookup.docs_to_json(self.embedding_lookup.search_procedure(substring=substring))
+
+        clean_item = {}
+        clean_item['icd_phrase'] = icd_phrase
+        clean_item['context'] = description["context"]
+        clean_item['hits'] = embedding_description_hits
+        
+        code_result = {}
+        code_result["file"] = file_name
+        code_result["description"] = json.dumps(description, ensure_ascii=False)
+        code_result["hits"] = embedding_description_hits
+        code_result["type"] = code_type
+        code_result['icd_phrase'] = icd_phrase
+        try:
+            select_response = self.icd_prompts.select_code(clean_item)
+            code_result["offsets"] = ner_parsing.find_icd_phrase_offsets(description)
+            code_result["code_listed"] = select_response["code_listed"]
+            code_result["code_suggestion"] = select_response["code_suggestion"]
+            code_result["listed"] = select_response["listed"]
+            code_result["reasoning"] = select_response["reasoning"]
+            code_result["code_assigned"] = select_response["code_assigned"] 
+            code_result["confidence"] = select_response["confidence"] 
+        except Exception as e:
+            code_result["offsets"] = "error"
+            code_result["code"] = "error"
+            code_result["code_suggestion"] = "error"
+            code_result["listed"] = "error"
+            code_result["reasoning"] = str(e)
+            code_result["confidence"] = "error"
+        return code_result

@@ -10,6 +10,12 @@ import json
 import tiktoken
 
 
+FORMAT = '%(asctime)s %(message)s'
+
+logging.basicConfig(filename='/home/jovyan/work/icdllmeval/notebooks/prompts.log', encoding='utf-8', level=logging.INFO, filemode='w', format=FORMAT)
+logging.info('test')
+
+
     # main_term: str = Field(description="translate the 'original phrase' to the standardized 'main term' to locate the medical code in the alphabetic icd-index")
 
 
@@ -20,14 +26,16 @@ class IcdItem(BaseModel):
     icd_code_description: str = Field(description="ICD code description")
     icd_code_description_es: str = Field(description="Translated ICD code description in Spanish")
 
+# PROMPT 1&2 object
 class IcdItemNer(BaseModel):
-    id: str = Field(description="id of main tag")
-    main_term: str = Field(description="main term extracted by NER")
-    offsets: str = Field(description="main term offsets in src txt")
-    context: str = Field(description="main term within its context")
-    icd_phrase: str = Field(description="substring containing all additional descriptives of the main term")
-    icd_description_en: str = Field(description="ICD code description")
-    icd_description_es: str = Field(description="Translated ICD code description in Spanish")
+
+    id: str = Field(description="Unique identifier for the main tag.")
+    main_term: str = Field(description="ICD primary/main/lead term identified by NER in the text.")
+    offsets: str = Field(description="Character positions in the source text indicating the start and end of the main term.")
+    context: str = Field(description="A snippet of text providing context around the main term.")
+    icd_phrase: str = Field(description="A string capturing the main term along with its pertinent descriptive elements, offering concise textual evidence for the ICD code, without including entire sentences.")
+    icd_description_en: str = Field(description="Most specific ICD-10 code description in English.")
+    icd_description_es: str = Field(description="Most specific ICD-10 code description in Spanish.")
 
 class IcdList(BaseModel):
     procedures: List[IcdItem] = Field(description="list of icd diagnose items")
@@ -130,16 +138,33 @@ class IcdPrompts():
         json_substrings = self.output_parser_substrings.parse(output.content)
         return json_substrings
 
-
+    # PROMPT 3
     def select_code(self, item):
 
         format_instructions = self.output_parser_select.get_format_instructions()
-        coding_instructions = "Manditory, assign the best ICD-10 code for the icd_phrase from the listed hits. Optional, provide a code suggestion in the json field 'code_suggestion' if the code is not listed, always follow the format instructions."
-        behaviour_instructions = "You are an expert in medical ICD coding, teaching peers the highest level of coding possible."
-        system_message_prompt = SystemMessagePromptTemplate.from_template("{behaviour_instructions} {coding_instructions} {format_instructions}\n")
-        # example_human = HumanMessagePromptTemplate.from_template("{question}", additional_kwargs={"name": "example_user"})
-        # example_ai = AIMessagePromptTemplate.from_template("{answer}", additional_kwargs={"name": "example_assistant"})
-        human_message_prompt = HumanMessagePromptTemplate.from_template("item: {item}. If you think the correct code is not in the list, provide your best code suggestion, always follow the format instructions.")
+        # coding_instructions = "Your task is to determine the most specific and exact ICD-10 code that aligns directly with the provided icd_phrase. While the 'context' field offers additional information, your primary focus should be on pinpointing the code that most accurately and specifically represents the icd_phrase itself. In cases where the ideal code is not listed, please provide a precise alternative in the 'code_suggestion' field, ensuring compliance with the format instructions."
+        # behaviour_instructions = "You are an expert in medical ICD coding, teaching peers the highest level of coding possible."
+        # system_message_prompt = SystemMessagePromptTemplate.from_template("{behaviour_instructions} {coding_instructions} {format_instructions}\n")
+        # human_message_prompt = HumanMessagePromptTemplate.from_template("item: {item}. If you think the correct code is not in the list, provide your best code suggestion, always follow the format instructions.")
+
+        behaviour_instructions = (
+            "You are an expert in medical ICD coding, responsible for teaching peers the highest level "
+            "of coding accuracy and specificity."
+        )
+        coding_instructions = (
+            "Your primary task is to identify the most specific and exact ICD-10 code that aligns "
+            "directly with the provided icd_phrase. Use the additional information in the 'context' field "
+            "to better understand the scenario, but ensure your code selection precisely matches the icd_phrase."
+        )
+
+        system_message_prompt = SystemMessagePromptTemplate.from_template(
+            "{behaviour_instructions} {coding_instructions} {format_instructions}\n"
+        )
+        human_message_prompt = HumanMessagePromptTemplate.from_template(
+            "Consider this item: {item}. Should the correct code not be in the list, kindly provide your best "
+            "code suggestion, following the format instructions meticulously."
+        )
+
 
         chat_prompt = ChatPromptTemplate(
             # messages=[system_message_prompt, example_human, example_ai, human_message_prompt], 
@@ -264,19 +289,22 @@ class IcdPrompts():
             logging.error(e)            
         return json_substrings
     
-    # prompt-1 and 2
+    # prompt-1 and 2 as used on test set
     def prompt_icd_code_description_from_main_terms(self, example, main_terms):
 
         # Set up a parser + inject instructions into the prompt template.
         parser = PydanticOutputParser(pydantic_object=IcdListNer)
 
         format_instructions = parser.get_format_instructions()
-        behaviour_instructions = "You are an expert in medical ICD coding, teaching peers the highest level of coding possible."
-        system_message_prompt = SystemMessagePromptTemplate.from_template("{behaviour_instructions} {format_instructions}\n")
-        example_human = HumanMessagePromptTemplate.from_template("{question}", additional_kwargs={"name": "example_user"})
-        example_ai = AIMessagePromptTemplate.from_template("{answer}", additional_kwargs={"name": "example_assistant"})
-
-        human_message_prompt = HumanMessagePromptTemplate.from_template("For each item in the lists, provide the additional information as shown in the example above. The list '{main_terms}', use {format_instructions} in markdown!")
+        behaviour_instructions = (
+            "You are an expert in medical ICD coding, responsible for teaching peers the highest level "
+            "of coding accuracy and specificity."
+        )
+        
+        system_message_prompt = SystemMessagePromptTemplate.from_template("{behaviour_instructions}\n")
+        example_human = HumanMessagePromptTemplate.from_template("{question}", additional_kwargs={})
+        example_ai = AIMessagePromptTemplate.from_template("{answer}", additional_kwargs={})
+        human_message_prompt = HumanMessagePromptTemplate.from_template("For each tag main in the HTML, provide the additional information as shown in the example above. The HTML '{main_terms}', {format_instructions} in markdown!")
 
         chat_prompt = ChatPromptTemplate(
             messages=[system_message_prompt, example_human, example_ai, human_message_prompt], 

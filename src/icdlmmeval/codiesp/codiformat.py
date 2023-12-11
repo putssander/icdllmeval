@@ -6,6 +6,8 @@ from icdlmmeval import util_text
 
 import re
 import configparser
+import os
+
 
 DIAGNOSTICO = "DIAGNOSTICO"
 PROCEDIMIENTO = "PROCEDIMIENTO"
@@ -16,16 +18,16 @@ class CodiFormat:
     header_X = ["FILE","TYPE", "CODE", "SUBSTRING", "OFFSETS"]
     header_X_eval = ["FILE", "OFFSETS", "TYPE", "CODE"]
     header_D_P = ["FILE","CODE"]
-
-
-
     DIAGNOSTICO = "DIAGNOSTICO"
     PROCEDIMIENTO = "PROCEDIMIENTO"   
 
-    def __init__(self):
-        config = configparser.ConfigParser()
-        config.read('./../resources/config.ini')
-        self.path_codiesp = config["codiesp"]['data']
+    def __init__(self, path_codiesp=None):
+        if not path_codiesp:
+            config = configparser.ConfigParser()
+            CONFIG_PATH = os.path.join(os.path.dirname(__file__), '../../../resources/config.ini')
+            config.read(CONFIG_PATH)
+            path_codiesp = config["codiesp"]['data']
+        self.path_codiesp = path_codiesp
 
     def get_text(self, split, id):
         fp = open(f'{self.path_codiesp}/{split}/text_files/{id}.txt', 'r')

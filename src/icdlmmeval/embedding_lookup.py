@@ -4,6 +4,7 @@ import json
 import re
 import configparser
 from icdlmmeval.codiesp.codiformat import CodiFormat
+import os
 
 class EmbeddingLookup:
 
@@ -11,8 +12,10 @@ class EmbeddingLookup:
 
         embeddings = OpenAIEmbeddings(model='text-embedding-ada-002')
 
+        CONFIG_PATH = os.path.join(os.path.dirname(__file__), '../../resources/config.ini')
         config = configparser.ConfigParser()
-        config.read('./../resources/config.ini')
+        config.read(CONFIG_PATH)
+
         path_diagnoses_db = config["vectorstore"]['diagnoses_db']
         path_procedures_db= config["vectorstore"]['procedures_db']
 

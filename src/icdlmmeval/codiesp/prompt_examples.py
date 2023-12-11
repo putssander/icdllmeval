@@ -5,6 +5,7 @@ from icdlmmeval.codiesp.codiformat import CodiFormat
 from icdlmmeval.icd_prompts import IcdItemNer, IcdListNer
 
 from icdlmmeval import util_text
+import os
 
 examples_ranking = [
   {
@@ -27,7 +28,10 @@ class PromptExamples:
     
     def __init__(self):
         config = configparser.ConfigParser()
-        config.read('./../resources/config.ini')
+        CONFIG_PATH = os.path.join(os.path.dirname(__file__), '../../../resources/config.ini')
+        config.read(CONFIG_PATH)
+        self.config = config
+
         path_mapping = config["main"]["annotation"]
 
         # self.path_codiesp = path_codiesp
@@ -48,7 +52,8 @@ class PromptExamples:
         item_prompt["context"] = item_output["context"]
         return item_prompt
 
-    def get_prompt_description_example_txt(self, file_number=0, context_size=1, selected_codes=[]):
+    def get_prompt_description_example_txt(self, file_number=0, selected_codes=[]):
+        context_size = int(self.config["descriptions"]["example_context_size"])
         file_name = self.files[file_number]
         df_select = self.dev_main_x[self.dev_main_x["FILE"] == file_name]
 
@@ -62,7 +67,7 @@ class PromptExamples:
             if selected_codes and row["CODE"] not in selected_codes:
                 continue
 
-            print(row["CODE"])
+            print("load example code: ", row["CODE"])
             item_idx = idx
             item_main_term = str(row["MAIN_SUBSTRING"]).strip()
             item_offsets = str(row["MAIN_OFFSETS"])

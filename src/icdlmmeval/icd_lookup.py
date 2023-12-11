@@ -2,7 +2,7 @@ import pandas as pd
 from bs4 import BeautifulSoup
 import configparser
 import re
-
+import os
 
 header_icd10_codes = ["LINE"]
 header_icd10_codes_es = ["CODE", "DESCRIPTION", "DESCRIPTION_L"]
@@ -12,8 +12,9 @@ class IcdLookup:
 
 
     def __init__(self):
+        CONFIG_PATH = os.path.join(os.path.dirname(__file__), '../../resources/config.ini')
         config = configparser.ConfigParser()
-        config.read('./../resources/config.ini')
+        config.read(CONFIG_PATH)
 
         path_codiesp_eval = config['codiesp']['eval']
         path_icd_10_cm_codes = config['gov.cms.icd']['path_icd_10_cm_codes']

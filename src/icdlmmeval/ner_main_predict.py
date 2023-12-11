@@ -1,14 +1,16 @@
 from transformers import pipeline
 import configparser
-
+from importlib_resources import files
+import os
 
 class NerMainPredict():
 
-    def __init__(self):
-        config = configparser.ConfigParser()
-        config.read('./../resources/config.ini')
-
-        model = config["main"]["model"]
+    def __init__(self, model=None):
+        if not model:
+            CONFIG_PATH = os.path.join(os.path.dirname(__file__), '../../resources/config.ini')
+            config = configparser.ConfigParser()
+            config.read(CONFIG_PATH)
+            model = config["main"]["model"]
         print("load token-classification pipeline for main terms")
 
         self.token_classifier = pipeline(

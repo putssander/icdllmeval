@@ -8,6 +8,7 @@ from icdlmmeval.codiesp.prompt_examples import PromptExamples
 import pandas as pd
 import logging
 import json
+import os
 
 FORMAT = '%(asctime)s %(message)s'
 
@@ -19,8 +20,10 @@ class CodiPredict():
 
     def __init__(self, model_name, load_dicts=True):
         
+        CONFIG_PATH = os.path.join(os.path.dirname(__file__), '../../resources/config.ini')
         config = configparser.ConfigParser()
-        config.read('./../resources/config.ini')
+        config.read(CONFIG_PATH)
+
         self.config = config
 
         self.path_codiesp = config["codiesp"]['data']
