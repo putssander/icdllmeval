@@ -82,20 +82,24 @@ def get_main_code_descriptions(icd_prompts, codiformat, split, selected_files, d
 def predict_code_from_descriptions_file_df(llm_icd_coding, codiformat, df_descriptions, fp_out):
     code_results = []
     for idx, row in df_descriptions.iterrows():
-        print(idx)
         file_name = row["file"]
-        descriptions = util.clean_md(row["descriptions"])
-        print(f"file={file_name} descriptions={descriptions}")
-        if "diagnoses" in descriptions:
-            for description in tqdm(descriptions["diagnoses"]):
-                code_result = llm_icd_coding.predict_code_from_description(file_name=file_name, description=description, code_type=codiformat.DIAGNOSTICO)
-                code_results.append(code_result)
-        if "procedures" in descriptions:
-            for description in tqdm(descriptions["procedures"]):
-                code_result = llm_icd_coding.predict_code_from_description(file_name=file_name, description=description, code_type=codiformat.PROCEDIMIENTO)        
-                code_results.append(code_result)
-        df_codes = pd.DataFrame.from_records(code_results)
-        df_codes.to_excel(fp_out) # write directly to excel to prevent loss of data
+        print(file_name)
+        try:
+            descriptions = util.clean_md(row["descriptions"])
+            print(f"file={file_name} descriptions={descriptions}")
+            if "diagnoses" in descriptions:
+                for description in tqdm(descriptions["diagnoses"]):
+                    code_result = llm_icd_coding.predict_code_from_description(file_name=file_name, description=description, code_type=codiformat.DIAGNOSTICO)
+                    code_results.append(code_result)
+            if "procedures" in descriptions:
+                for description in tqdm(descriptions["procedures"]):
+                    code_result = llm_icd_coding.predict_code_from_description(file_name=file_name, description=description, code_type=codiformat.PROCEDIMIENTO)        
+                    code_results.append(code_result)
+            df_codes = pd.DataFrame.from_records(code_results)
+            df_codes.to_excel(fp_out) # write directly to excel to prevent loss of data
+        except (json.decoder.JSONDecodeError) as e:
+            print('A JSON exception occurred: {}'.format(e))
+    
     return code_results
 
 
@@ -117,10 +121,11 @@ def main(split="test", llm_model_name="gpt-4", max_sequence_length=False, split_
     codiformat = CodiFormat()
     df_gold_x = codiformat.get_df_x(split)
     print(df_gold_x.head())
-    if split_begin_index or split_end_index:
-        selected_files = df_gold_x["FILE"].unique()[split_begin_index:split_end_index]
-    else:
-        selected_files = df_gold_x["FILE"].unique()
+    if not split_begin_index:
+        split_begin_index = 0
+        split_end_index = len(df_gold_x["FILE"].unique())
+    selected_files = df_gold_x["FILE"].unique()[split_begin_index:split_end_index]
+
     print(selected_files)
     print(len(selected_files))
 
@@ -134,7 +139,7 @@ def main(split="test", llm_model_name="gpt-4", max_sequence_length=False, split_
     # output file for PROMPT 1 & 2
     descriptions_out = f"/home/jovyan/work/icdllmeval/resources/gpt-descriptions/file-descriptions-{split}-{split_begin_index}-{split_end_index}.xlsx"
 
-    # PROMPT 1 & 2
+    # # PROMPT 1 & 2
     # df_ner = pd.read_excel(f'/home/jovyan/work/icdllmeval/resources/main-pred/entities-ner-{split}.xlsx')
     # get_main_code_descriptions(icd_prompts=icd_prompts, codiformat=codiformat, split=split, selected_files=selected_files, df_ner=df_ner, fp_out=descriptions_out, description_example=description_example)
 
@@ -156,10 +161,9 @@ if __name__ == "__main__":
     llm_model_name = "gpt-4-1106-preview"
     max_sequence_length = 1024 # gpt4 limit is 8k, answer often longer than question, gpt-4-turbo limit is 128k of which 4k output
     max_sequence_length = None
-    split_begin_index = 0
-    split_end_index = None
-    split_begin_index = None
+    split_begin_index = 77
     split_end_index = None
 
-    main(split, llm_model_name, max_sequence_length, split_begin_index, split_end_index)
+
+    main(split=split, llm_model_name=llm_model_name, max_sequence_length=max_sequence_length, split_begin_index=split_begin_index, split_end_index=split_end_index)
 

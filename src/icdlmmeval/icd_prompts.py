@@ -1,6 +1,7 @@
 from langchain.output_parsers import StructuredOutputParser, ResponseSchema
 from langchain.prompts import ChatPromptTemplate, HumanMessagePromptTemplate, SystemMessagePromptTemplate, AIMessagePromptTemplate
 from langchain.chat_models import ChatOpenAI
+import openai
 
 import logging
 from langchain.output_parsers import PydanticOutputParser
@@ -8,6 +9,7 @@ from pydantic import BaseModel, Field, validator
 from typing import List
 import json
 import tiktoken
+import time
 
 
 FORMAT = '%(asctime)s %(message)s'
@@ -175,7 +177,15 @@ class IcdPrompts():
         # _input = chat_prompt.format_prompt(question=examples[0]['question'], answer=examples[0]['answer'], item=item)
         _input = chat_prompt.format_prompt(item=item)
         logging.info(_input.to_messages())
-        output = self.chat(_input.to_messages())
+
+        output = None
+        while output is None:
+            try:
+                output = self.chat(_input.to_messages())
+            except (openai.APIConnectionError, openai.APITimeoutError) as e:
+                logging.exception("Caught OpenAPI exception for prompt-3")
+                time.sleep(20)
+
         logging.info(output.content)
         json_substrings = self.output_parser_select.parse(output.content)      
         return json_substrings
@@ -317,13 +327,22 @@ class IcdPrompts():
             answer=json.dumps(example["output"].dict(),  ensure_ascii=False)
             )
         logging.info(_input.to_messages())
-        output = self.chat(_input.to_messages())
+        
+        output = None
+        while output is None:
+            try:
+                output = self.chat(_input.to_messages())
+            except (openai.APIConnectionError, openai.APITimeoutError) as e:
+                logging.exception("Caught OpenAPI exception for prompt-1&2")
+                time.sleep(20)
+        
         logging.info(output.content)          
         return output.content
     
     def set_model(self, model_name, temperature = 0.0):
-        self.chat = ChatOpenAI(model_name=model_name, temperature=temperature)
+        self.chat = ChatOpenAI(model_name=model_name, temperature=temperature, request_timeout=600)
         self.encoding = tiktoken.encoding_for_model(model_name)
+        print("model_name: " , model_name)
 
 
     def prompt_icd_description_from_icd_phrase(self, examples, icd_phrases_list):
