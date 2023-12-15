@@ -147,7 +147,7 @@ def main(split="test", llm_model_name="gpt-4", max_sequence_length=False, prompt
     # # PROMPT 1 & 2
     if prompt12:
         df_ner = pd.read_excel(f'/home/jovyan/work/icdllmeval/resources/main-pred/entities-ner-{split}.xlsx')
-        get_main_code_descriptions(icd_prompts=icd_prompts, codiformat=codiformat, split=split, selected_files=selected_files, df_ner=df_ner, fp_out=descriptions_out, description_example=description_example)
+        get_main_code_descriptions(icd_prompts=icd_prompts, codiformat=codiformat, split=split, selected_files=selected_files, df_ner=df_ner, fp_out=descriptions_out, description_example=description_example, max_length=max_sequence_length)
 
     # PROMPT 3: Select the correct code by quering the vector database and using GPT-4 to select the best matching code from the results
     if prompt3:
@@ -170,17 +170,18 @@ if __name__ == "__main__":
 
     split = "test"
     # llm_model_name = "gpt-3.5-turbo"
-    llm_model_name = "gpt-4"
+    # llm_model_name = "gpt-4"
     llm_model_name = "gpt-4-1106-preview"
-    max_sequence_length = 1024 # gpt4 limit is 8k, answer often longer than question, gpt-4-turbo limit is 128k of which 4k output
+    # max_sequence_length = 1024 # gpt4 limit is 8k, answer often longer than question, gpt-4-turbo limit is 128k of which 4k output
     max_sequence_length = None
     split_begin_index = 0
     split_end_index = 77
-    prompt12 = True
+    prompt12 = False
     prompt3 = True
-    selected_files = ['S0210-48062005000100016-1', 'S0378-48352006000300005-1', 'S1137-66272011000300023-1', 'S1130-01082009000300015-1', 'S1131-57682003000300008-1', 'S1699-695X2015000100011-1', 'S0004-06142008000700003-1', 'S0210-56912006000200007-1', 'S0004-06142008000300012-1', 'S0212-71992007000600008-1', 'S0365-66912012000200004-1', 'S0212-16112004000400007-1', 'S0212-16112012000600045-1', 'S0210-48062007001000013-1']
+    selected_files = ['S0210-48062007001000013-1', 'S1131-57682003000300008-1', 'S0210-48062005000100016-1', 'S0004-06142008000300012-1', 'S1137-66272011000300023-1', 'S0210-56912006000200007-1', 'S0212-71992007000600008-1', 'S0365-66912012000200004-1', 'S1699-695X2015000100011-1', 'S1130-01082009000300015-1', 'S0004-06142008000700003-1', 'S0212-16112012000600045-1']
+
     descriptions_out_codes = "/home/jovyan/work/icdllmeval/resources/gpt-descriptions/file-descriptions-test-complete.xlsx"
-    descriptions_out_codes = None
+    # descriptions_out_codes = None
 
     main(split=split, llm_model_name=llm_model_name, max_sequence_length=max_sequence_length, prompt12=prompt12, prompt3=prompt3, files=selected_files, split_begin_index=split_begin_index, split_end_index=split_end_index, descriptions_out_codes=descriptions_out_codes)
 

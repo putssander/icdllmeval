@@ -1,0 +1,3 @@
+
+MAP estimate: 0.11
+

@@ -1,4 +1,5 @@
 from .codiformat import CodiFormat
+import pandas as pd
 
 def get_dfs_x_eval(split, llmcodes, code_field):
     print('eval x')
@@ -31,6 +32,7 @@ def get_dfs_d_p_eval(df_gold, llmcodes, type, code_field):
     files = llmcodes["file"].unique()
     df_gold = df_gold[df_gold["FILE"].isin(files)]
     llmcodes = llmcodes[llmcodes["type"].isin([type])]
+    llmcodes["confidence"] = pd.to_numeric(llmcodes["confidence"], errors='coerce') 
     llmcodes = llmcodes.sort_values(by='confidence', ascending=False)
     llmcodes = llmcodes.drop_duplicates(subset=["file", code_field], keep="first")
     llmcodes = llmcodes[['file', code_field]]
