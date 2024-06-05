@@ -1,6 +1,7 @@
 *.pyc
 resources/download/
-src/icdlmmeval/__pycache__/
+*__pycache__/
 resources/main-pred/roberta-base-biomedical-clinical-es-codiesp-ner-finetuned/
 notebooks/.chroma/
-notebooks/llm.log
+*.log
+*.ipynb_checkpoints*

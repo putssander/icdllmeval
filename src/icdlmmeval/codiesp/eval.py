@@ -33,7 +33,7 @@ def get_dfs_d_p_eval(df_gold, llmcodes, type, code_field):
     df_gold = df_gold[df_gold["FILE"].isin(files)]
     llmcodes = llmcodes[llmcodes["type"].isin([type])]
     llmcodes["confidence"] = pd.to_numeric(llmcodes["confidence"], errors='coerce') 
-    llmcodes = llmcodes.sort_values(by='confidence', ascending=False)
+    llmcodes = llmcodes.sort_values(by=['file', 'confidence'], ascending=[True, False])
     llmcodes = llmcodes.drop_duplicates(subset=["file", code_field], keep="first")
     llmcodes = llmcodes[['file', code_field]]
     llmcodes.rename(columns={'file': 'FILE', code_field: 'CODE'}, inplace=True)
