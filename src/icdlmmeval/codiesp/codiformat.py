@@ -70,6 +70,15 @@ class CodiFormat:
         df.to_csv(path, sep="\t", index=False, header=False)
 
 
+    def get_path_d_gold(self, split):
+        return f"{self.path_codiesp}/{split}/{split}D.tsv"    
+    
+    def get_path_p_gold(self, split):
+        return f"{self.path_codiesp}/{split}/{split}P.tsv"
+
+    def get_path_x_gold(self, split):
+        return str(f"{self.path_codiesp}/{split}/{split}X.tsv")
+
 
     def format_codiesp(self, codes, file):
         for code in codes:

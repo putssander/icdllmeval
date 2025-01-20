@@ -160,6 +160,25 @@ class IcdLookup:
         entries = self.bs_data_diagnoses.find_all(lambda tag: tag.name == "mainTerm" and main_term in tag.title.text)
         return entries
     
+    def get_filtered_entries(self, main_term, level=None):
+        # Find all mainTerm entries that match the given main_term
+        main_term_entries = self.get_cm_main_terms_entry(main_term)
+        
+        filtered_entries = []
+        for entry in main_term_entries:
+            # Check if this mainTerm entry itself has code R60.9, which is level 0
+            code = entry.find('code')
+            if code and code.text == 'R60.9' and level == 0:
+                filtered_entries.append(entry)
+            
+            # Find all <term> elements with the matching level inside this mainTerm entry
+            if level is not None and level != 0:
+                level_entries = entry.find_all(lambda tag: tag.name == "term" and tag.get('level') == str(level))
+                filtered_entries.extend(level_entries)
+        
+        return filtered_entries
+
+    
     def get_pcs_main_terms_entry(self, main_term):
         entries = self.bs_data_pcs.find_all(lambda tag: tag.name == "mainTerm" and main_term in tag.title.text)
         return entries
