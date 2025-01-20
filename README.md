@@ -7,9 +7,9 @@ resources/config.ini
 ### Eval performed in batches
 scripts/run_pipeline.py
 
-(eval potential of NER)[/notebooks/reeaval.ipynb]
+[Eval potential of NER](/notebooks/reeaval.ipynb)
 
 ### CodiEsp-X-lead dataset
-(train)[resources/main-annotation/train_main_x.xlsx]
-(dev)[resources/main-annotation/dev_main_x.xlsx]
-(test)[resources/main-annotation/test_main_x.xlsx]
+[train](resources/main-annotation/train_main_x.xlsx)
+[dev](resources/main-annotation/dev_main_x.xlsx)
+[test](resources/main-annotation/test_main_x.xlsx)
