@@ -1,5 +1,6 @@
-# Developing an ICD-10 Coding Assistant
-## Pilot Study Using RoBERTa and GPT-4 for Term Extraction and Description-Based Code Selection
+# Enhancing ICD coding with LLMs
+
+## Developing an ICD-10 Coding Assistant: Pilot Study Using RoBERTa and GPT-4 for Term Extraction and Description-Based Code Selection
 
 ### Config file
 resources/config.ini
